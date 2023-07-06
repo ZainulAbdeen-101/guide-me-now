@@ -3,5 +3,5 @@ import Navbar from "./Navbar";
 
 export{
     Navbar,
-    Hero
+    Hero,
 }
