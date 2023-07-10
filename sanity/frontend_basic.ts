@@ -1,4 +1,4 @@
-export const frontend_basic = {
+export const data = {
   name: "frontend_basic",
   type: "document",
   title: "guide me now",
@@ -15,9 +15,29 @@ title:"catogories",
 options:{
   list:[
     {
-      
-      title:"frontend_basic",value:"frontend-basic"
-    }
+      title:"frontend_basic",
+      value:"frontend-basic"
+    },
+    {
+      title:"frontend_intermediate",
+      value:"frontend-intermediate"
+    },
+    {
+      title:"frontend_advanced",
+      value:"frontend-advanced"
+    },
+    {
+      title:"backend_basic",
+      value:"backend-basic"
+    },
+    {
+      title:"backend_intermediate",
+      value:"backend-intermediate"
+    },
+    {
+      title:"backend_advanced",
+      value:"backend-advanced"
+    },
   ]
 }
     },
@@ -30,6 +50,11 @@ options:{
       name: "logo",
       type: "image",
       title: "logo",
+    },
+    {
+      name: "vtitle",
+      type: "string",
+      title: "video_title",
     },
     {
       name: "video",
