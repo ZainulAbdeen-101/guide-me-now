@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
 export default function Hero() {
@@ -13,7 +14,7 @@ export default function Hero() {
                 The Perfect Guide for the future of <span className='text-[#fed32e] font-semibold'>Young Generation</span> 
             </p>
             <p className='mt-5 text-sm  '>Your Ultimate IT Career Navigator Discover your ideal path in the world of technology with our interactive platform, tailored specifically for young students. Explore various IT careers, receive personalized recommendations, and embark on a journey to a successful future in the rapidly evolving IT industry.</p>
-            <button className='bg-[#fed32e]  mt-10 text-black font-semibold text-lg px-4 py-2 rounded hover:bg-[black] transition-all duration-300 ease-in-out hover:text-[#fed32e]'>get the ultimate guide now</button>
+           <Link href={"/queries"}> <button className='bg-[#fed32e]  mt-10 text-black font-semibold text-lg px-4 py-2 rounded hover:bg-[black] transition-all duration-300 ease-in-out hover:text-[#fed32e]'>get the ultimate guide now</button></Link>
 
         </div>
         <div> 

@@ -23,13 +23,14 @@ interface c {
 
 
 export async function fetchData(categories:string):Promise<c[]> {
+ 
 
-  return  await client.fetch(groq`*[_type== 'frontend_basic' && catogories==${categories} ]{
+  return  await client.fetch(groq`*[_type== 'frontend_basic' && catogories=='${categories}']{
     heading,
       description,
       logo,
       catogories,
       video,
       documentation
-   }`,categories);
+   }`);
 }

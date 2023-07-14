@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 
 export default async function page() {
-  const d="frontend-intermediate"
+  const d="frontend-basic"
 
 // const hello = await fetchData()
 
@@ -16,8 +16,6 @@ export default async function page() {
     <>
     <Navbar />
     <Hero />
-    {/* <button><Link href={`/data/${d}`}>basic</Link></button> */}
-        <Link href={`/content/${d}`}>Click me</Link>
     </>
   )
 }
