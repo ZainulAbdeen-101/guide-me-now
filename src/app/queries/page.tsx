@@ -13,7 +13,6 @@ export default function Page() {
     "mobile development",
     "Software development",
   ];
-
   const frontendOptions = [
     "frontend-basic",
     "frontend-intermediate",
@@ -25,16 +24,17 @@ export default function Page() {
   const setOptionAndData = (options: string[], data: string[]) => {
     setOption(options);
     setData1(data);
+    setFields([])
   };
 
-  const handleWebSelection = (index: number) => {
+  function handleWebSelection(index: number) {
     const webData = [
       ["frontend", "backend"],
-      ["Android Development", "iOS development"],
+      ["Android-Development", "IOS-Development", "Cross-Plateform"],
       ["software design", "development"],
     ];
     setOptionAndData(devOptions, webData[index]);
-  };
+  }
 
   const fieldsData: { [key: string]: string[] } = {
     frontend: frontendOptions,
@@ -46,6 +46,13 @@ export default function Page() {
 
   const handleFieldSelection = (field: string) => {
     setFields(fieldsData[field]);
+    field === "Android-Development"
+      ? setInfo(field)
+      : field === "IOS-Development"
+      ? setInfo(field)
+      : field === "Cross-Plateform"
+      ? setInfo(field)
+      : field;
   };
 
   const handleDataSelection = (data: string) => {
@@ -79,7 +86,7 @@ export default function Page() {
         </div>
       ))}
 
-      <Link href={`/content/${info}`}>okay</Link>
+      <Link href={`/content/${info}`}>Continue</Link>
     </>
   );
 }
