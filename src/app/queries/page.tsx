@@ -211,7 +211,7 @@ const devOptions = [
 
 
 {/* Second time  Option  */}
-<div className="grid grid-">
+<div className="grid ">
 
 
       {data1?.map((data, index) => (
@@ -236,25 +236,6 @@ const devOptions = [
 
 
 
-<br />
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 
     </>
   );
