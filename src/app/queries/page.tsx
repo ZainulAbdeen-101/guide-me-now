@@ -2,56 +2,36 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-// import des from '@/app/queries/des.jpg';
 import Image from "next/image";
-import webPic from '../../../public/web_dev_pic.png'
-import appPic from '../../../public/app_dev_pic.png'
-import softPic from '../../../public/software_dev_pic.png'
-// import textContent from "./textContent";
+
+
+import webPic from "../../../public/web_dev_pic.png";
+import appPic from "../../../public/app_dev_pic.png";
+import softPic from "../../../public/software_dev_pic.png";
+
 import { devFields } from "../../components/textContent";
-// import WebDevDes from "./components/WebDevDes";
+
 
 export default function Page(): React.JSX.Element {
   const [info, setInfo] = useState("");
   const [data1, setData1] = useState<string[]>();
   const [fields, setFields] = useState<string[]>();
   const [option, setOption] = useState<string[]>();
-  
-// Designing States :
+  const picList = [webPic, appPic, softPic];
+  const [pic,setpicList]=useState(picList)
 
-const [sfields,SetsFields] = useState(false)
-
-
-// picture links Array
-
- const s1 = webPic 
- const s2 = appPic 
- const s3 = softPic; 
-const picList = [s1,s2,s3]
+ 
 
 
-//for development domains display
+  const txtC = devFields;
 
-const [sl,setSl]  = useState(false);
-const [fl,setFl]  = useState(false);
-const [fsl,setFs]  = useState(false);
-
-
-
-const txtC = devFields
-
-const devOptions = [
+  const devOptions = [
     "Web development",
-    "Mobile development", 
+    "Mobile development",
     "Software development",
   ];
 
-
-  const webDesOptions = [
-    "web design",
-     "UI/UX design",
-      "graphic design"
-    ];
+  const webDesOptions = ["web design", "UI/UX design", "graphic design"];
 
   const frontendOptions = [
     "frontend-basic",
@@ -59,26 +39,32 @@ const devOptions = [
     "frontend-advanced",
   ];
 
-  const backendOptions = [
-    "backend-basic",
-     "backend-advanced"
-    ];
+  const backendOptions = ["backend-basic", "backend-advanced"];
 
   const setOptionAndData = (options: string[], data: string[]) => {
     setOption(options);
     setData1(data);
-    setFields([])
+    setFields([]);
+    setpicList(picList)
   };
 
-
-  function handleWebSelection(index: number, option:string) {
-
+  function handleWebSelection(index: number, option: string) {
     const webData = [
       ["frontend", "backend"],
       ["Android-Development", "IOS-Development", "Cross-Plateform"],
       ["software design", "development"],
     ];
-    setOptionAndData(devOptions, webData[index]);
+    if (option === "Web development" && index == 0) {
+      setOptionAndData([option], webData[index]);
+      setpicList([webPic])
+      
+    } else if (option === "Mobile development" && index == 1) {
+      setOptionAndData([option], webData[index]);
+      setpicList([appPic])
+    } else if (option === "Software development" && index == 2) {
+      setOptionAndData([option], webData[index]);
+      setpicList([softPic])
+    }
   }
 
   const fieldsData: { [key: string]: string[] } = {
@@ -90,11 +76,7 @@ const devOptions = [
   };
 
   const handleFieldSelection = (field: string) => {
-
-
     setFields(fieldsData[field]);
-
-
 
     field === "Android-Development"
       ? setInfo(field)
@@ -109,122 +91,120 @@ const devOptions = [
     setInfo(data);
   };
 
-
-
   return (
     <>
+      <h1 className="text-center text-3xl font-serif ">Choose your Domain</h1>
 
-<h1 className="text-center text-3xl font-serif ">Choose your Domain</h1>
+     
 
-
-
-<br />
-<br />
-<br />
-<br />
-
-
-
-<div className="card lg:card-side bg-base-100 shadow-xl flex justify-center glass">
-  
-  
-  <div className="card-body max-w-[600px]">
-    <h2 className="card-title">Development</h2>
-    <p>Software development is creating computer programs or apps to meet specific needs. It involves planning, designing, coding, testing, and maintenance. Developers gather requirements, design the software's structure and features, write code, test for issues, and make the software available. Maintenance keeps the software working and up-to-date. Collaboration, communication, and continuous learning are important in software development.
-</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary"onClick={() => setOptionAndData(devOptions, [])}>Continue with Development</button>
-    </div>
-  </div>
-
-  <div className="divider lg:divider-horizontal mx-auto animate-fade-right animate-once animate-ease-linear animate-normal animate-fill-both"></div> 
-
-  <div className="card-body  max-w-[600px] ">
-    <h2 className="card-title">Designing</h2>
-    <p>Designing is the act of creating things that look good and work well. It involves planning and arranging different parts to solve a problem or achieve a goal. Designing can be used in many areas like making graphics, websites, products, and rooms. It's important to think about how things will look, how they will be used, and who will use them. Designing requires being creative, solving problems, and understanding what people want. Sometimes special tools and computer programs are used to help with designing.</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary" onClick={() => setOptionAndData([], webDesOptions)}>Continue with Desiging</button>
-    </div>
-  </div>
-
-</div>
-
-{/* Second Section render based on condition */}
-
-{sfields && (
-  
-<div>
-
-<div className="flex justify-center mt-[50px] ">
-<div className="stats shadow-md">
-  
-  <div className="stat">
-    <div className="stat-value">Select your Field</div>
-      </div>
-  
-</div>
-
-</div>
-
-
-
-
-<div  className="mt-[20px]">
-
-
-
-{/* first time Options click by Domains */}
-{
-  
-   option?.map((option, index) => (
-  
-  
-  <div key={index} className="mt-[20px]">
-          
-          <div className="card lg:card-side bg-base-100 shadow-xl w-[80%] container mx-auto">
-
-<div className="card-body w-[200%]">
-<figure><Image src={picList[index]} height={500} width={550} alt="car!"/></figure>
-</div>
-  <div className="card-body">
-    <h2 className="card-title">{option}</h2>
-    <p>{txtC[index]}</p>
-    <div className="card-actions justify-end">
-      <button className="btn bg-[#ffdd35] hover:bg-[#fde047]" onClick={() => handleWebSelection(index,option)}>Let's Start with {option}</button>
-    </div>
-  </div>
-
-</div>
-
-
-           </div>
-
-
-
-))}
-    
-</div>
-
-</div>
-)}
-
-
-
-{/* Second time  Option  */}
-<div className="grid ">
-
-
-      {data1?.map((data, index) => (
-        <div key={index}>
-          
-          <button type="button" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={() => handleFieldSelection(data)} >{data}</button>
-
-
+      <div className="card lg:card-side bg-base-100 shadow-xl flex justify-center glass">
+        <div className="card-body max-w-[600px]">
+          <h2 className="card-title">Development</h2>
+          <p>
+            Software development is creating computer programs or apps to meet
+            specific needs. It involves planning, designing, coding, testing,
+            and maintenance. Developers gather requirements, design the
+            software's structure and features, write code, test for issues, and
+            make the software available. Maintenance keeps the software working
+            and up-to-date. Collaboration, communication, and continuous
+            learning are important in software development.
+          </p>
+          <div className="card-actions justify-end">
+            <button
+              className="btn btn-primary"
+              onClick={() => setOptionAndData(devOptions, [])}
+            >
+              Continue with Development
+            </button>
+          </div>
         </div>
-      ))}
+
+        <div className="divider lg:divider-horizontal mx-auto animate-fade-right animate-once animate-ease-linear animate-normal animate-fill-both"></div>
+
+        <div className="card-body  max-w-[600px] ">
+          <h2 className="card-title">Designing</h2>
+          <p>
+            Designing is the act of creating things that look good and work
+            well. It involves planning and arranging different parts to solve a
+            problem or achieve a goal. Designing can be used in many areas like
+            making graphics, websites, products, and rooms. It's important to
+            think about how things will look, how they will be used, and who
+            will use them. Designing requires being creative, solving problems,
+            and understanding what people want. Sometimes special tools and
+            computer programs are used to help with designing.
+          </p>
+          <div className="card-actions justify-end">
+            <button
+              className="btn btn-primary"
+              onClick={() => setOptionAndData([], webDesOptions)}
+            >
+              Continue with Designing
+            </button>
+          </div>
+        </div>
       </div>
 
-{/* last time categories */}
+      {/* Second Section render based on condition */}
+
+     
+        <div>
+          <div className="flex justify-center mt-[50px] ">
+            <div className="stats shadow-md">
+              <div className="stat">
+                <div className="stat-value">Select your Field</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-[20px]">
+            {/* first time Options click by Domains */}
+            {option?.map((option, index) => (
+              <div key={index} className="mt-[20px]">
+                <div className="card lg:card-side bg-base-100 shadow-xl w-[80%] container mx-auto">
+                  <div className="card-body w-[200%]">
+                    <figure>
+                       <Image
+                        src={pic[index]}
+                        height={500}
+                        width={550}
+                        alt="car!"
+                       />
+                    </figure>
+                  </div>
+                  <div className="card-body">
+                    <h2 className="card-title">{option}</h2>
+                    <p>{txtC[index]}</p>
+                    <div className="card-actions justify-end">
+                      <button
+                        className="btn bg-[#ffdd35] hover:bg-[#fde047]"
+                        onClick={() => handleWebSelection(index, option)}
+                      >
+                        Let's Start with {option}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+  
+      {/* Second time  Option  */}
+      <div className="grid ">
+        {data1?.map((data, index) => (
+          <div key={index}>
+            <button
+              type="button"
+              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              onClick={() => handleFieldSelection(data)}
+            >
+              {data}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* last time categories */}
 
       {fields?.map((field, index) => (
         <div key={index}>
@@ -233,10 +213,6 @@ const devOptions = [
       ))}
 
       <Link href={`/content/${info}`}>Continue</Link>
-
-
-
-
     </>
   );
 }
