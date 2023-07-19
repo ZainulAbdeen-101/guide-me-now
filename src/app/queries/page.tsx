@@ -45,6 +45,13 @@ const devOptions = [
     "Software development",
   ];
 
+
+  const webDesOptions = [
+    "web design",
+     "UI/UX design",
+      "graphic design"
+    ];
+
   const frontendOptions = [
     "frontend-basic",
     "frontend-intermediate",
@@ -59,16 +66,57 @@ const devOptions = [
   const setOptionAndData = (options: string[], data: string[]) => {
     setOption(options);
     setData1(data);
+    setFields([]);
+    SetsFields(true);
+
+
+
   };
 
-  const handleWebSelection = (index: number) => {
+
+  function handleWebSelection(index: number, option:string) {
+
     const webData = [
       ["frontend", "backend"],
       ["Android-Development", "IOS-Development", "Cross-Plateform"],
       ["software design", "development"],
     ];
-    setOptionAndData(devOptions, webData[index]);
-  };
+    
+    // setOptionAndData(devOptions, webData[index]); 
+
+    if(option==="Web development" && index==0){
+      
+      // const newDev =  devOptions.slice(0,1)
+
+      setOptionAndData([option], webData[index]); 
+    
+    }
+    else if(option==="Mobile development" && index==1){
+
+      // const newDev =  devOptions.slice(1,2)
+      // setOptionAndData(newDev, webData[index]); 
+
+
+      setOptionAndData([option], webData[index]); 
+    
+    
+
+    }
+  
+    else if(option==="Software development" && index==2){
+
+      // const newDev =  devOptions.slice(2,3);
+      //  setOptionAndData(newDev, webData[index]); 
+        
+      
+      setOptionAndData([option], webData[index]); 
+    
+    }
+    
+  
+
+
+  }
 
   const fieldsData: { [key: string]: string[] } = {
     frontend: frontendOptions,
@@ -82,6 +130,16 @@ const devOptions = [
 
 
     setFields(fieldsData[field]);
+
+
+
+    field === "Android-Development"
+      ? setInfo(field)
+      : field === "IOS-Development"
+      ? setInfo(field)
+      : field === "Cross-Plateform"
+      ? setInfo(field)
+      : field;
   };
 
   const handleDataSelection = (data: string) => {
@@ -158,7 +216,6 @@ const devOptions = [
    option?.map((option, index) => (
   
   
-
   <div key={index} className="mt-[20px]">
           
           <div className="card lg:card-side bg-base-100 shadow-xl w-[80%] container mx-auto">
@@ -212,7 +269,30 @@ const devOptions = [
         </div>
       ))}
 
-      <Link href={`/content/${info}`}>okay</Link>
+      <Link href={`/content/${info}`}>Continue</Link>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
     </>
   );
 }
