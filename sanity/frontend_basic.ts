@@ -31,13 +31,24 @@ options:{
       value:"backend-basic"
     },
     {
-      title:"backend_intermediate",
-      value:"backend-intermediate"
-    },
-    {
       title:"backend_advanced",
       value:"backend-advanced"
     },
+// App Development
+    {
+      title:"ios_development",
+      value:"ios-development"
+    },
+    {
+      title:"cross_platform",
+      value:"cross-platform"
+    },
+    {
+     title:"android_development",
+     value:"android-development"
+    },
+
+
   ]
 }
     },
