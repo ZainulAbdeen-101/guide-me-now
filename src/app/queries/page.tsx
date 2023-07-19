@@ -1,8 +1,9 @@
 "use client";
+
 import Link from "next/link";
 import React, { useState } from "react";
 
-export default function Page() {
+export default function Page(): React.JSX.Element {
   const [info, setInfo] = useState("");
   const [data1, setData1] = useState<string[]>();
   const [fields, setFields] = useState<string[]>();
@@ -24,7 +25,7 @@ export default function Page() {
   const setOptionAndData = (options: string[], data: string[]) => {
     setOption(options);
     setData1(data);
-    setFields([])
+    setFields([]);
   };
 
   function handleWebSelection(index: number) {
@@ -33,7 +34,16 @@ export default function Page() {
       ["Android-Development", "IOS-Development", "Cross-Plateform"],
       ["software design", "development"],
     ];
-    setOptionAndData(devOptions, webData[index]);
+    if(index==0){
+
+      setOptionAndData(["Web development"], webData[index]);
+    }else  if(index==1){
+
+      setOptionAndData(["Mobile development"], webData[index]);
+    }else if(index==2){
+
+      setOptionAndData(["software development"], webData[index]);
+    }
   }
 
   const fieldsData: { [key: string]: string[] } = {
