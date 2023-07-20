@@ -9,21 +9,30 @@ import webPic from "../../../public/web_dev_pic.png";
 import appPic from "../../../public/app_dev_pic.png";
 import softPic from "../../../public/software_dev_pic.png";
 
-import { devFields } from "../../components/textContent";
+// import { devFields } from "../../components/textContent";
+
 
 
 export default function Page(): React.JSX.Element {
+
+
   const [info, setInfo] = useState("");
   const [data1, setData1] = useState<string[]>();
   const [fields, setFields] = useState<string[]>();
   const [option, setOption] = useState<string[]>();
+  const [sField,setsFields] = useState(false)
   const picList = [webPic, appPic, softPic];
   const [pic,setpicList]=useState(picList)
+const webtext="Web development is the process of creating websites that people can visit on the internet. It involves designing how the website looks and works using coding languages like HTML, CSS, and JavaScript. Once the website is built, it is checked to make sure it works correctly, is safe, and looks good on different devices. When the testing is done, the website is made available for people to use on the internet. To be successful in web development, it's important to keep learning and stay updated with the latest technology and trends."
+const apptext="App development, also called mobile app development, is the act of making software applications for mobile devices. It involves creating and building apps using programming languages like Java or Swift. Once the apps are built, they are checked to make sure they work and can be used on different devices. After testing, the apps are made available for people to download from app stores. In app development, it's important to keep learning and stay updated with mobile trends. There are many types of apps, like games, tools to help you be productive, and apps for buying and selling things."
 
- 
+
+const softtext= "Desktop app development is about creating computer programs that can be installed and used on desktop or laptop computers. It involves designing how the app looks and works, writing code using languages like Java or C#, and testing for issues. Once tested, the app is made available for users to install on their computers. Continuous learning and understanding user interfaces are important for beginners. Desktop app development offers a variety of options, like productivity tools or industry-specific software."
+
+const devFields=[webtext,apptext,softtext]
+const [DevText,setDevText] = useState(devFields) 
 
 
-  const txtC = devFields;
 
   const devOptions = [
     "Web development",
@@ -46,6 +55,9 @@ export default function Page(): React.JSX.Element {
     setData1(data);
     setFields([]);
     setpicList(picList)
+    setDevText(devFields)
+    setsFields(true)
+      
   };
 
   function handleWebSelection(index: number, option: string) {
@@ -56,14 +68,21 @@ export default function Page(): React.JSX.Element {
     ];
     if (option === "Web development" && index == 0) {
       setOptionAndData([option], webData[index]);
-      setpicList([webPic])
+      setpicList([webPic]);
+     setDevText([webtext])
       
     } else if (option === "Mobile development" && index == 1) {
       setOptionAndData([option], webData[index]);
       setpicList([appPic])
+     setDevText([apptext])
+
+      
+      
     } else if (option === "Software development" && index == 2) {
       setOptionAndData([option], webData[index]);
       setpicList([softPic])
+      setDevText([softtext])
+
     }
   }
 
@@ -145,6 +164,9 @@ export default function Page(): React.JSX.Element {
       </div>
 
       {/* Second Section render based on condition */}
+{
+
+sField && 
 
      
         <div>
@@ -173,7 +195,7 @@ export default function Page(): React.JSX.Element {
                   </div>
                   <div className="card-body">
                     <h2 className="card-title">{option}</h2>
-                    <p>{txtC[index]}</p>
+                    <p>{DevText[index]}</p>
                     <div className="card-actions justify-end">
                       <button
                         className="btn bg-[#ffdd35] hover:bg-[#fde047]"
@@ -189,30 +211,43 @@ export default function Page(): React.JSX.Element {
           </div>
         </div>
   
+}
       {/* Second time  Option  */}
-      <div className="grid ">
+      <div className="flex justify-center text-center mt-[60px] gap-[100px]">
         {data1?.map((data, index) => (
-          <div key={index}>
+          <div key={index} >
             <button
               type="button"
-              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="text-white bg-gradient-to-r from-[#fed32e] to-[#F50C8A] hover:bg-gradient-to-br  shadow-xl shadow-slate-400   font-medium rounded-lg text-sm px-24  py-6   hover:transition hover:ease-in-out hover:duration-500 "
               onClick={() => handleFieldSelection(data)}
             >
-              {data}
+              <p className="text- xl font">{data}</p>
             </button>
           </div>
         ))}
       </div>
 
       {/* last time categories */}
+<div className="flex justify-center items-center gap-10 mt-10" >
+
 
       {fields?.map((field, index) => (
         <div key={index}>
-          <button onClick={() => handleDataSelection(field)}>{field}</button>
+          <button className="btn btn-outline btn-primary transition ease-in duration-300 " onClick={() => handleDataSelection(field)}>{field}</button>
         </div>
       ))}
+</div>
+<Link href={`/content/${info}`}>
+<button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5  flex justify-center align` ">Continue</button>
 
-      <Link href={`/content/${info}`}>Continue</Link>
+
+</Link>
+    
+     
+
+
+    
+    
     </>
   );
 }

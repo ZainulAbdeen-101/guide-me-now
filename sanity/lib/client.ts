@@ -1,7 +1,7 @@
 import { createClient, groq} from 'next-sanity'
 
 import { apiVersion, dataset, projectId, useCdn } from '../env'
-import { Image } from 'sanity'
+import { Image } from 'sanity';
 
 export const client = createClient({
   apiVersion,

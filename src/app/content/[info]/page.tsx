@@ -88,7 +88,7 @@ export default async function page({ params }: props) {
               allow="poster"
             ></iframe>
           </div>
-
+  
         ))}
 
     
