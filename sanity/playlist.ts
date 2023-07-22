@@ -22,6 +22,12 @@ fields:[
     name :"title",
     type:"string",
     title:"video title"
+},
+{
+    name:"id",
+    type:"string",
+    title:"course id"
+
 }
 
 ]
