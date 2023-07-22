@@ -34,3 +34,16 @@ export async function fetchData(categories:string):Promise<c[]> {
       documentation
    }`);
 }
+
+export async function fetchplaylist(categories:string):Promise<c[]> {
+ 
+
+  return  await client.fetch(groq`*[_type== 'frontend_basic' && catogories=='${categories}']{
+    heading,
+      description,
+      logo,
+      catogories,
+      video,
+      documentation
+   }`);
+}
