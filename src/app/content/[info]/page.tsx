@@ -69,6 +69,7 @@ export default async function page({ params }: props) {
             </h1>
 
             <p className="  mt-2">{content.description}</p>
+            <button className="btn btn-outline btn-primary"><Link href={`/playlist/${content.heading}`}>Start Watching</Link></button>
           </div>
         ))}
       </div>

@@ -1,4 +1,5 @@
-import { Hero } from "@/components/Comp";  import axios from 'axios';
+import { Hero } from "@/components/Comp";  
+import Link from "next/link";
 
 
 import React from "react";
@@ -42,11 +43,12 @@ export default async function page() {
 
 
 
-
+const d="CSS"
 
   return (
     <>
       <Hero />
+      <Link href={`/playlist/${d}`}>yt</Link>
     </>
   );
 }

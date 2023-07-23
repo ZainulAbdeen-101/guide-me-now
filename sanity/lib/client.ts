@@ -35,15 +35,13 @@ export async function fetchData(categories:string):Promise<c[]> {
    }`);
 }
 
-export async function fetchplaylist(categories:string):Promise<c[]> {
+export async function fetchplaylist(play:string):Promise<any> {
  
 
-  return  await client.fetch(groq`*[_type== 'frontend_basic' && catogories=='${categories}']{
-    heading,
-      description,
-      logo,
-      catogories,
-      video,
-      documentation
-   }`);
-}
+  return  await client.fetch(groq`*[_type=='playlist' && heading=='${play}']{
+   heading,
+   url,
+   title,
+   id
+   }`)
+  }

@@ -15,12 +15,15 @@ theme: {
         font:['Bebas Neue','sans-serif']
        
       },  
+      
     },
    
     
   },
   daisyui: {
     themes: ["light"],
+     
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+  require('tailwind-scrollbar'),],
 }
