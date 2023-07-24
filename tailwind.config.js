@@ -18,7 +18,6 @@ theme: {
       
     },
    
-    
   },
   daisyui: {
     themes: ["light"],
