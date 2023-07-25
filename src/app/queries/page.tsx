@@ -114,16 +114,13 @@ const [DevText,setDevText] = useState(devFields)
   return (
     <>
 {/* Main */}
-    <div className=" mt-10">
+    <div className=" mt-[129px]">
 
-<Image className='-z-10' src={"/mainBG2.jpg"} fill={true} style={{objectFit:'cover'}}  alt="" />
+<Image className='-z-10 bg-blend-darken' src={"/mainBG2.jpg"} fill={true} style={{objectFit:'cover'}}  alt="" />
 
     
-
-     
-
-      <div className="card lg:card-side bg-base-100 shadow-xl flex justify-center glass">
-        <div className="card-body max-w-[600px]">
+      <div className="card lg:card-side   flex justify-center  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-white  mx-10">
+        <div className="card-body max-w-[600px] border-r-indigo-500">
           <h2 className="card-title">Development</h2>
           <p>
             Software development is creating computer programs or apps to meet
@@ -144,9 +141,9 @@ const [DevText,setDevText] = useState(devFields)
           </div>
         </div>
 
-        <div className="divider lg:divider-horizontal mx-auto animate-fade-right animate-once animate-ease-linear animate-normal animate-fill-both"></div>
+        <div className="divider lg:divider-horizontal mx-auto animate-fade-right animate-once animate-ease-linear animate-normal animate-fill-both divide-white divide-y divide-blue-200"></div>
 
-        <div className="card-body  max-w-[600px] ">
+        <div className="card-body  max-w-[600px] border-l-indigo-500">
           <h2 className="card-title">Designing</h2>
           <p>
             Designing is the act of creating things that look good and work
@@ -222,7 +219,7 @@ const [DevText,setDevText] = useState(devFields)
           <div key={index} >
             <button
               type="button"
-              className="text-white bg-gradient-to-r from-[#fed32e] to-[#F50C8A] hover:bg-gradient-to-br  shadow-xl shadow-slate-400   font-medium rounded-lg text-sm px-24  py-6   hover:transition hover:ease-in-out hover:duration-500 "
+              className="text-white bg-gradient-to-r from-[#fed32e] to-[#F50C8A] hover:bg-gradient-to-br  shadow-xl shadow-slate-400   font-medium rounded-lg text-sm px-24 py-6 hover:transition hover:ease-in-out hover:duration-500 "
               onClick={() => handleFieldSelection(data)}
             >
               <p className="text- xl font">{data}</p>
@@ -247,7 +244,7 @@ const [DevText,setDevText] = useState(devFields)
 
 <Link href={`/content/${info}`}>
 
-<button type="button" className="mx-auto text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5  flex justify-center align` ">Continue</button>
+<button type="button" className="mx-auto my-[50px] text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5  flex justify-center align` ">Continue</button>
 
 </Link>:""
 
