@@ -37,15 +37,15 @@ options:{
 // App Development
     {
       title:"ios_development",
-      value:"ios-development"
+      value:"IOS-Development"
     },
     {
       title:"cross_platform",
-      value:"cross-platform"
+      value:"Cross-Platform"
     },
     {
      title:"android_development",
-     value:"android-development"
+     value:"Android-Development"
     },
 
 
