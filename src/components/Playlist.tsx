@@ -86,7 +86,7 @@ const [show,setshow]=useState(true)
           allow="poster"
         ></iframe>
 
-<button className="btn btn-outline btn-primary transition ease-in duration-300 mt-5" disabled={show} >Start Quiz</button>
+<button className="btn btn-outline btn-secondary transition ease-in duration-300 mt-5" disabled={show} >Start Quiz</button>
       </div>
 
     
