@@ -19,6 +19,21 @@ export default async function page({ params }: props) {
   const data = await fetchData(categories);
   console.log(data);
 
+
+   async function d(){
+
+    const rest=await fetch("http://localhost:3000/api/quiz",{
+      method:"POST",
+      body:JSON.stringify({
+        name:"hassan"
+      })
+    })
+    const result =await rest.json()
+    console.log(result.message)
+  }
+  d()
+
+
   return (
     <>
       <div className="h-screen ">
