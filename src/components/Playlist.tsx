@@ -3,34 +3,28 @@ import React, { useEffect, useState } from "react";
 import { fetchplaylist } from "../../sanity/lib/client";
 import { playlist } from "@/types";
 
-interface Play{
+type Play={
 
 props : string
 
 }
 
-interface Playlist{
 
-heading:string,
-url:string,
-title:string,
-id:string  
-  }
 
 export default function PlayList({props}:Play) {
   
 const [show,setshow]=useState(true)
-  const [data, setData] = useState<Playlist[]|undefined>([]);
+  const [data, setData] = useState<playlist[]>([]);
   const [list, setList] = useState<string>("");
 
   function setdata(url: string) {
     setList(url);
   }
   
-  function compareByProperty(property: any) {
-    return (a: string, b: string) =>
-      a[property].toUpperCase().localeCompare(b[property].toUpperCase());
-  }
+    function compareByProperty(property: any) {
+      return (a: string, b: string) =>
+        a[property].toUpperCase().localeCompare(b[property].toUpperCase());
+    }
 
    useEffect(() => {
     async function fetchData() {
@@ -62,7 +56,7 @@ const [show,setshow]=useState(true)
         
 
       <div className="mt-10 max-w-[450px] flex flex-col h-[600px] gap-10 text-lg border rounded-lg overflow-auto scrollbar-thin scrollbar-thumb-[#6c00a5] scrollbar-track-[#fed32e]">
-        {data?.map((item: playlist<string>, index: number) => (
+        {data?.map((item: playlist, index: number) => (
           <div className=" m-2  rounded-md text-[#6c00a5] shadow-xl p-2 "  key={index}>
             <button onClick={() => {setdata(item.url) 
               showbtn(item.title)

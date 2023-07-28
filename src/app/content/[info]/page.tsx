@@ -47,7 +47,6 @@ export default async function page({ params }: props) {
         </button>
       </div>
 
-      
       <div className="flex mt-10 justify-center items-center gap-2">
         <h1 className=" text-[#6c00a5] font-semibold text-[50px]">
           Tech Languages
@@ -69,7 +68,9 @@ export default async function page({ params }: props) {
             </h1>
 
             <p className="  mt-2">{content.description}</p>
-            <button className="btn btn-outline btn-primary"><Link href={`/playlist/${content.heading}`}>Start Watching</Link></button>
+            <button className="btn btn-outline btn-primary">
+              <Link href={`/playlist/${content.heading}`}>Start Watching</Link>
+            </button>
           </div>
         ))}
       </div>
@@ -89,10 +90,7 @@ export default async function page({ params }: props) {
               allow="poster"
             ></iframe>
           </div>
-  
         ))}
-
-    
       </div>
       <div className="flex justify-center items-center mt-5">
         <h1 className="text-center text-[#6c00a5] font-semibold  text-[50px]">
