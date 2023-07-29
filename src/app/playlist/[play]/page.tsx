@@ -4,15 +4,12 @@ interface props {
   params: { play: string };
 }
 
-
-
 export default function Page({ params }: props) {
-
   const play = params.play;
 
   return (
     <>
-    <PlayList props={play}/>
+      <PlayList props={play} />
     </>
   );
 }

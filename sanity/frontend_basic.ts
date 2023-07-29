@@ -9,9 +9,9 @@ export const data = {
       title: "heading",
     },
     {
-name:"catogories",
+name:"categories",
 type:"string",
-title:"catogories",
+title:"categories",
 options:{
   list:[
     {
