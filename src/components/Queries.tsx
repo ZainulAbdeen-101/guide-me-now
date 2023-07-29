@@ -99,7 +99,7 @@ export default function Queries(): React.JSX.Element {
   return (
     <>
       {/* Main */}
-      <div className=" mt-24">
+      <div className="h-screen flex items-center ">
         <Image
           className="-z-10 bg-blend-darken"
           src={"/mainBG2.jpg"}

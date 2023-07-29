@@ -55,9 +55,9 @@ const [show,setshow]=useState(true)
           
         
 
-      <div className="mt-10 max-w-[450px] flex flex-col h-[600px] gap-10 text-lg border rounded-lg overflow-auto scrollbar-thin scrollbar-thumb-[#6c00a5] scrollbar-track-[#fed32e]">
+      <div className="mt-24 max-w-[450px] flex flex-col h-[500px] gap-10 p-4   rounded-xl overflow-auto scrollbar-thin scrollbar-thumb-[#6c00a5] scrollbar-track-[#fed32e]">
         {data?.map((item: playlist, index: number) => (
-          <div className=" m-2  rounded-md text-[#6c00a5] shadow-xl p-2 "  key={index}>
+          <div className="   rounded-md font-bold shadow-xl p-2 "  key={index}>
             <button onClick={() => {setdata(item.url) 
               showbtn(item.title)
               }}>{item.title}</button>
@@ -68,19 +68,20 @@ const [show,setshow]=useState(true)
       {/*  #2F0743 */}
 
     
-      <div className="mt-3">
+      <div className="mt-14 ">
       
       <h1 className="text-lg font-extrabold text-gray-900 -pt-[30px] dark:text-black md:text-5xl lg:text-4xl text-center"><span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 ">{props}</span>&nbsp;<span className="underline underline-offset-4 decoration-6  decoration-[#fed32e] text-[#6c00a5]">Course</span></h1> 
 
         <iframe className="mt-2 rounded-2xl drop-shadow-2xl "
-          width={820}
+          width={800}
           height={500}
           src={list}
           allowFullScreen
           allow="poster"
         ></iframe>
 
-<button className="btn btn-outline btn-secondary transition ease-in duration-300 mt-5" disabled={show} >Start Quiz</button>
+<button className="btn btn-outline
+ btn-primary transition ease-in duration-300 mt-5" disabled={show} >Start Quiz</button>
       </div>
 
     

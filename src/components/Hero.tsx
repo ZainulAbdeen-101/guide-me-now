@@ -5,8 +5,8 @@ import Image from 'next/image'
 export default function Hero() {
   return (
     <>
-    <div className=' mt-[80px]'>
-        <div className='max-w-[370px] ml-5 text-white '>
+    <div className='h-screen '>
+        <div className='max-w-[370px] pt-[100px] ml-5 text-white '>
             <h1 className=' text-[#fed32e] font-semibold  text-[60px] leading-none'>
                 Guide <span className='text-white'>Me</span>  Now
             </h1>

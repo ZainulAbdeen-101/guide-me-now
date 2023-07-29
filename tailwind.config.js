@@ -12,7 +12,7 @@ theme: {
     extends:{
       fontFamily: {
         sans: ['Montserrat',...defaultTheme.fontFamily.sans],
-        font:['Bebas Neue','sans-serif']
+        neue:['Bebas Neue','sans-serif']
        
       },  
       
