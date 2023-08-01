@@ -137,11 +137,11 @@ const frontend_basic_quiz =[
   ]   
 
 
-export function getQuizData_current(langReq="HTML"){
+export function getQuizData_current(){
 
 
 const langName = ["HTML","CSS","JavaScript"]
-if(langName[0]===langReq)
+if(langName[0]==="HTML")
 {
     return (frontend_basic_quiz[0])
 }
