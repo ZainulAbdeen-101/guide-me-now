@@ -9,6 +9,7 @@ import {
   BsArrowDownSquareFill,
   RiFileCopy2Fill,
 } from "@/components/Icons";
+import Watch from "@/components/Watch";
 
 interface props {
   params: { info: string };
@@ -60,9 +61,7 @@ export default async function page({ params }: props) {
             <p className="  mt-2">{content.description}</p>
             <div className="flex-grow">
 
-            <button className=" justify-end px-4 py-2  rounded-lg bg-[#1877f2] text-white">
-              <Link href={`/playlist/${content.heading}`}>Watch Playlist</Link>
-            </button>
+           <Watch heading={content.heading} />
             </div>
           </div>
         ))}

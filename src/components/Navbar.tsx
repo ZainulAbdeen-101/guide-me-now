@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
@@ -18,9 +18,9 @@ export default function Navbar() {
 
       <Link
         className="transition ease-in-out duration-200 hover:text-[#fed32e] font-semibold"
-        href={""}
+        href={'/profile'}
       >
-        Home
+        profile
       </Link>
       <Link
         className="transition ease-in-out duration-200 hover:text-[#fed32e] font-semibold"

@@ -1,4 +1,4 @@
-import {BiSolidVideos} from 'react-icons/bi'
+import {BiEdit, BiSolidVideos} from 'react-icons/bi'
 import {AiFillCode, AiFillHtml5} from 'react-icons/ai'
 import {RiFileCopy2Fill} from 'react-icons/ri'
 import {SiCss3, SiJavascript} from 'react-icons/si'
@@ -8,5 +8,5 @@ export{BiSolidVideos,
     RiFileCopy2Fill,
     AiFillHtml5,
     SiJavascript,
-    SiCss3,BsArrowDownSquareFill}
+    SiCss3,BsArrowDownSquareFill,BiEdit}
     
