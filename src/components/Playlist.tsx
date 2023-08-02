@@ -1,7 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { fetchplaylist } from "../../sanity/lib/client";
 import { playlist } from "@/types";
+
 
 type Play={
 
@@ -37,7 +39,7 @@ const [show,setshow]=useState(true)
     }
     fetchData();
   },[props]);
-
+  
 
   function showbtn(title:string) {
     
@@ -90,8 +92,11 @@ const [show,setshow]=useState(true)
         </div>
         }
 
+<Link href={`/quiz/${Play}`}>
 <button className="btn bg-gradient-to-r from-[#1877f2] to-[#1877f9] text-white hover:text-[#fed32e] rounded-lg px-4 py-2  font-bold text-lg
   transition ease-in duration-300 mt-5 mb-20" disabled={show} >Start Quiz</button>
+  </Link>
+
       </div>
 
     
