@@ -9,10 +9,10 @@ module.exports = {
     "./node_modules/flowbite/**/*.js"
   ],
 theme: {
-    extends:{
+    extend:{
       fontFamily: {
         sans: ['Montserrat',...defaultTheme.fontFamily.sans],
-        neue:['Bebas Neue','sans-serif']
+        font:['League Spartan', 'sans-serif']
        
       },  
       

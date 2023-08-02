@@ -36,41 +36,16 @@ export default async function page({ params }: props) {
 
   return (
     <>
-      <div className="h-screen ">
-        <Image
-          className="-z-10"
-          src={"/background1.png"}
-          fill={true}
-          style={{ objectFit: "cover" }}
-          alt=""
-        />
-        <div className="absolute m-5 mt-[230px] text-[#6c00f5] w-[550px]">
-          <p className="text-[35px] text-[#F50C8A] ">We Have</p>
-          <p className="text-[35px]  leading-snug">
-            ALL THE CONTENT YOU NEED TO START AN EMERGING CAREER.
-          </p>
-          <p className="text-lg   text-[#F50C8A] underline decoration-2 underline-offset-8 decoration-[#F50C8A] font-medium">
-            Explore the Dynamic Universe of Programming Languages.
-          </p>
-        </div>
-        <button>
-          <BsArrowDownSquareFill
-            fill="#6c00f5"
-            className="absolute left-0 right-0 mx-auto bottom-2"
-            size={30}
-          />
-        </button>
-      </div>
-
-      <div className="flex mt-10 justify-center items-center gap-2">
-        <h1 className=" text-[#6c00a5] font-semibold text-[50px]">
+ 
+      <div className="flex mt-20 justify-center items-center gap-2">
+        <h1 className="font-font text-[#1877f2] font-semibold text-[50px] underline underline-offset-4 decoration-6">
           Tech Languages
         </h1>
         <AiFillCode fill="#fed32e" size={50} />
       </div>
-      <div className="grid grid-cols-3 gap-5 m-5   mt-10 ">
+       <div className="grid grid-cols-3 gap-5 m-5   mt-5 ">
         {data.map((content, index) => (
-          <div className="text-justify shadow-xl rounded p-3 " key={index}>
+          <div className=" text-justify shadow-xl rounded p-3   " key={index}>
             <Image
               className=""
               src={`${urlForImage(content.logo).url()}`}
@@ -78,20 +53,23 @@ export default async function page({ params }: props) {
               height={80}
               alt=""
             />
-            <h1 className="text-2xl text-[#6c00a5] mt-2 font-medium ">
+            <h6 className="font-font text-3xl text-[#1877f2] mt-2 font-semibold ">
               {content.heading}
-            </h1>
+            </h6>
 
             <p className="  mt-2">{content.description}</p>
-            <button className="btn btn-outline btn-primary">
-              <Link href={`/playlist/${content.heading}`}>Start Watching</Link>
+            <div className="flex-grow">
+
+            <button className=" justify-end px-4 py-2  rounded-lg bg-[#1877f2] text-white">
+              <Link href={`/playlist/${content.heading}`}>Watch Playlist</Link>
             </button>
+            </div>
           </div>
         ))}
       </div>
 
       <div className=" flex justify-center mt-10 items-center gap-3">
-        <h1 className=" text-[#6c00a5] font-semibold  text-[50px]">Videos</h1>
+        <h1 className="font-font text-[#1877f2] font-semibold  text-[50px] underline underline-offset-4 decoration-6">Videos</h1>
         <BiSolidVideos fill={"#fed32e"} size={50} />
       </div>
       <div className="grid grid-cols-3 place-items-center ">
@@ -108,7 +86,7 @@ export default async function page({ params }: props) {
         ))}
       </div>
       <div className="flex justify-center items-center mt-5">
-        <h1 className="text-center text-[#6c00a5] font-semibold  text-[50px]">
+        <h1 className="font-font text-center text-[#1877f2] font-semibold  text-[50px] underline underline-offset-4 decoration-6">
           Documentation
         </h1>
 
@@ -129,7 +107,7 @@ export default async function page({ params }: props) {
                 height={50}
                 alt=""
               />
-              <h6 className="text-[25px] mt-2 text-[#6c00a5] font-medium">
+              <h6 className="font-font text-[25px] mt-2 text-[#1877f2] font-medium">
                 {content.heading}
               </h6>
             </Link>

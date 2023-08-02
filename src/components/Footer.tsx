@@ -3,12 +3,12 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer className=" bg-[#6c00a5] text-white font-semibold">
+      <footer className=" bg-gradient-to-t from-[#1877f2] to-[#1877f9] text-white font-semibold">
          <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <a href="" className="flex items-center">
-                <span className="self-center text-5xl font-semibold whitespace-nowrap text-[#fed32e] ">
+                <span className="font-font self-center text-5xl font-semibold whitespace-nowrap text-[#fed32e] ">
                  Guide Me Now
                 </span>
               </a>
@@ -18,7 +18,7 @@ export default function Footer() {
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 className="mb-6 text-sm font-semibold  uppercase ">
+                <h2 className="font-font mb-6 text-[#fed32e] text-md font-bold  uppercase ">
                   Resources
                 </h2>
                 <ul className="  font-medium">
@@ -46,7 +46,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold  uppercase ">
+                <h2 className="font-font mb-6 text-[#fed32e] text-md font-bold  uppercase ">
                   Follow us
                 </h2>
                 <ul className=" font-medium">
@@ -68,7 +68,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold  uppercase ">
+                <h2 className="font-font mb-6 text-[#fed32e] text-md font-bold  uppercase ">
                   Legal
                 </h2>
                 <ul className="  font-medium">
@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
           <hr className="my-6  sm:mx-auto  lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm  sm:text-center ">
+            <span className="text-sm text-[#fed32e] font-bold  sm:text-center ">
               © 2023{" "}
               <a href="https://flowbite.com/" className="hover:underline">
                 Flowbite™

@@ -5,20 +5,20 @@ import Image from 'next/image'
 export default function Hero() {
   return (
     <>
-    <div className='h-screen '>
-        <div className='max-w-[370px] pt-[100px] ml-5 text-white '>
-            <h1 className=' text-[#fed32e] font-semibold  text-[60px] leading-none'>
-                Guide <span className='text-white'>Me</span>  Now
+    <div className='h-screen  flex justify-around items-center'>
+        <div className='max-w-[450px] pt-[100px] ml-5  '>
+            <h1 className='font-font text-[#1877f2] font-semibold  text-[65px] leading-none'>
+                Guide <span className=''>Me</span>  Now
             </h1>
-            <p className='text-2xl    mt-5 '>
-                The Perfect Guide for the future of <span className='text-[#fed32e] font-semibold'>Young Generation</span> 
+            <p className='text-2xl    mt-2 '>
+                The Perfect Guide for the future of <span className='font-font text-[#1877f2] font-semibold'>Young Generation</span> 
             </p>
-            <p className='mt-5 text-sm  '>Your Ultimate IT Career Navigator Discover your ideal path in the world of technology with our interactive platform, tailored specifically for young students. Explore various IT careers, receive personalized recommendations, and embark on a journey to a successful future in the rapidly evolving IT industry.</p>
-           <Link href={"/queries"}> <button className='bg-[#fed32e]  mt-10 text-black font-semibold text-lg px-4 py-2 rounded hover:bg-[black] transition-all duration-300 ease-in-out hover:text-[#fed32e]'>get the ultimate guide now</button></Link>
+            <p className='mt-5   '>Your Ultimate IT Career Navigator Discover your ideal path in the world of technology with our interactive platform, tailored specifically for young students. Explore various IT careers, receive personalized recommendations, and embark on a journey to a successful future in the rapidly evolving IT industry.</p>
+           <Link href={"/queries"}> <button className='bg-[#1877f2]  mt-10 text-white font-semibold text-lg px-4 py-2 rounded hover:bg-[#1877f9] transition-all duration-300 ease-in-out '>get the ultimate guide now</button></Link>
 
         </div>
-        <div> 
-            <Image className='-z-10'  src={"/hero1.png"} fill={true} style={{objectFit:"cover"}} alt='' />
+        <div className='mt-10'>
+             <Image src={"/pr4.png"} alt='' width={550} height={500} />
         </div>
 
     </div>
