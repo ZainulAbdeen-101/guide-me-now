@@ -16,9 +16,9 @@ export default function Queries(): React.JSX.Element {
   const picList = [webPic, appPic, softPic];
   const [pic, setpicList] = useState(picList);
   const webtext =
-    "Web development is the process of creating websites that people can visit on the internet. It involves designing how the website looks and works using coding languages like HTML, CSS, and JavaScript. Once the website is built, it is checked to make sure it works correctly, is safe, and looks good on different devices. When the testing is done, the website is made available for people to use on the internet. To be successful in web development, it's important to keep learning and stay updated with the latest technology and trends.";
+    "Web development is the process of creating websites that people can visit on the internet. It involves designing how the website looks and works using coding languages like HTML, CSS, and JavaScript. Once the website is built, it is checked to make sure it works correctly, is safe, and looks good on different devices. When the testing is done, the website is made available for people to use on the internet. To be successful in web development, its important to keep learning and stay updated with the latest technology and trends.";
   const apptext =
-    "App development, also called mobile app development, is the act of making software applications for mobile devices. It involves creating and building apps using programming languages like Java or Swift. Once the apps are built, they are checked to make sure they work and can be used on different devices. After testing, the apps are made available for people to download from app stores. In app development, it's important to keep learning and stay updated with mobile trends. There are many types of apps, like games, tools to help you be productive, and apps for buying and selling things.";
+    "App development, also called mobile app development, is the act of making software applications for mobile devices. It involves creating and building apps using programming languages like Java or Swift. Once the apps are built, they are checked to make sure they work and can be used on different devices. After testing, the apps are made available for people to download from app stores. In app development, its important to keep learning and stay updated with mobile trends. There are many types of apps, like games, tools to help you be productive, and apps for buying and selling things.";
 
   const softtext =
     "Desktop app development is about creating computer programs that can be installed and used on desktop or laptop computers. It involves designing how the app looks and works, writing code using languages like Java or C#, and testing for issues. Once tested, the app is made available for users to install on their computers. Continuous learning and understanding user interfaces are important for beginners. Desktop app development offers a variety of options, like productivity tools or industry-specific software.";
@@ -115,7 +115,7 @@ export default function Queries(): React.JSX.Element {
               Software development is creating computer programs or apps to meet
               specific needs. It involves planning, designing, coding, testing,
               and maintenance. Developers gather requirements, design the
-              software's structure and features, write code, test for issues,
+              softwares structure and features, write code, test for issues,
               and make the software available. Maintenance keeps the software
               working and up-to-date. Collaboration, communication, and
               continuous learning are important in software development.
@@ -138,7 +138,7 @@ export default function Queries(): React.JSX.Element {
               Designing is the act of creating things that look good and work
               well. It involves planning and arranging different parts to solve
               a problem or achieve a goal. Designing can be used in many areas
-              like making graphics, websites, products, and rooms. It's
+              like making graphics, websites, products, and rooms. Its
               important to think about how things will look, how they will be
               used, and who will use them. Designing requires being creative,
               solving problems, and understanding what people want. Sometimes
@@ -190,7 +190,7 @@ export default function Queries(): React.JSX.Element {
                         className="btn bg-[#ffdd35] hover:bg-[#fde047]"
                         onClick={() => handleWebSelection(index, option)}
                       >
-                        Let's Start with {option}
+                        Lets Start with {option}
                       </button>
                     </div>
                   </div>

@@ -27,9 +27,9 @@ isCorrect:boolean
 
  export default  function page() {
   
-  const [mark,setMark] = useState(0);
-  const [showResult,setShowResult] = useState(false);
-  const [count,setCount] = useState(0);
+  const [mark,setMark] =useState(0);
+  const [showResult,setShowResult] =useState(false);
+  const [count,setCount] =useState(0);
   const [currentIndex,setCurrentIndex] = useState(0);
   const [clicked,setClicked] = useState(false)
 
@@ -93,7 +93,7 @@ function Reset(){
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
 
         <h3 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total Marks: {marks} out of 100</h3>
-        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">"Congratulations! You've successfully completed the <span className='stat-title text-[#fed32e]'>HTML Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes!"</p>
+        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">"Congratulations! You have successfully completed the <span className='stat-title text-[#fed32e]'>HTML Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes!"</p>
         <div className='flex justify-center'>
         <ul className="menu bg-base-200 h-[220px] w-[450px] rounded-box shadow-2xl backdrop-filter bg-white/10 backdrop-blur-xl">
   <li>
