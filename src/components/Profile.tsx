@@ -9,6 +9,8 @@ export default function Profile({user}:any) {
     function changeedit(){
         setedit((prev)=>!prev)
     }
+
+ 
   return (
     <>
     
@@ -43,9 +45,10 @@ export default function Profile({user}:any) {
   <option>Middle</option>
   <option>Matriculation</option>
   <option>Intermediate</option>
-  <option>Bachleor's</option>
+  <option>Bachelors</option>
 
 </select>
+
 
 <h6 className='mt-5  text-2xl font-semibold font-font '>
       Communication Skills
