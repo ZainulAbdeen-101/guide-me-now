@@ -4,50 +4,50 @@
 const frontend_basic_quiz = [
 
 
-    // HTML
-
+// HTML
+    
     [
-
-        {
-            question: "What does HTML stand for?",
-            options: [
-
-                { id: 0, ans: "Hyperlinks and Text Markup Language", isCorrect: false },
-                { id: 1, ans: "Hyper Text Markup Language", isCorrect: true },
-                { id: 2, ans: "Home Tool Markup Language", isCorrect: false },
-                { id: 3, ans: "Hyper Tool Markup Language", isCorrect: false }
-
-            ]
-        }
+                  
+              {
+                  question:"What does HTML stand for?",
+                  options:[
+                  
+                      {id:0,ans:"Hyperlinks and Text Markup Language",isCorrect:false},
+                      {id:1,ans:"Hyper Text Markup Language",isCorrect:true},
+                      {id:2,ans:"Home Tool Markup Language",isCorrect:false},
+                      {id:3,ans:"Hyper Tool Markup Language",isCorrect:false}
+                      
+                  ]
+              }
+              ,
+              
+              {
+                  question:"Which HTML tag is used to define a hyperlink?",
+                  options:[
+                  
+                      {id:0,ans:"<link>",isCorrect:false},
+                      {id:1,ans:"<href>",isCorrect:false},
+                      {id:2,ans:"<a>",isCorrect:true},
+                      {id:3,ans:"<hyperlink>",isCorrect:false}
+                      
+                  ]
+              },
+              
+              {
+                  question:"What is the correct way to create a heading level 1 (h1) in HTML?",
+                  options:[
+                  
+                      {id:0,ans:"<heading>",isCorrect:false},
+                      {id:1,ans:"<h1>",isCorrect:true},
+                      {id:2,ans:"<head>",isCorrect:false},
+                      {id:3,ans:"<h>",isCorrect:false}
+                      
+                  ]
+              } ,
+                 
+          
+              ]
         ,
-
-        {
-            question: "Which HTML tag is used to define a hyperlink?",
-            options: [
-
-                { id: 0, ans: "<link>", isCorrect: false },
-                { id: 1, ans: "<href>", isCorrect: false },
-                { id: 2, ans: "<a>", isCorrect: true },
-                { id: 3, ans: "<hyperlink>", isCorrect: false }
-
-            ]
-        },
-
-        {
-            question: "What is the correct way to create a heading level 1 (h1) in HTML?",
-            options: [
-
-                { id: 0, ans: "<heading>", isCorrect: false },
-                { id: 1, ans: "<h1>", isCorrect: true },
-                { id: 2, ans: "<head>", isCorrect: false },
-                { id: 3, ans: "<h>", isCorrect: false }
-
-            ]
-        },
-
-
-    ]
-    ,
 
 
     // CSS
@@ -139,6 +139,8 @@ const frontend_basic_quiz = [
 
 
 
+
+  
 
 
 export function getQuizData_current(head: string) {

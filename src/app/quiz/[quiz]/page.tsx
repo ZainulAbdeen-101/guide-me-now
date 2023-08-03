@@ -31,6 +31,7 @@ params : {quiz:string}
 
 }
 
+
  export default  function Page({params}:props) {
   
 
