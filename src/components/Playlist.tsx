@@ -38,7 +38,7 @@ const [show,setshow]=useState(true)
       setList(data.length > 0 ? data[0].url : "");
     }
     fetchData();
-  });
+  },[props]);
   
 
   function showbtn(title:string) {
