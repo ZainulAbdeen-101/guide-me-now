@@ -48,6 +48,9 @@ const [show,setshow]=useState(true)
     }
   }
 
+   
+
+
   return (
     <>
    
@@ -92,10 +95,10 @@ const [show,setshow]=useState(true)
         </div>
         }
 
-<Link href={`/quiz/${Play}`}>
 <button className="btn bg-gradient-to-r from-[#1877f2] to-[#1877f9] text-white hover:text-[#fed32e] rounded-lg px-4 py-2  font-bold text-lg
-  transition ease-in duration-300 mt-5 mb-20" disabled={show} >Start Quiz</button>
-  </Link>
+  transition ease-in duration-300 mt-5 mb-20" disabled={show} >
+       <Link href={`/quiz/${data[0].title}`}>Start Quiz</Link></button>
+  
 
       </div>
 
