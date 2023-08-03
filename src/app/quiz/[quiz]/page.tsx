@@ -3,7 +3,7 @@ import React , {useState} from 'react';
 // import { data } from '../../../sanity/frontend_basic'
 import Image from 'next/image';
 // import {frontend_basic_quiz} from './quizData';
-import {getQuizData_current} from '../quizData' 
+import {getQuizData_current} from './quizData' 
 
 // I create a Interface and tell him that options ka array aayega aur hr index 
 // pe object hoga aur os mein is tarha ki hierarchy hogi......
@@ -25,19 +25,8 @@ isCorrect:boolean
 // → 
 // #0072ff
 
-interface props{
-
-params : {quiz:string} 
-
-}
-
- export default  function page({params}:props) {
+ export default  function page() {
   
-
-
-const head = params.quiz
-console.log(head);
-
   const [mark,setMark] =useState(0);
   const [showResult,setShowResult] =useState(false);
   const [count,setCount] =useState(0);
@@ -55,7 +44,7 @@ console.log(head);
 // setTime(25)  
 // }
 
-  const FB_Quiz = getQuizData_current(head);
+  const FB_Quiz = getQuizData_current();
 
 
   function myFunc(isCorrect:boolean){
@@ -104,7 +93,7 @@ function Reset(){
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
 
         <h3 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total Marks: {marks} out of 100</h3>
-        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">Congratulations! You have successfully completed the <span className='stat-title text-[#fed32e]'>{head} Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes"</p>
+        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">Congratulations! You have successfully completed the <span className='stat-title text-[#fed32e]'>HTML Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes"</p>
         <div className='flex justify-center'>
         <ul className="menu bg-base-200 h-[220px] w-[450px] rounded-box shadow-2xl backdrop-filter bg-white/10 backdrop-blur-xl">
   <li>
@@ -163,7 +152,7 @@ Reset
     FB_Quiz[currentIndex].options.map((options)=>{
 
 return(<>
-  <button className="join-item  text-white hover:text-black btn bg-opacity-25 capitalize  text-whitefont-medium"  onClick={(isCorrect)=>{myFunc(options.isCorrect)}} >{options.ans}</button>
+  <input className="join-item  text-white hover:text-black btn bg-opacity-25 text-whitefont-medium" type="button" name="options"  value={options.ans} onClick={(isCorrect)=>{myFunc(options.isCorrect)}} />
 
 </>)
 }):""}
