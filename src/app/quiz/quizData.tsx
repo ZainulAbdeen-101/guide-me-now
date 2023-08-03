@@ -123,10 +123,10 @@ const frontend_basic_quiz =[
                         question:"What is the result of the expression: 5 + '5' in JavaScript?",
                         options:[
                         
-                            {id:0,ans:"55",isCorrect:false},
+                            {id:0,ans:"5+5",isCorrect:false},
                             {id:1,ans:"10",isCorrect:false},
                             {id:2,ans:"5",isCorrect:false},
-                            {id:3,ans:'"55"',isCorrect:true}
+                            {id:3,ans:'55',isCorrect:true}
                             
                         ]
                     },
