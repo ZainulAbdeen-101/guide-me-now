@@ -48,7 +48,51 @@ const frontend_basic_quiz =[
           
               ]
         ,
+
+
+        // CSS
+        [
+            
+            {
+                question:"What does CSS stand for?",
+                options:[
+                
+                    {id:0,ans:"Cascading Style Sheets",isCorrect:true},
+                    {id:3,ans:"Creative Style Sheets",isCorrect:false},
+                    {id:1,ans:"Computer Style Sheets",isCorrect:false},
+                    {id:2,ans:"Colorful Style Sheets",isCorrect:false},
+                    
+                ]
+            }
+            ,
+            
+            {
+                question:"How do you apply inline CSS to an HTML element?",
+                options:[
+                
+                    {id:0,ans:"<style>...</style>",isCorrect:false},
+                    {id:1,ans:"<css>...</css>",isCorrect:false},
+                    {id:2,ans:"<inline>...</inline>",isCorrect:false},
+                    {id:3,ans:'style="..."',isCorrect:true}
+                    
+                ]
+            },
+            
+            {
+                question:"What is the correct CSS syntax to select an element with ID 'myElement'?",
+                options:[
+                
+                    {id:0,ans:".myElement",isCorrect:true},
+                    {id:1,ans:"#myElement",isCorrect:false},
+                    {id:2,ans:"<myElement>",isCorrect:false},
+                    {id:3,ans:"element.myElement",isCorrect:false}
+                    
+                ]
+            } ,
+               
+        ],
           
+
     //  JS 
   [
                 
@@ -89,65 +133,37 @@ const frontend_basic_quiz =[
                     
             
                   ],
-  
-  
-      
-             [
-            
-                  {
-                      question:"What does CSS stand for?",
-                      options:[
-                      
-                          {id:0,ans:"Cascading Style Sheets",isCorrect:true},
-                          {id:3,ans:"Creative Style Sheets",isCorrect:false},
-                          {id:1,ans:"Computer Style Sheets",isCorrect:false},
-                          {id:2,ans:"Colorful Style Sheets",isCorrect:false},
-                          
-                      ]
-                  }
-                  ,
-                  
-                  {
-                      question:"How do you apply inline CSS to an HTML element?",
-                      options:[
-                      
-                          {id:0,ans:"<style>...</style>",isCorrect:false},
-                          {id:1,ans:"<css>...</css>",isCorrect:false},
-                          {id:2,ans:"<inline>...</inline>",isCorrect:false},
-                          {id:3,ans:'style="..."',isCorrect:true}
-                          
-                      ]
-                  },
-                  
-                  {
-                      question:"What is the correct CSS syntax to select an element with ID 'myElement'?",
-                      options:[
-                      
-                          {id:0,ans:".myElement",isCorrect:true},
-                          {id:1,ans:"#myElement",isCorrect:false},
-                          {id:2,ans:"<myElement>",isCorrect:false},
-                          {id:3,ans:"element.myElement",isCorrect:false}
-                          
-                      ]
-                  } ,
-                     
-              ]
-  
    
   ]   
 
 
-export function getQuizData_current(){
+
+
+
+
+export function getQuizData_current(head:string){
 
 
 const langName = ["HTML","CSS","JavaScript"]
-if(langName[0]==="HTML")
-{
-    return (frontend_basic_quiz[0])
+
+
+switch(head){
+
+case "HTML":
+    return (frontend_basic_quiz[0]);
+    break;
+case "CSS":
+    return (frontend_basic_quiz[1]);
+    break;
+case "JavaScript":
+    return (frontend_basic_quiz[2]);
+    break;
 }
+
+
 
 }    
 
-getQuizData_current()
+
 
 
