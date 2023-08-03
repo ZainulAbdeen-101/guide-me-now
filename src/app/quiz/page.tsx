@@ -25,7 +25,7 @@ isCorrect:boolean
 // → 
 // #0072ff
 
- export default  function page() {
+ export default  function Page() {
    const [mark,setMark] =useState(0);
   const [showResult,setShowResult] =useState(false);
   const [count,setCount] =useState(0);
