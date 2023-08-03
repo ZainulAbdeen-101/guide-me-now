@@ -3,7 +3,7 @@ import React , {useState} from 'react';
 // import { data } from '../../../sanity/frontend_basic'
 import Image from 'next/image';
 // import {frontend_basic_quiz} from './quizData';
-import {getQuizData_current} from './quizData' 
+import {getQuizData_current} from '../quizData' 
 
 // I create a Interface and tell him that options ka array aayega aur hr index 
 // pe object hoga aur os mein is tarha ki hierarchy hogi......
@@ -12,7 +12,7 @@ import {getQuizData_current} from './quizData'
 // itnterface se destructuring bhi horhi he dekh rahe ho Ustaad ! 
 
 
-interface props{
+interface quiz{
 question : string,
 options:{
 id:number,
@@ -25,8 +25,19 @@ isCorrect:boolean
 // → 
 // #0072ff
 
- export default  function page() {
+interface props{
+
+params : {quiz:string} 
+
+}
+
+ export default  function page({params}:props) {
   
+
+
+const head = params.quiz
+console.log(head);
+
   const [mark,setMark] =useState(0);
   const [showResult,setShowResult] =useState(false);
   const [count,setCount] =useState(0);
@@ -44,7 +55,7 @@ isCorrect:boolean
 // setTime(25)  
 // }
 
-  const FB_Quiz = getQuizData_current();
+  const FB_Quiz:quiz[] | undefined = getQuizData_current(head);
 
 
   function myFunc(isCorrect:boolean){
@@ -152,7 +163,7 @@ Reset
     FB_Quiz[currentIndex].options.map((options)=>{
 
 return(<>
-  <input className="join-item  text-white hover:text-black btn bg-opacity-25 text-whitefont-medium" type="button" name="options"  value={options.ans} onClick={(isCorrect)=>{myFunc(options.isCorrect)}} />
+  <button className="join-item  text-white hover:text-black btn bg-opacity-25  text-whitefont-medium"  onClick={(isCorrect)=>{myFunc(options.isCorrect)}} >{options.ans}</button>
 
 </>)
 }):""}
