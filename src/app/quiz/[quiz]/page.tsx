@@ -163,7 +163,7 @@ Reset
     FB_Quiz[currentIndex].options.map((options)=>{
 
 return(<>
-  <button className="join-item  text-white hover:text-black btn bg-opacity-25  text-whitefont-medium"  onClick={(isCorrect)=>{myFunc(options.isCorrect)}} >{options.ans}</button>
+  <button className="join-item capitalize  text-white hover:text-black btn bg-opacity-25  text-whitefont-medium"  onClick={(isCorrect)=>{myFunc(options.isCorrect)}} >{options.ans}</button>
 
 </>)
 }):""}
