@@ -26,25 +26,14 @@ isCorrect:boolean
 // #0072ff
 
  export default  function page() {
-  
-  const [mark,setMark] =useState(0);
+   const [mark,setMark] =useState(0);
   const [showResult,setShowResult] =useState(false);
   const [count,setCount] =useState(0);
   const [currentIndex,setCurrentIndex] = useState(0);
-  const [clicked,setClicked] = useState(false)
-
-  // const [currentQuiz,setCurrentQuiz] = useState() 
   
 
-// if(time==0) {
-    
-// setCurrentIndex(currentIndex+1) 
-    
-// if(!clicked)
-// setTime(25)  
-// }
 
-  const FB_Quiz = getQuizData_current();
+  const FB_Quiz:props[] |undefined= getQuizData_current();
 
 
   function myFunc(isCorrect:boolean){
@@ -80,13 +69,7 @@ function Reset(){
 
 <div className='flex justify-center my-[50px] bg-gradient-to-t from-[#1877F2] to-[#0B5FCC]'>
 
-{/* <Image src={'/quizBG3.jpg'} className='-z-10 ' alt='' fill={true}  /> */}
 
-
-{/*  bg-[#fde047]  */}
-
-
-{/* Result  */}
 {showResult ?(
 
 <section className="bg-white bg-gradient-to-t from-[#1877F2] to-[#0B5FCC] ">
