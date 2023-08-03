@@ -73,7 +73,7 @@ const frontend_basic_quiz =[
                     {id:0,ans:"<style>...</style>",isCorrect:false},
                     {id:1,ans:"<css>...</css>",isCorrect:false},
                     {id:2,ans:"<inline>...</inline>",isCorrect:false},
-                    {id:3,ans:'style="..."',isCorrect:true}
+                    {id:3,ans:'style=...',isCorrect:true}
                     
                 ]
             },
