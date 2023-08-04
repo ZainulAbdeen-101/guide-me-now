@@ -39,22 +39,14 @@ params : {quiz:string}
 const head = params.quiz
 console.log(head);
 
-  const [mark,setMark] =useState(0);
-  const [showResult,setShowResult] =useState(false);
-  const [count,setCount] =useState(0);
+  const [mark,setMark] = useState(0);
+  const [showResult,setShowResult] = useState(false);
+  const [count,setCount] = useState(0);
   const [currentIndex,setCurrentIndex] = useState(0);
-  const [clicked,setClicked] = useState(false)
+ 
 
   // const [currentQuiz,setCurrentQuiz] = useState() 
   
-
-// if(time==0) {
-    
-// setCurrentIndex(currentIndex+1) 
-    
-// if(!clicked)
-// setTime(25)  
-// }
 
   const FB_Quiz:quiz[] | undefined = getQuizData_current(head);
 
@@ -68,7 +60,7 @@ if(isCorrect){
 
   setMark(mark+1)
 }
-    if(currentIndex+1 < 3 ){
+    if(currentIndex+1 < 17 ){
       
       setCurrentIndex(currentIndex+1);
      } else
@@ -85,7 +77,7 @@ function Reset(){
   setCount(0);
 }
 
-  const marks = (mark/3*100).toFixed(0)
+  const marks = (mark/17*100).toFixed(0)
   return (
 
     <>
@@ -105,15 +97,15 @@ function Reset(){
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
 
         <h3 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total Marks: {marks} out of 100</h3>
-        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">Congratulations! You have successfully completed the <span className='stat-title text-[#fed32e]'>HTML Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes"</p>
+        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">Congratulations! You have successfully completed the <span className='stat-title text-[#fed32e]'>{head} Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes"</p>
         <div className='flex justify-center'>
-        <ul className="menu bg-base-200 h-[220px] w-[450px] rounded-box shadow-2xl backdrop-filter bg-white/10 backdrop-blur-xl">
+        <ul className="menu  bg-white h-[220px] w-[450px] rounded-box shadow-2xl backdrop-filter bg-white/100 backdrop-blur-xl">
   <li>
     <h2 className="font-bold text-xl">Quiz Details</h2>
     <ul className='mt-[20px] py-1 px-5'>
       <li><a  className='text-lg'>Total Time : <span className='font-bold'>{count}</span></a></li>
       <li><a className='text-[#31C48D] text-lg '>Total Correct Answers: <span className='font-bold'>{mark}</span></a></li>
-      <li><a className='text-[#E02424] text-lg'>Total Incorrect Answers: <span className='font-bold'>{(3)-mark}</span></a></li>
+      <li><a className='text-[#E02424] text-lg'>Total Incorrect Answers: <span className='font-bold'>{(17)-mark}</span></a></li>
     </ul>
   </li>
 </ul>
