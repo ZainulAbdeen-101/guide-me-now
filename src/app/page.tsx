@@ -1,5 +1,6 @@
 
 import { Hero } from "@/components/Comp";  
+import Link from "next/link";
 
 
 
@@ -9,28 +10,12 @@ import React from "react";
 
 
 
-export default async  function page() {
-try{
-
-
-  const res=await fetch("http://localhost:3000/api/quiz",{
-    method:"GET"
-  })
-  
-   const data=await res.json()
-   console.log(data)
-}catch(error){
-  console.log(error)
-}
-// sdfdf 
-
-
-
-
-
+export default  function page() {
+ 
    return (
     <>
       <Hero />
+   
   
     </>
   );

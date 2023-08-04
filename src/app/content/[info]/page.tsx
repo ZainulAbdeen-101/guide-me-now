@@ -61,7 +61,7 @@ export default async function page({ params }: props) {
             <p className="  mt-2">{content.description}</p>
             <div className="flex-grow">
 
-           <Watch heading={content.heading} />
+           <Watch heading={content.heading} url={urlForImage(content.logo).url()} />
             </div>
           </div>
         ))}
