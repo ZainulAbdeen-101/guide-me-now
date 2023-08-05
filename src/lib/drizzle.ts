@@ -22,6 +22,16 @@ export const profiledata=pgTable("profile",{
 
 })
 
+
+export const playlistData= pgTable("playlist",{
+id:serial('id').primaryKey(),
+heading:varchar('heading').notNull(),
+url:varchar('url').notNull(),
+cpercent:integer('cpercent').notNull()
+}) 
+
+
+
    export const db=drizzle(sql)
 
 

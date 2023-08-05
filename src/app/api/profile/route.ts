@@ -1,5 +1,4 @@
 import { db, profiledata } from "@/lib/drizzle"
-import { profile } from "console"
 import { eq } from "drizzle-orm"
 import { NextRequest, NextResponse } from "next/server"
 

@@ -41,14 +41,15 @@ const [show,setshow]=useState(true)
   },[props]);
   
 
-  function showbtn(title:string) {
+  async function showbtn(title:string) {
     
     if (data && title === data[data.length-1].title) {
       setshow(false);
-    }
-  }
 
-   
+
+    }
+
+  }
 
 
   return (
