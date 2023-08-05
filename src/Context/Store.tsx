@@ -1,39 +1,40 @@
+export function askldksdbak(){}
 
-'use client';
+// 'use client';
 
-import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
+// import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
 
-type DataType = {
-    heading: string
-}
+// type DataType = {
+//     heading: string
+// }
 
-interface ContextProps {
+// interface ContextProps {
 
-    data: DataType[],
-    setData: Dispatch<SetStateAction<DataType[]>>
-}
+//     data: DataType[],
+//     setData: Dispatch<SetStateAction<DataType[]>>
+// }
 
-const GlobalContext = createContext<ContextProps>({
+// const GlobalContext = createContext<ContextProps>({
   
-    data: [],
-    setData: (): DataType[] => [] 
-})
+//     data: [],
+//     setData: (): DataType[] => [] 
+// })
 
-export const GlobalContextProvider = ({ children }: {
-    children: React.ReactNode;
-  }) => {
+// export const GlobalContextProvider = ({ children }: {
+//     children: React.ReactNode;
+//   }) => {
   
-    const [data, setData] = useState<[] | DataType[]>([]);
+//     const [data, setData] = useState<[] | DataType[]>([]);
     
-    return (
-        <GlobalContext.Provider value={{  data, setData }}>
-            {children}
-        </GlobalContext.Provider>
-    )
-};
+//     return (
+//         <GlobalContext.Provider value={{  data, setData }}>
+//             {children}
+//         </GlobalContext.Provider>
+//     )
+// };
 
 
-export const useGlobalContext = () => useContext(GlobalContext);
+// export const useGlobalContext = () => useContext(GlobalContext);
 
 
 

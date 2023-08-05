@@ -12,6 +12,7 @@ import {getQuizData_current} from '../quizData'
 // itnterface se destructuring bhi horhi he dekh rahe ho Ustaad ! 
 
 
+
 interface quiz{
 question : string,
 options:{
@@ -39,13 +40,20 @@ params : {quiz:string}
 const head = params.quiz
 console.log(head);
 
+const winMsg = [
+" You can do better! Keep trying, and you'll improve. Don't give up, success comes with practice!",
+" Keep going! Practice makes progress. You're capable of doing even better with effort and learning.",
+" Well done! You're on the right track. Keep studying and you'll achieve even greater results.",
+" Great job! Victory is within reach. Keep up the good work and aim higher!",
+" Congratulations! You aced it! You're a star student. Keep challenging yourself and soar higher!",
+              ]
+
   const [mark,setMark] = useState(0);
   const [showResult,setShowResult] = useState(false);
-  const [count,setCount] = useState(0);
   const [currentIndex,setCurrentIndex] = useState(0);
  
 
-  // const [currentQuiz,setCurrentQuiz] = useState() 
+  const [time,setTime] = useState(0) 
   
 
   const FB_Quiz:quiz[] | undefined = getQuizData_current(head);
@@ -66,6 +74,7 @@ if(isCorrect){
      } else
       {
       setShowResult(true)
+
       }
   }
 
@@ -74,10 +83,16 @@ function Reset(){
   setCurrentIndex(0);
   setMark(0)
   setShowResult(false)
-  setCount(0);
 }
-
   const marks = (mark/17*100).toFixed(0)
+
+
+
+let    timeX = new Date().getSeconds()
+
+!showResult ?   setInterval(()=>{timeX+1},1000) : timeX;
+
+
   return (
 
     <>
@@ -97,13 +112,56 @@ function Reset(){
     <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
 
         <h3 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total Marks: {marks} out of 100</h3>
-        <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">Congratulations! You have successfully completed the <span className='stat-title text-[#fed32e]'>{head} Quiz</span>. Well done! 🎉 Keep up the great work and continue to challenge yourself with more quizzes"</p>
+
+        {
+mark==0 ? (<>
+  
+  <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white"> 
+You Just Completed 
+           <span className='stat-title text-[#fed32e]'> {head} Quiz </span>:   
+  {winMsg[0]}
+          </p>
+
+</>) : (mark>=1 && mark<=7) ? (<>
+
+
+  <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white"> 
+You Just Completed 
+           <span className='stat-title text-[#fed32e]'> {head} Quiz </span>:  
+  {winMsg[1]}
+          </p>
+
+</>)  : (mark>=8 && mark<=12) ? (<>
+
+  <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white"> 
+You Just Completed 
+           <span className='stat-title text-[#fed32e]'> {head} Quiz </span>:  
+  {winMsg[2]}
+          </p>
+
+</>) : (mark>=13 && mark<=16) ? (<>
+
+  <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white"> 
+You Just Completed 
+           <span className='stat-title text-[#fed32e]'> {head} Quiz </span>:  
+  {winMsg[3]}
+          </p>
+
+</>) : (mark==17) ? (<>
+
+  <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white"> 
+You Just Completed 
+           <span className='stat-title text-[#fed32e]'> {head} Quiz </span>:  
+  {winMsg[4]}
+          </p>
+</>) : (<><p></p></>)
+}
         <div className='flex justify-center'>
         <ul className="menu  bg-white h-[220px] w-[450px] rounded-box shadow-2xl backdrop-filter bg-white/100 backdrop-blur-xl">
   <li>
     <h2 className="font-bold text-xl">Quiz Details</h2>
     <ul className='mt-[20px] py-1 px-5'>
-      <li><a  className='text-lg'>Total Time : <span className='font-bold'>{count}</span></a></li>
+      <li><a  className='text-lg'>Total Time : <span className='font-bold'>{timeX}</span></a></li>
       <li><a className='text-[#31C48D] text-lg '>Total Correct Answers: <span className='font-bold'>{mark}</span></a></li>
       <li><a className='text-[#E02424] text-lg'>Total Incorrect Answers: <span className='font-bold'>{(17)-mark}</span></a></li>
     </ul>
@@ -156,7 +214,7 @@ Reset
     FB_Quiz[currentIndex].options.map((options)=>{
 
 return(<>
-  <button className="join-item capitalize  text-white hover:text-black btn bg-opacity-25  text-whitefont-medium"  onClick={(isCorrect)=>{myFunc(options.isCorrect)}} >{options.ans}</button>
+  <button className="join-item lowercase  text-white hover:text-black btn bg-opacity-25  text-whitefont-medium"  onClick={(isCorrect)=>{myFunc(options.isCorrect)}} >{options.ans}</button>
 
 </>)
 }):""}

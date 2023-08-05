@@ -5113,6 +5113,3 @@ export function getQuizData_current(head: string) {
     }
 }
 
-
-
-
