@@ -15,24 +15,12 @@ interface props {
   params: { info: string };
 }
 
+
+
 export default async function page({ params }: props) {
   const categories = params.info;
   const data = await fetchData(categories);
   console.log(data);
-
-
-   async function d(){
-
-    const rest=await fetch("http://localhost:3000/api/quiz",{
-      method:"POST",
-      body:JSON.stringify({
-        name:"hassan"
-      })
-    })
-    const result =await rest.json()
-    console.log(result.message)
-  }
-  d()
 
 
   return (
@@ -45,7 +33,7 @@ export default async function page({ params }: props) {
         <AiFillCode fill="#fed32e" size={50} />
       </div>
        <div className="grid grid-cols-3 gap-5 m-5   mt-5 ">
-        {data.map((content, index) => (
+         {data.map((content, index) => (
           <div className=" text-justify shadow-xl rounded p-3   " key={index}>
             <Image
               className=""
@@ -61,7 +49,7 @@ export default async function page({ params }: props) {
             <p className="  mt-2">{content.description}</p>
             <div className="flex-grow">
 
-           <Watch heading={content.heading} url={urlForImage(content.logo).url()} />
+           <Watch  heading={content.heading} url={urlForImage(content.logo).url()} />
             </div>
           </div>
         ))}

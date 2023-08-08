@@ -25,6 +25,7 @@ export const profiledata=pgTable("profile",{
 
 export const playlistData= pgTable("playlist",{
 id:serial('id').primaryKey(),
+userid: varchar('userid').notNull().unique(),
 heading:varchar('heading').notNull(),
 url:varchar('url').notNull(),
 cpercent:integer('cpercent').notNull()

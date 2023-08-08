@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchplaylist } from "../../sanity/lib/client";
 import { playlist } from "@/types";
+import axios from "axios";
 
 
 type Play={
@@ -11,13 +12,42 @@ props : string
 
 }
 
-
+const per = 0 ;
+// HR CLICK PE COUNT ++ --->  Condition[1 box pe eik click hi ho : ] []
 
 export default function PlayList({props}:Play) {
-  
+
 const [show,setshow]=useState(true)
   const [data, setData] = useState<playlist[]>([]);
   const [list, setList] = useState<string>("");
+  const [videoCount ,setVideoCount] =  useState(0)
+  const [percent ,setPercent] =  useState(0)
+
+  console.log(percent);
+  console.log(videoCount);
+
+
+  async function xt(index:number){
+
+
+      if((data.length>0 && videoCount<data.length) && (data[index]!==data[videoCount])){
+    
+        setVideoCount(videoCount+1);
+      const per = videoCount/data.length*100
+      setPercent(per)
+    
+    }
+    
+    
+
+const res = await axios.patch('/api/playlist',{
+  cpercent : percent 
+})
+console.log(res.status);
+console.log(res.data);
+
+
+  }
 
   function setdata(url: string) {
     setList(url);
@@ -39,6 +69,7 @@ const [show,setshow]=useState(true)
     }
     fetchData();
   },[props]);
+
   
 
   async function showbtn(title:string) {
@@ -65,8 +96,8 @@ const [show,setshow]=useState(true)
         {data?.map((item: playlist, index: number) => (
           <div className=" font-font text-lg  rounded-md font-bold shadow-xl p-2 "  key={index}>
             <button onClick={() => {setdata(item.url) 
-              showbtn(item.title)
-              }}>{item.title}</button>
+              showbtn(item.title), xt(index)
+              }}  >{item.title}</button>
           </div>
         ))}
       </div>

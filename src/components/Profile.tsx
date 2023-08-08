@@ -5,6 +5,7 @@ import { BiEdit } from "./Icons";
 import { Formik } from "formik";
 import axios from "axios";
 import useSWR, { mutate } from "swr";
+import { urlForImage } from "../../sanity/lib/image";
 
 export default function Profile({ user }: any) {
   const [edit, setedit] = useState(true);
@@ -12,7 +13,9 @@ export default function Profile({ user }: any) {
   const fetcher = async (url: string) =>
     await axios.get(url).then((res) => res.data);
   const { data, error } = useSWR("/api/profile", fetcher);
-  console.log(data);
+  const { data: data2, error: error2 } = useSWR("/api/playlist", fetcher);
+
+  console.log(data2);
   function changeedit() {
     setedit(false);
   }
@@ -203,7 +206,14 @@ export default function Profile({ user }: any) {
       </div>
       <div className="flex mt-20  bg-green-300">
 <div className="">
-<h1>Course</h1>
+  {data2?.map((course:any,index:number)=>(
+    <div key={index}>
+      <Image src={course.url} alt="" width={200} height={200} />
+{course.heading},
+{course.percent}
+
+    </div>
+  ))}
 
 </div>
 <div className="">

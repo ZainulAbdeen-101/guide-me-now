@@ -97,7 +97,7 @@ const webDomainZPic = [  [webDP_frontend,webDP_backtend] , [],[]]
     frontend: frontendOptions,
     backend: backendOptions,
     "web design": ["web design option 1", "web design option 2"],
-    "UI/UX design": ["UI/UX design option 1", "UI/UX design option 2"],
+    "UI/UX design": ["UI/UX design option 1", "UI/UX design option2"],
     "graphic design": ["graphic design option 1", "graphic design option 2"],
   };
 
