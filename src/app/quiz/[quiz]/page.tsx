@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link'
 // import {frontend_basic_quiz} from './quizData';
 import {getQuizData_current} from '../quizData' 
+import { currentUser } from '@clerk/nextjs';
+import axios from 'axios';
+
 
 // I create a Interface and tell him that options ka array aayega aur hr index 
 // pe object hoga aur os mein is tarha ki hierarchy hogi......
@@ -75,10 +78,24 @@ if(isCorrect){
      } else
       {
       setShowResult(true)
+      async function send_quizData(){
+
+        const res = await axios.post('/api/quiz',{
+        
+        heading:head,
+        marks:marks,
+        correct:mark
+        
+        })
+          
+        console.log(res.status);
+        console.log(res.data);
+      
+        }
+        send_quizData()
 
       }
   }
-
  
 function Reset(){
   setCurrentIndex(0);
@@ -92,6 +109,12 @@ function Reset(){
 let    timeX = new Date().getSeconds()
 
 !showResult ?   setInterval(()=>{timeX+1},1000) : timeX;
+
+
+
+
+
+
 
 
   return (
@@ -110,9 +133,16 @@ let    timeX = new Date().getSeconds()
 {showResult ?(
 
 <section className="bg-white bg-gradient-to-t from-[#1877F2] to-[#0B5FCC] ">
-    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+<div className="flex justify-center mt-3">
+            <div className="stats shadow-md  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-white">
+              <div className="stat">
+                <div className="stat-value"> Quiz Result</div>
+              </div>
+            </div> 
+            </div>
+    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center  ">
 
-        <h3 className="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total Marks: {marks} out of 100</h3>
+        <h3 className="mb-4 -mt-[20px] text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total Marks: {marks} out of 100</h3>
 
 
         {
@@ -179,11 +209,13 @@ You Just Completed
             </a> 
             <a href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] ">
               
-              <Link href={`playlist/${head}`}></Link>
-                Check Result
+              <Link href={`/result/${head}`}>
+                Course Result
+                </Link>
                 <svg className="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
+           
             </a>
         </div>
     </div>
