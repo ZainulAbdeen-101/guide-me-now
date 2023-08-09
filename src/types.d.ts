@@ -16,4 +16,10 @@ export interface languages{
     video:string,
     documentation:string
   }
+
+  export interface MyFormValues {
+    about: string;
+    edu: string;
+    com: string;
+  }
   

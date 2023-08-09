@@ -30,7 +30,7 @@ export default function Watch({ heading,url }: WatchProps) {
       },
     }
     )
-     console.log(res.status)
+     console.log(res.data)
     
 
   } 

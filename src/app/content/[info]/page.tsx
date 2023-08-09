@@ -6,7 +6,7 @@ import { urlForImage } from "../../../../sanity/lib/image";
 import {
   AiFillCode,
   BiSolidVideos,
-  BsArrowDownSquareFill,
+
   RiFileCopy2Fill,
 } from "@/components/Icons";
 import Watch from "@/components/Watch";
@@ -20,7 +20,7 @@ interface props {
 export default async function page({ params }: props) {
   const categories = params.info;
   const data = await fetchData(categories);
-  console.log(data);
+
 
 
   return (
