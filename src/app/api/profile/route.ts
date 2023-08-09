@@ -11,8 +11,7 @@ const res=await db.insert(profiledata).values({
     about:req.about,
     education:req.education,
     skills:req.communication
-})
-
+});
 return NextResponse.json(res)
 
 }

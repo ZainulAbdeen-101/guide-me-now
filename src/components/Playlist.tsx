@@ -38,9 +38,9 @@ const [show,setshow]=useState(true)
     
     }
     
-    
-
 const res = await axios.patch('/api/playlist',{
+
+
   cpercent : percent 
 })
 console.log(res.status);

@@ -5,13 +5,25 @@ import { NextRequest,NextResponse } from "next/server";
 
 export  async function GET(request:NextRequest){
 
-    const res= await db.select().from(Quizdata)
+const res  = await db.select().from(Quizdata);
 
-    return NextResponse.json({res})
+return NextResponse.json(res);
+
+
 }
 
 export async function POST(request:NextRequest){
-    const req=await request.json()
 
-    // const res=await db.insert()
+    const req = await request.json();
+
+    const res=await db.insert(Quizdata).values({
+        heading:req.heading,
+        marks:req.marks,
+        correct:req.correct
+        
+    })
+
+
+
+   return NextResponse.json(res)
 }
