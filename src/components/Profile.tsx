@@ -43,8 +43,8 @@ import { MyFormValues } from "@/types";
 
   return (
     <>
-      <div className="flex ">
-        <div className=" w-[300px] shadow-lg   mt-20">
+      <div className="flex justify-around mb-20">
+        <div className=" w-[300px] shadow-lg  mt-20">
           <div className="">
             <Image
               className="rounded-full"
@@ -76,7 +76,7 @@ import { MyFormValues } from "@/types";
             ) : (
               <div className="mt-5 flex justify-between ">
                 {data?.map((info: any, index: number) => (
-                  <div>
+                  <div key={index}>
                     <h6 className=" text-2xl font-semibold font-font ">
                       About
                     </h6>
@@ -101,11 +101,11 @@ import { MyFormValues } from "@/types";
               </div>
             )
           ) : (
-            <Formik
+             <Formik
               initialValues={initialValues}
               onSubmit={async (values, { resetForm }) => {
                 try {
-                  if (user.id !== data[0].userid) {
+                  if (user.id !== data[0].userid && data.length==0) {
                     const res = await axios.post(
                       "/api/profile",
                       {
@@ -121,6 +121,7 @@ import { MyFormValues } from "@/types";
                       }
                     );
                     console.log(res.status);
+                    resetForm()
                   } else {
                     const res = await axios.patch(
                       "/api/profile",
@@ -132,7 +133,7 @@ import { MyFormValues } from "@/types";
                       },
                       {
                         headers: {
-                          "Content-Type": "application/json",
+                           "Content-Type": "application/json",
                         },
                       }
                     );
@@ -191,7 +192,7 @@ import { MyFormValues } from "@/types";
                     disabled={edit}
                     className="mt-5 mb-5 select select-bordered w-   [85%] max-w-xs"
                   >
-                    <option selected>choose one</option>
+                    <option defaultValue={'choose One'}>choose one</option>
                     <option>Middle</option>
                     <option>Matriculation</option>
                     <option>Intermediate</option>
@@ -215,7 +216,9 @@ import { MyFormValues } from "@/types";
                     <option>Expert</option>
                   </select>
 
-                  <button type="submit" className="btn ">
+<div className="flex gap-10 mb-5">
+
+                  <button  type="submit" className="btn bg-[#1877f2] text-white">
                     save
                   </button>
                   <button
@@ -223,17 +226,18 @@ import { MyFormValues } from "@/types";
                       resetForm();
                       setedit(true);
                     }}
-                    className="btn "
+                    className="btn  bg-[#1877f2] text-white"
                   >
                     cancel
                   </button>
+</div>
                 </form>
               )}
             </Formik>
           )}
         </div>
 
-        <div className="mx-auto  mt-14  ">
+        <div className="mx-auto  mt-20 h-screen  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
           <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
             Courses
           </h1>
@@ -244,15 +248,15 @@ import { MyFormValues } from "@/types";
                   <div key={index} className="max-w-sm">
                     <div className="animate-pulse">
                       <div
-                        className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-700 w-[80px] mb-4"
+                        className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-300 w-[80px] mb-4"
                       ></div>
-                      <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
+                      <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-300 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
                         {course.heading}
                       </p>
-                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-16">
+                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-16">
 
                       </div>
-                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-56">
+                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-56">
 
                       </div>
 
@@ -268,7 +272,7 @@ import { MyFormValues } from "@/types";
 
 
             )
-              : <div className="place-items-center gap-20 grid md:grid-cols-3">
+              : <div className="mt-5 place-items-center gap-20 grid md:grid-cols-3">
 
                 {data2?.map((course: any, index: number) => (
                   <div key={index}>
@@ -298,28 +302,32 @@ import { MyFormValues } from "@/types";
               </div>
 
           }
-
-          <h6 className=" text-center mt-10 text-[40px] font-font font-bold">
+           <div>
+      <h6 className="text-[#1877f2] text-center mt-10 text-[40px] font-font font-bold">
             Quiz Attempted
            </h6>
           {
-            isLoading3 ? (<div className="mt-20 flex-end justify-center items-center  ">
+            isLoading3 ? (<div className="mt-10 flex-end justify-center items-center  ">
               <div className="text-center">
                 <span className="loading loading-bars loading-lg"></span>
               </div>
             </div>) :
-              <div className="mt-20 shadow-lg justify-center items-center gap-5  flex flex-col">
+              <div className="mt-20 shadow-lg  place-items-center gap-5   grid grid-cols-2">
 
                 {data3?.map((quiz: any, index: number) => (
-                 <div key={index} className="join  join-vertical w-[500px]">
-                <div className="collapse collapse-arrow join-item border border-base-300">
-                  <input type="radio" name="my-accordion-4"  checked /> 
-                  <div className="collapse-title text-xl font-medium">
+                 <div key={index} className="join  join-vertical w-[400px]">
+                <div className="collapse collapse-arrow join-item border border-[#1877f2]">
+                  <input type="radio" name="my-accordion-4"   /> 
+                   <div className="text-[#1877f2] font-font    collapse-title  text-xl font-bold">
                    {quiz.heading}
                   </div>
-                  <div className="collapse-content"> 
-                    <p>Percentage: {quiz.marks} %</p>
-                    <p>
+                   <div className="collapse-content"> 
+                    <p className="text-lg">Percentage: <span className="text-[#1877f2] font-semibold">
+                      
+                      {quiz.marks}%
+                      </span> 
+                       </p>
+                    <p className="text-lg">
                       Correct: {quiz.correct}
                     </p>
 
@@ -333,8 +341,12 @@ import { MyFormValues } from "@/types";
 
 
           }
+      </div>
+
+         
         </div>
       </div>
+     
     </>
   );
 }
