@@ -13,14 +13,14 @@ export default function Profile({ user }: any) {
 
   const fetcher = async (url: string) => {
     try {
-        const response = await axios.get(url);
-        return response.data;
+      const response = await axios.get(url);
+      return response.data;
     } catch (error) {
-        // Handle any errors here
-        console.error("Error fetching data:", error);
-        throw error;
-      }  
-}
+      // Handle any errors here
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  }
 
   const { data, isLoading, error } = useSWR("/api/profile", fetcher);
   const {
@@ -44,7 +44,7 @@ export default function Profile({ user }: any) {
   return (
     <>
       <div className="flex ">
-        <div className="mb-20 w-[300px] shadow-lg   mt-20">
+        <div className=" w-[300px] shadow-lg   mt-20">
           <div className="">
             <Image
               className="rounded-full"
@@ -187,7 +187,7 @@ export default function Profile({ user }: any) {
                   <select
                     name="edu"
                     onChange={handleChange}
-                     value={values.edu} 
+                    value={values.edu}
                     disabled={edit}
                     className="mt-5 mb-5 select select-bordered w-   [85%] max-w-xs"
                   >
@@ -233,90 +233,106 @@ export default function Profile({ user }: any) {
           )}
         </div>
 
-         <div className="mx-auto h-screen mt-14  ">
-         <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
+        <div className="mx-auto  mt-14  ">
+          <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
             Courses
           </h1>
           {
-             isLoading2? (
+            isLoading2 ? (
               <div className="grid grid-cols-3 gap-20 place-items-center">
-              {[...Array(9).keys()].map((course: any, index: number) => (
-                <div key={index} className="max-w-sm">
-                  <div className="animate-pulse">
-                    <div
-                      className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-700 w-[80px] mb-4"
+                {[...Array(6).keys()].map((course: any, index: number) => (
+                  <div key={index} className="max-w-sm">
+                    <div className="animate-pulse">
+                      <div
+                        className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-700 w-[80px] mb-4"
                       ></div>
-                    <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
+                      <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
+                        {course.heading}
+                      </p>
+                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-16">
+
+                      </div>
+                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-56">
+
+                      </div>
+
+                    </div>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ))}
+              </div>
+
+
+
+
+
+
+            )
+              : <div className="place-items-center gap-20 grid md:grid-cols-3">
+
+                {data2?.map((course: any, index: number) => (
+                  <div key={index}>
+                    <Image
+                      className="mx-auto"
+                      src={course.url}
+                      alt=""
+                      width={50}
+                      height={50}
+                    />
+                    <p className="text-center mt-2 font-font text-xl  font-bold text-[#1877f2] ">
                       {course.heading}
                     </p>
-                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-16">
-                   
+                    <div>
+                      <p className="text-lg font-bold">
+                        {course.cpercent}%
+                      </p>
+                      <progress
+                        className="progress progress-info w-56"
+                        value={course.cpercent}
+                        max="100"
+                      ></progress>
                     </div>
-                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-56">
-                   
-                   </div>
-                  
+
                   </div>
-                  <span className="sr-only">Loading...</span>
-                </div>
-              ))}
-            </div>
-            
-            
-
-        
-            
-            
-            
-             )
-          :  <div className="place-items-center gap-20 grid md:grid-cols-3">
-      
-            {data2?.map((course: any, index: number) => (
-              <div key={index}>
-                <Image
-                  className="mx-auto"
-                  src={course.url}
-                  alt=""
-                  width={50}
-                  height={50}
-                />
-                <p className="text-center mt-2 font-font text-xl  font-bold text-[#1877f2] ">
-                  {course.heading}
-                </p>
-<div>
-  <p className="text-lg font-bold">
-    {course.cpercent}%
-  </p>
-  <progress
-                  className="progress progress-info w-56"
-                  value={course.cpercent}
-                  max="100"
-                ></progress>
-</div>
-                
+                ))}
               </div>
-            ))}
-          </div>
+
           }
-          {
-            isLoading3?<div className="mt-96 flex-end justify-center items-center  ">
-            <div className="text-center">
-              <span className="loading loading-bars loading-lg"></span>
-            </div>
-          </div>:
-            <div className="">
-          
-              {data3?.map((quiz:any,index:number)=>(
-              <div key={index} className="">
 
-              {quiz.heading}
+          <h6 className=" text-center mt-10 text-[40px] font-font font-bold">
+            Quiz Attempted
+           </h6>
+          {
+            isLoading3 ? (<div className="mt-20 flex-end justify-center items-center  ">
+              <div className="text-center">
+                <span className="loading loading-bars loading-lg"></span>
               </div>
-            ))}
-              
-            </div>
-          
-        
-              }
+            </div>) :
+              <div className="mt-20 shadow-lg justify-center items-center gap-5  flex flex-col">
+
+                {data3?.map((quiz: any, index: number) => (
+                 <div key={index} className="join  join-vertical w-[500px]">
+                <div className="collapse collapse-arrow join-item border border-base-300">
+                  <input type="radio" name="my-accordion-4"  checked /> 
+                  <div className="collapse-title text-xl font-medium">
+                   {quiz.heading}
+                  </div>
+                  <div className="collapse-content"> 
+                    <p>Percentage: {quiz.marks} %</p>
+                    <p>
+                      Correct: {quiz.correct}
+                    </p>
+
+                  </div>
+                </div>
+               
+              </div>
+                ))}
+
+              </div>
+
+
+          }
         </div>
       </div>
     </>
