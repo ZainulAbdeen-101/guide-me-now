@@ -8,7 +8,7 @@ import useSWR from "swr";
 
 import { MyFormValues } from "@/types";
 
-export default function Profile({ user }: any) {
+   export default function Profile({ user }: any) {
   const [edit, setedit] = useState(true);
 
   const fetcher = async (url: string) => {
