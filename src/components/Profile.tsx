@@ -11,15 +11,28 @@ import { MyFormValues } from "@/types";
 export default function Profile({ user }: any) {
   const [edit, setedit] = useState(true);
 
-  const fetcher = async (url: string) =>
-    await axios.get(url).then((res) => res.data);
+  const fetcher = async (url: string) => {
+    try {
+        const response = await axios.get(url);
+        return response.data;
+    } catch (error) {
+        // Handle any errors here
+        console.error("Error fetching data:", error);
+        throw error;
+      }  
+}
+
   const { data, isLoading, error } = useSWR("/api/profile", fetcher);
   const {
     data: data2,
     isLoading: isLoading2,
     error: error2,
   } = useSWR("/api/playlist", fetcher);
-
+  const {
+    data: data3,
+    isLoading: isLoading3,
+    error: error3,
+  } = useSWR("/api/quiz", fetcher);
   function changeedit() {
     setedit(false);
   }
@@ -124,7 +137,7 @@ export default function Profile({ user }: any) {
                       }
                     );
 
-                    console.log(res.status);
+                    console.log(res.data);
                   }
 
                   setedit(true);
@@ -220,14 +233,35 @@ export default function Profile({ user }: any) {
           )}
         </div>
 
-         <div className="mx-auto h-screen mt-20  ">
+         <div className="mx-auto h-screen mt-14  ">
+         <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
+            Courses
+          </h1>
           {
              isLoading2? (
-              <div className="flex justify-center items-center  ">
-              <div className="text-center">
-                <span className="loading loading-bars loading-lg"></span>
-              </div>
+              <div className="grid grid-cols-3 gap-20 place-items-center">
+              {[...Array(9).keys()].map((course: any, index: number) => (
+                <div key={index} className="max-w-sm">
+                  <div className="animate-pulse">
+                    <div
+                      className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-700 w-[80px] mb-4"
+                      ></div>
+                    <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
+                      {course.heading}
+                    </p>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-16">
+                   
+                    </div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5 w-56">
+                   
+                   </div>
+                  
+                  </div>
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ))}
             </div>
+            
             
 
         
@@ -236,7 +270,7 @@ export default function Profile({ user }: any) {
             
              )
           :  <div className="place-items-center gap-20 grid md:grid-cols-3">
-          
+      
             {data2?.map((course: any, index: number) => (
               <div key={index}>
                 <Image
@@ -264,8 +298,25 @@ export default function Profile({ user }: any) {
             ))}
           </div>
           }
+          {
+            isLoading3?<div className="mt-96 flex-end justify-center items-center  ">
+            <div className="text-center">
+              <span className="loading loading-bars loading-lg"></span>
+            </div>
+          </div>:
+            <div className="">
+          
+              {data3?.map((quiz:any,index:number)=>(
+              <div key={index} className="">
+
+              {quiz.heading}
+              </div>
+            ))}
+              
+            </div>
+          
         
-       
+              }
         </div>
       </div>
     </>
