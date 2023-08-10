@@ -2,6 +2,7 @@
 import React from 'react'
 import useSWR from 'swr';
 import axios from 'axios';
+import Image from 'next/image'
 
 
 interface props {
@@ -43,20 +44,162 @@ console.log(isLoading);
     <div className="flex justify-center pt-10">
             <div className="stats shadow-md  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-white">
               <div className="stat">
-                <div className="stat-value"> Course Result</div>
+                <div className="stat-value">{data.heading} Course Result</div>
               </div>
             </div> 
             </div>
 
-<div className=' flex justify-center'>
+<div className=' flex justify-center mt-5'>
 
 <div className='w-[80%] text-center flex justify-center items-center '>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quod vel deleniti ipsa in eum veritatis repudiandae magni vitae! Corrupti modi et omnis optio? Nostrum, aut aliquam minima ea Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque corrupti quas et reiciendis ratione placeat nam soluta. Molestias, odit aperiam.</p>
 
 </div>
 </div>
 
-{data?.map((items:any,index:number)=>
+
+
+
+<div className='flex  flex-row justify-center'>
+
+
+
+<div className="hero  bg-base-200 w-[100%] flex flex-row justify-around">
+
+<div className="stats shadow">
+<div className="card w-96 bg-slate-300 shadow-xl ">
+<div className="card-body ">
+
+<h1 className="stat-value text-[28px]">Video Course Details</h1>
+<p></p>
+<div className="card-actions justify-center">
+
+<div className="overflow-x-auto">
+<table className="table ">
+{/* head */}
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+
+  </tr>
+</thead>
+<tbody>
+  {/* row 1 */}
+  <tr>
+    <th>Course Name</th>
+    <td>HTML</td>
+   
+
+  </tr>
+  {/* row 2 */}
+  <tr>
+    <th>Total Videos</th>
+    <td>67</td>
+ 
+
+  </tr>
+  {/* row 3 */}
+  <tr>
+    <th>Watched Videos</th>
+    <td>21</td>
+    
+
+  </tr>
+  {/* row 4 */}
+  <tr>
+    <th>Percentage</th>
+    <td>73%</td>
+    
+
+  </tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div className="hero-content flex-col ">
+<Image src={'/html.png'} width={200} height={300} alt='' className="max-w-sm rounded-lg shadow-2xl" ></Image>
+<div className='stat'><div className="stat-value text-2xl">Overall Percentage 86%</div></div>
+</div>
+<div>
+  <div className="stats shadow">
+<div className="card w-96 bg-slate-300 shadow-xl ">
+<div className="card-body ">
+
+<h1 className="stat-value text-[28px]">Quiz Details</h1>
+<p></p>
+<div className="card-actions justify-center">
+
+<div className="overflow-x-auto">
+<table className="table ">
+{/* head */}
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+
+  </tr>
+</thead>
+<tbody>
+  {/* row 1 */}
+  <tr>
+    <th>Quiz Name</th>
+    <td>HTML</td>
+   
+
+  </tr>
+  {/* row 2 */}
+  <tr>
+    <th>Total Marks</th>
+    <td>85</td>
+ 
+
+  </tr>
+  {/* row 3 */}
+  <tr>
+    <th>Correct Answer</th>
+    <td>13</td>
+    
+
+  </tr>
+  {/* row 4 */}
+  <tr>
+    <th>Incorrect Answer</th>
+    <td>4</td>
+    
+
+  </tr>
+  {/* row 5 */}
+  <tr>
+    <th>Percentage</th>
+    <td>33%</td>
+    
+
+  </tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+</div>
+
+
+
+
+{/* {data?.map((items:any,index:number)=>
 
 (<>
 
@@ -68,66 +211,23 @@ console.log(isLoading);
 </div>  
 </>)
 
-)}
+)} */}
+
+
+
+<div className='w-[100%] bg-slate-500 flex justify-center mt-2 gap-4'>
+
+<button className="btn btn-wide  bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Restart Course</button>
+<button className="btn-wide btn bg-gradient-to-br from-green-300 via-ggreen-500 to-green-600 text-black   font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" disabled={false}>Get Certificate</button>
+
+</div>
     </div>
 
-    <div className="stats shadow">
-  
 
-  
-</div>
-    <div className="card w-96 bg-slate-300 shadow-xl ">
-  <div className="card-body ">
 
-    <h1 className="stat-value text-[28px]">Video Course Details</h1>
-    <p></p>
-    <div className="card-actions justify-center">
-    <div className="overflow-x-auto">
-  <table className="table ">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-    
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        <th>Course Name</th>
-        <td>Flutter</td>
-       
 
-      </tr>
-      {/* row 2 */}
-      <tr>
-        <th>Total Videos</th>
-        <td>67</td>
-     
 
-      </tr>
-      {/* row 3 */}
-      <tr>
-        <th>Watched Videos</th>
-        <td>21</td>
-        
-
-      </tr>
-      {/* row 4 */}
-      <tr>
-        <th>Percentage</th>
-        <td>73%</td>
-        
-
-      </tr>
-    </tbody>
-  </table>
-</div>
-   
-    </div>
-  </div>
-</div>
+    h
 
     </>
   )
