@@ -121,7 +121,10 @@ import { MyFormValues } from "@/types";
                       }
                     );
                     console.log(res.status);
-                    resetForm()
+                    if(res.status ==200){
+
+                      resetForm()
+                    }
                   } else {
                     const res = await axios.patch(
                       "/api/profile",
