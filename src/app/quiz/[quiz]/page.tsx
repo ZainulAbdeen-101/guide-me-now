@@ -78,7 +78,8 @@ if(isCorrect){
       
         setShowResult(true)
     
-    
+    // Send Data
+
       async function send_quizData(){
 
         const res = await axios.post('/api/quiz',{
@@ -94,6 +95,22 @@ if(isCorrect){
       
         }
         send_quizData()
+
+
+// Update Data
+async function update_quizData(){
+  
+  const res = await axios.patch('/api/quiz',{
+
+heading:head,
+marks:marks,
+correct:mark,
+  })
+
+
+
+} 
+
 
       }
   }

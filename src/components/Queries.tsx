@@ -281,7 +281,6 @@ setsLevel(true)
         {data1?.map((data, index) => (
           <div key={index}>
 
-
 <div className="card card-compact w-96 bg-base-100 shadow-[5px_5px_0px_0px_#1877f2] overflow-hidden">
   <figure className=" bg-[#1877f2]"><Image src={webDomainZPic[webFieldsDesc][index]} alt="Shoes" width={200} height={100} ></Image></figure>
   <div className="card-body">
