@@ -36,3 +36,7 @@ cpercent:number
     correct:number
   }
 
+   export interface WatchProps {
+    heading: string;
+    url: string;
+  }

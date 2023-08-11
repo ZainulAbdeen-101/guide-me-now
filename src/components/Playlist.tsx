@@ -24,7 +24,10 @@ export default function PlayList({ props }: Play) {
     ) {
       setVideoCount(videoCount + 1);
       const per = (videoCount / data.length) * 100;
-      setPercent(per);
+      if(percent<=100){
+
+        setPercent(per);
+      }
     }
 
     const res = await axios.patch("/api/playlist", {
@@ -71,7 +74,7 @@ export default function PlayList({ props }: Play) {
           {data?.map((item: Playlist, index: number) => (
             <div
               className=" font-font text-lg  rounded-md font-bold shadow-xl p-2 "
-              key={index}
+              key={item.id}
             >
               <button
                 onClick={() => {

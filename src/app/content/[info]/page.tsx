@@ -3,37 +3,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchData } from "../../../../sanity/lib/client";
 import { urlForImage } from "../../../../sanity/lib/image";
-import {
-  AiFillCode,
-  BiSolidVideos,
-
-  RiFileCopy2Fill,
-} from "@/components/Icons";
+import { AiFillCode, BiSolidVideos, RiFileCopy2Fill } from "@/components/Icons";
 import Watch from "@/components/Watch";
 
 interface props {
   params: { info: string };
 }
 
-
-
 export default async function page({ params }: props) {
   const categories = params.info;
   const data = await fetchData(categories);
 
-
-
   return (
     <>
- 
       <div className="flex mt-20 justify-center items-center gap-2">
         <h1 className="font-font text-[#1877f2] font-semibold text-[50px] underline underline-offset-4 decoration-6">
           Tech Languages
         </h1>
         <AiFillCode fill="#fed32e" size={50} />
       </div>
-       <div className="grid grid-cols-3 gap-5 m-5   mt-5 ">
-         {data.map((content, index) => (
+      <div className="grid grid-cols-3 gap-5 m-5   mt-5 ">
+        {data.map((content, index) => (
           <div className=" text-justify shadow-xl rounded p-3   " key={index}>
             <Image
               className=""
@@ -48,15 +38,19 @@ export default async function page({ params }: props) {
 
             <p className="  mt-2">{content.description}</p>
             <div className="flex-grow">
-
-           <Watch  heading={content.heading} url={urlForImage(content.logo).url()} />
+              <Watch
+                heading={content.heading}
+                url={urlForImage(content.logo).url()}
+              />
             </div>
           </div>
         ))}
       </div>
 
       <div className=" flex justify-center mt-10 items-center gap-3">
-        <h1 className="font-font text-[#1877f2] font-semibold  text-[50px] underline underline-offset-4 decoration-6">Videos</h1>
+        <h1 className="font-font text-[#1877f2] font-semibold  text-[50px] underline underline-offset-4 decoration-6">
+          Videos
+        </h1>
         <BiSolidVideos fill={"#fed32e"} size={50} />
       </div>
       <div className="grid grid-cols-3 place-items-center ">
@@ -85,7 +79,7 @@ export default async function page({ params }: props) {
       </p>
       <div className="grid grid-cols-3 mt-10 place-items-center   ">
         {data.map((content, index) => (
-          <div className="text-center mt-5 " key={index}>
+           <div className="text-center mt-5 " key={index}>
             <Link className="" href={content.documentation} target="_blank">
               <Image
                 className="mx-auto"
