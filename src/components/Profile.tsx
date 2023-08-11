@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { BiEdit } from "./Icons";
 import { Formik } from "formik";
+import * as Yup from "yup";
 import axios from "axios";
 import useSWR from "swr";
 
@@ -22,7 +23,7 @@ import { MyFormValues } from "@/types";
     }
   }
 
-  const { data, isLoading, error } = useSWR("/api/profile", fetcher);
+  const { data, isLoading, error ,mutate} = useSWR("/api/profile", fetcher);
   const {
     data: data2,
     isLoading: isLoading2,
@@ -37,6 +38,12 @@ import { MyFormValues } from "@/types";
     setedit(false);
   }
 
+  const validationSchema = Yup.object().shape({
+    about: Yup.string().required("About is required"),
+    edu: Yup.string().required("Education is required"),
+    com: Yup.string().required("Communication Skills is required"),
+  });
+  
 
 
   const initialValues: MyFormValues = { about: "", edu: "", com: "" };
@@ -103,6 +110,7 @@ import { MyFormValues } from "@/types";
           ) : (
              <Formik
               initialValues={initialValues}
+               validationSchema={validationSchema}
               onSubmit={async (values, { resetForm }) => {
                 try {
                   if (user.id !== data[0].userid && data.length==0) {
@@ -124,6 +132,7 @@ import { MyFormValues } from "@/types";
                     if(res.status ==200){
 
                       resetForm()
+                      mutate()
                     }
                   } else {
                     const res = await axios.patch(
@@ -156,13 +165,16 @@ import { MyFormValues } from "@/types";
                   }
                 }
 
-                console.log(values);
+                 console.log(values);
               }}
             >
               {({
                 values,
                 resetForm,
                 handleChange,
+
+                errors,
+                touched,
 
                 handleSubmit,
               }) => (
@@ -180,11 +192,16 @@ import { MyFormValues } from "@/types";
                   <textarea
                     name="about"
                     onChange={handleChange}
+                  
                     value={values.about}
                     disabled={edit}
                     placeholder="Tell us About yourself"
                     className="mt-3 textarea textarea-bordered textarea-md w-[85%] max-w-xs"
                   ></textarea>
+                   {errors.about && touched.about ? (
+             <div>{errors.about}</div>
+           ) : null}
+                 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
                     Education
                   </h6>
@@ -201,6 +218,9 @@ import { MyFormValues } from "@/types";
                     <option>Intermediate</option>
                     <option>Bachelors</option>
                   </select>
+                   {errors.edu && touched.edu ? (
+             <div>{errors.edu}</div>
+           ) : null}
 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
                     Communication Skills
@@ -218,6 +238,9 @@ import { MyFormValues } from "@/types";
                     <option>Fluent</option>
                     <option>Expert</option>
                   </select>
+                  {errors.com && touched.com ? (
+             <div>{errors.com}</div>
+           ) : null}
 
 <div className="flex gap-10 mb-5">
 
