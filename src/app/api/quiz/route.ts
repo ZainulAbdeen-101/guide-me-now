@@ -10,15 +10,14 @@ export async function POST(request:NextRequest){
 
     const req = await request.json();
 
+    dataX.heading=req.heading
     const res=await db.insert(Quizdata).values({
         heading:req.heading,
-        imageurl:req.imageurl,
         marks:req.marks,
         correct:req.correct
         
     })
 
-     dataX = {heading:req.heading}
 
    return NextResponse.json(res);
 }
@@ -30,4 +29,4 @@ export  async function GET(request:NextRequest){
     return NextResponse.json(res);
     
     
-    }
+    } 

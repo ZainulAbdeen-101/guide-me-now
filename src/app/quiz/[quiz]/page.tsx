@@ -1,11 +1,11 @@
 "use client";
 import React , {useState} from 'react';
-// import { data } from '../../../sanity/frontend_basic'
-import Image from 'next/image';
+
+
 import Link from 'next/link'
-// import {frontend_basic_quiz} from './quizData';
+
 import {getQuizData_current} from '../quizData' 
-import { currentUser } from '@clerk/nextjs';
+
 import axios from 'axios';
 
 
@@ -26,9 +26,7 @@ isCorrect:boolean
 }[]
 
 }
-// #00c6ff
-// → 
-// #0072ff
+
 
 interface props{
 
