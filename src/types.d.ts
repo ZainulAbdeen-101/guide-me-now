@@ -1,7 +1,7 @@
 import { Image } from "sanity"
 
 
-export interface playlist{
+export interface Playlist{
     heading:string,
     url:string,
     title:string,
@@ -23,3 +23,20 @@ export interface languages{
     com: string;
   }
   
+
+  export  interface Course {
+heading:string,
+url:string,
+cpercent:number
+  }
+
+  export interface Quiz{
+    heading:string,
+    marks:number,
+    correct:number
+  }
+
+   export interface WatchProps {
+    heading: string;
+    url: string;
+  }

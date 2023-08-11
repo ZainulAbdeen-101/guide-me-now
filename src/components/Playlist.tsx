@@ -2,26 +2,19 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchplaylist } from "../../sanity/lib/client";
-import { playlist } from "@/types";
+import { Playlist } from "@/types";
 import axios from "axios";
 
-type Play = {
+interface Play  {
   props: string;
 };
 
-const per = 0;
-// HR CLICK PE COUNT ++ --->  Condition[1 box pe eik click hi ho : ] []
-
 export default function PlayList({ props }: Play) {
   const [show, setshow] = useState(true);
-  const [data, setData] = useState<playlist[]>([]);
+  const [data, setData] = useState<Playlist[]>([]);
   const [list, setList] = useState<string>("");
   const [videoCount, setVideoCount] = useState(0);
   const [percent, setPercent] = useState(0);
-
-
-
-
 
   async function xt(index: number, heading: string) {
     if (
@@ -31,11 +24,14 @@ export default function PlayList({ props }: Play) {
     ) {
       setVideoCount(videoCount + 1);
       const per = (videoCount / data.length) * 100;
-      setPercent(per);
+      if(percent<=100){
+
+        setPercent(per);
+      }
     }
 
     const res = await axios.patch("/api/playlist", {
-      cpercent:Math.floor(percent),
+      cpercent: Math.floor(percent),
       heading: heading,
     });
     console.log(res.status);
@@ -75,10 +71,10 @@ export default function PlayList({ props }: Play) {
         {/* #fed32e */}
 
         <div className="mt-24 max-w-[450px] flex flex-col h-[500px] gap-10 p-4   rounded-xl overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
-          {data?.map((item: playlist, index: number) => (
+          {data?.map((item: Playlist, index: number) => (
             <div
               className=" font-font text-lg  rounded-md font-bold shadow-xl p-2 "
-              key={index}
+              key={item.id}
             >
               <button
                 onClick={() => {
