@@ -150,18 +150,18 @@ setsLevel(true)
     
 
       {/* Main */}
-      <div className="h-screen flex items-center ">
+      <div className="h-screen flex items-center">
         <Image
           className="-z-10 bg-blend-darken"
-          src={"/scBG.png"}
+          src={"/mainD3.jpg"}
           fill={true}
           style={{ objectFit: "cover"}}
           alt=""
         />
 
-        <div className="card lg:card-side   flex justify-center  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-white  mx-10">
+        <div className="card lg:card-side shadow-white  flex justify-center  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-black  mx-10">
           <div className="card-body max-w-[600px] border-r-indigo-500">
-          <div className="stats shadow-md  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-white">
+          <div className="stats shadow-md  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-black">
               <div className="stat">
                 <div className="stat-value flex gap-6 justify-center">Development
               <span style={{fontSize:"45px"}}><FaCode/></span>
@@ -171,17 +171,11 @@ setsLevel(true)
             </div>
  
                  <p>
-              Software development is creating computer programs or apps to meet
-              specific needs. It involves planning, designing, coding, testing,
-              and maintenance. Developers gather requirements, design the
-              softwares structure and features, write code, test for issues, and
-              make the software available. Maintenance keeps the software
-              working and up-to-date. Collaboration, communication, and
-              continuous learning are important in software development.
+                 Development in the IT field refers to building and improving computer programs, apps, and systems. It's like constructing a digital world where everything works smoothly. Just as you upgrade your phone's apps for new features, IT development involves updating software, fixing bugs, and making tech things even better. Think of it as crafting a digital masterpiece that helps people do things faster and smarter with their devices.
             </p>
             <div className="card-actions justify-end">
               <button
-                className="btn  bg-gradient-to-l from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg shadow-yellow-300/100 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                className="btn  bg-gradient-to-l from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 onClick={() => setOptionAndData(devOptions, [])}
               >
                 Continue with Development
@@ -191,7 +185,7 @@ setsLevel(true)
           <div className="divider lg:divider-horizontal mx-auto animate-fade-right animate-once animate-ease-linear animate-normal animate-fill-both divide-white divide-y "></div>
 
           <div className="card-body  max-w-[600px] border-l-indigo-500">
-          <div className="stats shadow-md  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-white">
+          <div className="stats shadow-md  backdrop-filter bg-white/10 backdrop-blur-xl drop-shadow-lg text-black">
               <div className="stat">
                 <div className="stat-value flex gap-6 justify-center">Designing
               <span style={{fontSize:"45px"}}><MdDesignServices/></span>
@@ -211,7 +205,7 @@ setsLevel(true)
             </p>
             <div className="card-actions justify-end">
               <button
-                className="btn bg-gradient-to-l from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg shadow-yellow-300/100 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                className="btn bg-gradient-to-l from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 onClick={() => setOptionAndData([], webDesOptions)}
               >
                 Continue with Designing
@@ -251,7 +245,7 @@ setsLevel(true)
                     <p>{DevText[index]}</p>
                     <div className="card-actions justify-end">
                       <button
-                        className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg hove:shadow-yellow-300/100 hover:dark:shadow-lg hover:dark:shadow-yellow-400/100 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lgfont-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         onClick={() => handleWebSelection(index, option)}
                       >
                         Lets Start with {option}
@@ -267,7 +261,7 @@ setsLevel(true)
       {/* Second time  Option  */}
 
 
-{sCater&&(
+
 <div>
   {/* Heading */}
   <div className="flex justify-center mt-10 ">
@@ -286,19 +280,13 @@ setsLevel(true)
         
         {data1?.map((data, index) => (
           <div key={index}>
-            {/* <button
-              type="button"
-              className="text-white bg-gradient-to-r from-[#fed32e] to-[#F50C8A] hover:bg-gradient-to-br  shadow-xl shadow-slate-400   font-medium rounded-lg text-sm px-24 py-6 hover:transition hover:ease-in-out hover:duration-500 "
-              onClick={() => handleFieldSelection(data)}
-            >
-              <p className="text- xl font">{data}</p>
-            </button> */}
 
-<div className="card card-compact w-96 bg-base-100   shadow-[3px_3px_#fed32e,_6px_6px_#ffdc50,_9px_9px_#ffe477,_15px_15px_#fae8a0,_18px_18px_#fff4c8] overflow-hidden">
-  <figure><Image src={webDomainZPic[webFieldsDesc][index]} alt="Shoes" width={200} height={100} ></Image></figure>
-  <div className="card-body bg-[#1877f2]">
-    <h2 className="card-title font-font text-white text-2xl">{data}</h2>
-    <p className="text-white">{webDataDesc[webFieldsDesc][index]}</p>
+
+<div className="card card-compact w-96 bg-base-100 shadow-[5px_5px_0px_0px_#1877f2] overflow-hidden">
+  <figure className=" bg-[#1877f2]"><Image src={webDomainZPic[webFieldsDesc][index]} alt="Shoes" width={200} height={100} ></Image></figure>
+  <div className="card-body">
+    <h2 className="card-title font-font text-black text-2xl">{data}</h2>
+    <p className="text-black">{webDataDesc[webFieldsDesc][index]}</p>
     <div className="card-actions justify-center ">
       <button className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"  onClick={() => handleFieldSelection(data)}>Select</button>
     </div>
@@ -312,7 +300,7 @@ setsLevel(true)
       </div>
 
 </div>
-)}
+
 
 
 {slevel&&(

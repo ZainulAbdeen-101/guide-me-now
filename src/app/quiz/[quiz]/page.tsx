@@ -77,7 +77,10 @@ if(isCorrect){
       setCurrentIndex(currentIndex+1);
      } else
       {
-      setShowResult(true)
+      
+        setShowResult(true)
+    
+    
       async function send_quizData(){
 
         const res = await axios.post('/api/quiz',{
@@ -112,11 +115,29 @@ let    timeX = new Date().getSeconds()
 
 
 
+// async function send_head_to_compare(){
 
 
+//   try{
+    
+// const res = axios.post('/api/quiz',{
+//   heading:head
+// })
 
+  
 
+//   console.log((await res).status)
+//   console.log((await res).data)
+  
+  
+ 
+// }
+//   catch(error){
+// console.log("Error Occured !",error);
 
+//   }
+
+// }
   return (
 
     <>
@@ -207,7 +228,7 @@ You Just Completed
         focus:ring-4 focus:ring-gray-100 hover:text-black bg- dark:text-white  text-black dark:focus:ring-white" onClick={Reset}>
                 Restart
             </a> 
-            <a href="#" className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] ">
+            <a href="#"  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] ">
               
               <Link href={`/result/${head}`}>
                 Course Result
