@@ -9,7 +9,7 @@ import useSWR from "swr";
 
 import { MyFormValues } from "@/types";
 
-   export default function Profile({ user }: any) {
+export default function Profile({ user }: any) {
   const [edit, setedit] = useState(true);
 
   const fetcher = async (url: string) => {
@@ -17,13 +17,12 @@ import { MyFormValues } from "@/types";
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      // Handle any errors here
       console.error("Error fetching data:", error);
       throw error;
     }
-  }
+  };
 
-  const { data, isLoading, error ,mutate} = useSWR("/api/profile", fetcher);
+  const { data, isLoading, error, mutate } = useSWR("/api/profile", fetcher);
   const {
     data: data2,
     isLoading: isLoading2,
@@ -43,8 +42,6 @@ import { MyFormValues } from "@/types";
     edu: Yup.string().required("Education is required"),
     com: Yup.string().required("Communication Skills is required"),
   });
-  
-
 
   const initialValues: MyFormValues = { about: "", edu: "", com: "" };
 
@@ -80,7 +77,7 @@ import { MyFormValues } from "@/types";
 
                 <span className="sr-only">Loading...</span>
               </div>
-            ) : (
+            ) : data ? (
               <div className="mt-5 flex justify-between ">
                 {data?.map((info: any, index: number) => (
                   <div key={index}>
@@ -106,14 +103,21 @@ import { MyFormValues } from "@/types";
                   />
                 </div>
               </div>
+            ) : error ? (
+              // Your additional else condition
+              <div className="text-center mt-5">
+                <p>No data available.</p>
+              </div>
+            ) : (
+              ""
             )
           ) : (
-             <Formik
+            <Formik
               initialValues={initialValues}
-               validationSchema={validationSchema}
+              validationSchema={validationSchema}
               onSubmit={async (values, { resetForm }) => {
                 try {
-                  if (user.id !== data[0].userid && data.length==0) {
+                  if (user.id !== data[0].userid && data.length == 0) {
                     const res = await axios.post(
                       "/api/profile",
                       {
@@ -129,28 +133,32 @@ import { MyFormValues } from "@/types";
                       }
                     );
                     console.log(res.status);
-                    if(res.status ==200){
-
-                      resetForm()
-                      mutate()
+                    if (res.status == 200) {
+                      resetForm();
+                      mutate();
                     }
                   } else {
-                    const res = await axios.patch(
-                      "/api/profile",
-                      {
-                        userid: user.id,
-                        about: values.about,
-                        education: values.edu,
-                        communication: values.com,
-                      },
-                      {
-                        headers: {
-                           "Content-Type": "application/json",
-                        },
-                      }
-                    );
+                    try{
 
-                    console.log(res.data);
+                      const res = await axios.patch(
+                        "/api/profile",
+                        {
+                          userid: user.id,
+                          about: values.about,
+                          education: values.edu,
+                          communication: values.com,
+                        },
+                        {
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                        }
+                      );
+                      console.log(res.data);
+                    }catch(error){
+                      
+                    }
+
                   }
 
                   setedit(true);
@@ -165,7 +173,7 @@ import { MyFormValues } from "@/types";
                   }
                 }
 
-                 console.log(values);
+                console.log(values);
               }}
             >
               {({
@@ -192,16 +200,15 @@ import { MyFormValues } from "@/types";
                   <textarea
                     name="about"
                     onChange={handleChange}
-                  
                     value={values.about}
                     disabled={edit}
                     placeholder="Tell us About yourself"
                     className="mt-3 textarea textarea-bordered textarea-md w-[85%] max-w-xs"
                   ></textarea>
-                   {errors.about && touched.about ? (
-             <div>{errors.about}</div>
-           ) : null}
-                 
+                  {errors.about && touched.about ? (
+                    <div>{errors.about}</div>
+                  ) : null}
+
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
                     Education
                   </h6>
@@ -212,15 +219,13 @@ import { MyFormValues } from "@/types";
                     disabled={edit}
                     className="mt-5 mb-5 select select-bordered w-   [85%] max-w-xs"
                   >
-                    <option defaultValue={'choose One'}>choose one</option>
+                    <option defaultValue={"choose One"}>choose one</option>
                     <option>Middle</option>
                     <option>Matriculation</option>
                     <option>Intermediate</option>
                     <option>Bachelors</option>
                   </select>
-                   {errors.edu && touched.edu ? (
-             <div>{errors.edu}</div>
-           ) : null}
+                  {errors.edu && touched.edu ? <div>{errors.edu}</div> : null}
 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
                     Communication Skills
@@ -238,25 +243,25 @@ import { MyFormValues } from "@/types";
                     <option>Fluent</option>
                     <option>Expert</option>
                   </select>
-                  {errors.com && touched.com ? (
-             <div>{errors.com}</div>
-           ) : null}
+                  {errors.com && touched.com ? <div>{errors.com}</div> : null}
 
-<div className="flex gap-10 mb-5">
-
-                  <button  type="submit" className="btn bg-[#1877f2] text-white">
-                    save
-                  </button>
-                  <button
-                    onClick={() => {
-                      resetForm();
-                      setedit(true);
-                    }}
-                    className="btn  bg-[#1877f2] text-white"
-                  >
-                    cancel
-                  </button>
-</div>
+                  <div className="flex gap-10 mb-5">
+                    <button
+                      type="submit"
+                      className="btn bg-[#1877f2] text-white"
+                    >
+                      save
+                    </button>
+                    <button
+                      onClick={() => {
+                        resetForm();
+                        setedit(true);
+                      }}
+                      className="btn  bg-[#1877f2] text-white"
+                    >
+                      cancel
+                    </button>
+                  </div>
                 </form>
               )}
             </Formik>
@@ -267,112 +272,97 @@ import { MyFormValues } from "@/types";
           <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
             Courses
           </h1>
-          {
-            isLoading2 ? (
-              <div className="grid grid-cols-3 gap-20 place-items-center">
-                {[...Array(6).keys()].map((course: any, index: number) => (
-                  <div key={index} className="max-w-sm">
-                    <div className="animate-pulse">
-                      <div
-                        className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-300 w-[80px] mb-4"
-                      ></div>
-                      <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-300 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
-                        {course.heading}
-                      </p>
-                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-16">
-
-                      </div>
-                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-56">
-
-                      </div>
-
-                    </div>
-                    <span className="sr-only">Loading...</span>
-                  </div>
-                ))}
-              </div>
-
-
-
-
-
-
-            )
-              : <div className="mt-5 place-items-center gap-20 grid md:grid-cols-3">
-
-                {data2?.map((course: any, index: number) => (
-                  <div key={index}>
-                    <Image
-                      className="mx-auto"
-                      src={course.url}
-                      alt=""
-                      width={50}
-                      height={50}
-                    />
-                    <p className="text-center mt-2 font-font text-xl  font-bold text-[#1877f2] ">
+          {isLoading2 ? (
+            <div className="grid grid-cols-3 gap-20 place-items-center">
+              {[...Array(6).keys()].map((course: any, index: number) => (
+                <div key={index} className="max-w-sm">
+                  <div className="animate-pulse">
+                    <div className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-300 w-[80px] mb-4"></div>
+                    <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-300 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
                       {course.heading}
                     </p>
-                    <div>
-                      <p className="text-lg font-bold">
-                        {course.cpercent}%
-                      </p>
-                      <progress
-                        className="progress progress-info w-56"
-                        value={course.cpercent}
-                        max="100"
-                      ></progress>
-                    </div>
-
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-16"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-56"></div>
                   </div>
-                ))}
-              </div>
-
-          }
-           <div>
-      <h6 className="text-[#1877f2] text-center mt-10 text-[40px] font-font font-bold">
-            Quiz Attempted
-           </h6>
-          {
-            isLoading3 ? (<div className="mt-10 flex-end justify-center items-center  ">
-              <div className="text-center">
-                <span className="loading loading-bars loading-lg"></span>
-              </div>
-            </div>) :
-              <div className="mt-20 shadow-lg  place-items-center gap-5   grid grid-cols-2">
-
-                {data3?.map((quiz: any, index: number) => (
-                 <div key={index} className="join  join-vertical w-[400px]">
-                <div className="collapse collapse-arrow join-item border border-[#1877f2]">
-                  <input type="radio" name="my-accordion-4"   /> 
-                   <div className="text-[#1877f2] font-font    collapse-title  text-xl font-bold">
-                   {quiz.heading}
-                  </div>
-                   <div className="collapse-content"> 
-                    <p className="text-lg">Percentage: <span className="text-[#1877f2] font-semibold">
-                      
-                      {quiz.marks}%
-                      </span> 
-                       </p>
-                    <p className="text-lg">
-                      Correct: {quiz.correct}
-                    </p>
-
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ))}
+            </div>
+          ) : data2 ? (
+            <div className="mt-5 place-items-center gap-20 grid md:grid-cols-3">
+              {data2?.map((course: any, index: number) => (
+                <div key={index}>
+                  <Image
+                    className="mx-auto"
+                    src={course.url}
+                    alt=""
+                    width={50}
+                    height={50}
+                  />
+                  <p className="text-center mt-2 font-font text-xl  font-bold text-[#1877f2] ">
+                    {course.heading}
+                  </p>
+                  <div>
+                    <p className="text-lg font-bold">{course.cpercent}%</p>
+                    <progress
+                      className="progress progress-info w-56"
+                      value={course.cpercent}
+                      max="100"
+                    ></progress>
                   </div>
                 </div>
-               
+              ))}
+            </div>
+          ) : error2 ? (
+            <div className="text-center mt-5">
+              <p>No data available.</p>
+            </div>
+          ) : (
+            ""
+          )}
+          <div>
+            <h6 className="text-[#1877f2] text-center mt-10 text-[40px] font-font font-bold">
+              Quiz Attempted
+            </h6>
+            {isLoading3 ? (
+              <div className="mt-10 flex-end justify-center items-center  ">
+                <div className="text-center">
+                  <span className="loading loading-bars loading-lg"></span>
+                </div>
               </div>
+            ) : data3 ? (
+              <div className="mt-20 shadow-lg  place-items-center gap-5   grid grid-cols-2">
+                {data3?.map((quiz: any, index: number) => (
+                  <div key={index} className="join  join-vertical w-[400px]">
+                    <div className="collapse collapse-arrow join-item border border-[#1877f2]">
+                      <input type="radio" name="my-accordion-4" />
+                      <div className="text-[#1877f2] font-font    collapse-title  text-xl font-bold">
+                        {quiz.heading}
+                      </div>
+                      <div className="collapse-content">
+                        <p className="text-lg">
+                          Percentage:{" "}
+                          <span className="text-[#1877f2] font-semibold">
+                            {quiz.marks}%
+                          </span>
+                        </p>
+                        <p className="text-lg">Correct: {quiz.correct}</p>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-
               </div>
-
-
-          }
-      </div>
-
-         
+            ) : error3 ? (
+              // Your additional else condition
+              <div className="text-center mt-5">
+                <p>No data available.</p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
-     
     </>
   );
 }
