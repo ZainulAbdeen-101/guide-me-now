@@ -8,7 +8,7 @@ import { urlForImage } from '../../../sanity/lib/image'
 
 export default async function page() {
 const data= await  fetchDocs()
-console.log(data)
+
   return (
 <>
 <h1 className='mt-16 text-center font-font font-bold text-[#1877f2] text-5xl'>
