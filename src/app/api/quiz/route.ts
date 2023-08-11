@@ -5,12 +5,16 @@ import { NextRequest,NextResponse } from "next/server";
 
 let dataX = {heading:""};
 
+const resX =await db.select({heading: Quizdata.heading}).from(Quizdata).where(eq(Quizdata.heading,dataX.heading));
 
-export async function POST(request:NextRequest){
+if(resX.length==0){
+    
+ async function POST(request:NextRequest){
 
     const req = await request.json();
 
     dataX.heading=req.heading
+    
     const res=await db.insert(Quizdata).values({
         heading:req.heading,
         marks:req.marks,
@@ -20,7 +24,33 @@ export async function POST(request:NextRequest){
 
 
    return NextResponse.json(res);
+
+
 }
+
+
+} else {
+     async function PATCH(request:NextRequest){
+
+        try{
+    const req = await request.json()
+    const res = await db.update(Quizdata).set({
+    
+    heading:req.heading,
+    marks:req.marks,
+    correct:req.marks
+    
+    }).where(eq(Quizdata.heading,req.heading))
+    
+    return NextResponse.json(res);
+        }
+        catch(error:any){
+            console.log(error.message);
+        }
+    }
+    
+}
+
 
 export  async function GET(request:NextRequest){
 
