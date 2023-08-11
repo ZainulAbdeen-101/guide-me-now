@@ -286,14 +286,7 @@ setsLevel(true)
         
         {data1?.map((data, index) => (
           <div key={index}>
-            {/* <button
-              type="button"
-              className="text-white bg-gradient-to-r from-[#fed32e] to-[#F50C8A] hover:bg-gradient-to-br  shadow-xl shadow-slate-400   font-medium rounded-lg text-sm px-24 py-6 hover:transition hover:ease-in-out hover:duration-500 "
-              onClick={() => handleFieldSelection(data)}
-            >
-              <p className="text- xl font">{data}</p>
-            </button> */}
-
+        
 <div className="card card-compact w-96 bg-base-100   shadow-[3px_3px_#fed32e,_6px_6px_#ffdc50,_9px_9px_#ffe477,_15px_15px_#fae8a0,_18px_18px_#fff4c8] overflow-hidden">
   <figure><Image src={webDomainZPic[webFieldsDesc][index]} alt="Shoes" width={200} height={100} ></Image></figure>
   <div className="card-body bg-[#1877f2]">

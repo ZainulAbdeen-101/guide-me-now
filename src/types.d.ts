@@ -1,7 +1,7 @@
 import { Image } from "sanity"
 
 
-export interface playlist{
+export interface Playlist{
     heading:string,
     url:string,
     title:string,
@@ -35,3 +35,4 @@ cpercent:number
     marks:number,
     correct:number
   }
+
