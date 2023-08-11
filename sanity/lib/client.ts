@@ -2,7 +2,7 @@ import { createClient, groq} from 'next-sanity'
 
 import { apiVersion, dataset, projectId, useCdn } from '../env'
 
-import { languages, playlist } from '@/types';
+import { languages, Playlist } from '@/types';
 
 export const client = createClient({
   apiVersion,
@@ -27,7 +27,7 @@ export async function fetchData(categories:string):Promise<languages[]> {
    }`);
 }
 
-export async function fetchplaylist(play:string):Promise<any> {
+export async function fetchplaylist(play:string):Promise<Playlist[]> {
  
 
   return  await client.fetch(groq`*[_type=='playlist' && heading=='${play}']{

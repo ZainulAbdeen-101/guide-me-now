@@ -97,7 +97,7 @@ if(isCorrect){
         send_quizData()
 
 
-// Update Data
+
 async function update_quizData(){
   
   const res = await axios.patch('/api/quiz',{
@@ -130,29 +130,7 @@ let    timeX = new Date().getSeconds()
 
 
 
-// async function send_head_to_compare(){
 
-
-//   try{
-    
-// const res = axios.post('/api/quiz',{
-//   heading:head
-// })
-
-  
-
-//   console.log((await res).status)
-//   console.log((await res).data)
-  
-  
- 
-// }
-//   catch(error){
-// console.log("Error Occured !",error);
-
-//   }
-
-// }
   return (
 
     <>

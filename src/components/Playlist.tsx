@@ -42,8 +42,8 @@ export default function PlayList({ props }: Play) {
     setList(url);
   }
 
-  function compareByProperty(property: any) {
-    return (a: string, b: string) =>
+  function compareByProperty(property:keyof Playlist) {
+    return (a: Playlist, b: Playlist) =>
       a[property].toUpperCase().localeCompare(b[property].toUpperCase());
   }
 
