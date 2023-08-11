@@ -9,6 +9,7 @@ import useSWR from "swr";
 
 import { MyFormValues } from "@/types";
 
+
 export default function Profile({ user }: any) {
   const [edit, setedit] = useState(true);
 
@@ -155,8 +156,15 @@ export default function Profile({ user }: any) {
                         }
                       );
                       console.log(res.data);
-                    }catch(error){
-                      
+                    }catch (error: any) {
+                      if (error.response) {
+                        console.log(error.response);
+                        console.log("server responded");
+                      } else if (error.request) {
+                        console.log("network error");
+                      } else {
+                        console.error(error.message);
+                      }
                     }
 
                   }
