@@ -38,15 +38,15 @@ export default function page() {
 <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div className="font-light sm:text-lg ">
             <h2 className="mb-4 font-font  text-5xl text-[#1877f2] tracking-tight font-extrabold ">What We Offer</h2>
-            <h6 className='text-3xl font-bold font-font'>
+            <h6 className='text-3xl font-semibold font-font'>
             Interactive Learning
             </h6>
             <p className="mb-4">Our platform offers a hands-on approach to learning. We've curated a selection of embedded YouTube videos that break down complex concepts, making it easier for you to understand and apply them. Our interactive coding challenges help you put theory into practice, ensuring a well-rounded learning experience.</p>
-            <h6 className='text-3xl font-bold font-font'>
+            <h6 className='text-3xl font-semibold font-font'>
             Comprehensive Documentation
             </h6>
             <p className="mb-4">Learning doesn't stop with videos and challenges. We've compiled a wide range of development documentation links that accompany our tutorials. These resources serve as valuable references, enabling you to dive deeper into topics and enhance your skills.</p>  
-             <h6 className='text-3xl font-bold font-font'>
+             <h6 className='text-3xl font-semibold font-font'>
              Quiz Playlists
             </h6>
             <p className="mb-4">Test your knowledge with our engaging quiz playlists for various programming languages. Practice what you've learned, track your progress, and boost your confidence in your coding abilities.</p>

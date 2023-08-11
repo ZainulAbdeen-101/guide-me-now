@@ -14,12 +14,8 @@ if(resX.length==0){
     const req = await request.json();
 
     dataX.heading=req.heading
-<<<<<<< HEAD
-     const res=await db.insert(Quizdata).values({
-=======
     
     const res=await db.insert(Quizdata).values({
->>>>>>> 50e2fe5858a97f2bfbf1227be9ce68af54fec358
         heading:req.heading,
         marks:req.marks,
         correct:req.correct
@@ -60,7 +56,7 @@ export  async function GET(request:NextRequest){
 
     const res  = await db.select().from(Quizdata).where(eq(Quizdata.heading,dataX.heading));
     
-    return NextResponse.json(res);
+     return NextResponse.json(res);
     
     
     } 
