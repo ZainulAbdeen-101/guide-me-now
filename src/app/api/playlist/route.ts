@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
   try {
     const req = await request.json();
 
-    const existingRecord = await db
+     const existingRecord = await db
       .select({ heading: playlistData.heading })
       .from(playlistData)
       .where(eq(playlistData.heading, req.heading));

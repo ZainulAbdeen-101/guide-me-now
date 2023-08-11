@@ -11,7 +11,7 @@ export async function POST(request:NextRequest){
     const req = await request.json();
 
     dataX.heading=req.heading
-    const res=await db.insert(Quizdata).values({
+     const res=await db.insert(Quizdata).values({
         heading:req.heading,
         marks:req.marks,
         correct:req.correct

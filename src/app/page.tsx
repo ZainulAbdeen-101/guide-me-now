@@ -1,6 +1,6 @@
 
 import { Hero } from "@/components/Comp";  
-import Link from "next/link";
+
 
 
 
