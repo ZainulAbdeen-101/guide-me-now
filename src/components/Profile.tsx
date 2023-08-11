@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import useSWR from "swr";
 
-import { MyFormValues } from "@/types";
+import { Course, MyFormValues, Quiz } from "@/types";
 
 
 export default function Profile({ user }: any) {
@@ -287,7 +287,7 @@ export default function Profile({ user }: any) {
                   <div className="animate-pulse">
                     <div className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-300 w-[80px] mb-4"></div>
                     <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-300 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
-                      {course.heading}
+                    
                     </p>
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-16"></div>
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-56"></div>
@@ -298,7 +298,7 @@ export default function Profile({ user }: any) {
             </div>
           ) : data2 ? (
             <div className="mt-5 place-items-center gap-20 grid md:grid-cols-3">
-              {data2?.map((course: any, index: number) => (
+              {data2?.map((course: Course, index: number) => (
                 <div key={index}>
                   <Image
                     className="mx-auto"
@@ -340,7 +340,7 @@ export default function Profile({ user }: any) {
               </div>
             ) : data3 ? (
               <div className="mt-20 shadow-lg  place-items-center gap-5   grid grid-cols-2">
-                {data3?.map((quiz: any, index: number) => (
+                {data3?.map((quiz: Quiz, index: number) => (
                   <div key={index} className="join  join-vertical w-[400px]">
                     <div className="collapse collapse-arrow join-item border border-[#1877f2]">
                       <input type="radio" name="my-accordion-4" />

@@ -23,3 +23,15 @@ export interface languages{
     com: string;
   }
   
+
+  export  interface Course {
+heading:string,
+url:string,
+cpercent:number
+  }
+
+  export interface Quiz{
+    heading:string,
+    marks:number,
+    correct:number
+  }
