@@ -18,9 +18,9 @@ export interface languages{
   }
 
   export interface MyFormValues {
-    about: string;
-    edu: string;
-    com: string;
+    about: string,
+    edu: string,
+    com: string,
   }
   
 
@@ -37,6 +37,11 @@ cpercent:number
   }
 
    export interface WatchProps {
-    heading: string;
-    url: string;
+    heading: string,
+    url: string
+  }
+  export interface Docs {
+    heading: string,
+    logo: Image,
+    documentation:string
   }

@@ -36,7 +36,7 @@ export default function Navbar() {
       </Link>
       <Link
         className="transition ease-in-out duration-200 hover:text-[#fed32e] font-semibold"
-        href={""}
+        href={"/documentations"}
       >
         Documentations
       </Link>
