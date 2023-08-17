@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react'
+
 import useSWR from 'swr';
 import axios from 'axios';
-import Image from 'next/image'
+
 
 
 interface props {
@@ -12,7 +12,7 @@ params : {result:string}
 }
 
 
-export default function page({params}:props) {
+export default function Page({params}:props) {
 
   // console.log(params.result);
   // const headingS =  params.result

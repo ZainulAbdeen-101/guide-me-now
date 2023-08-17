@@ -37,6 +37,7 @@ export default function Profile({ user }: any) {
   function changeedit() {
     setedit(false);
   }
+  console.log(data3)
 
   const validationSchema = Yup.object().shape({
     about: Yup.string().required("About is required"),
@@ -275,8 +276,9 @@ export default function Profile({ user }: any) {
             </Formik>
           )}
         </div>
+<div>
 
-        <div className="mx-auto  mt-20 h-screen  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
+        <div className="mx-auto shadow-lg  mt-20 h-[250px]  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
           <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
             Courses
           </h1>
@@ -328,8 +330,9 @@ export default function Profile({ user }: any) {
           ) : (
             ""
           )}
+        </div>
           <div>
-            <h6 className="text-[#1877f2] text-center mt-10 text-[40px] font-font font-bold">
+            <h6 className="text-[#1877f2] mt-5 text-center  text-[40px] font-font font-bold">
               Quiz Attempted
             </h6>
             {isLoading3 ? (
@@ -369,7 +372,7 @@ export default function Profile({ user }: any) {
               ""
             )}
           </div>
-        </div>
+</div>
       </div>
     </>
   );
