@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
-
 import Link from "next/link";
-
-import { getQuizData_current } from "../quizData";
-
+import Image from 'next/image'
 import axios from "axios";
+import { getQuizData_current } from "../quizData";
+// import {resX} from '../../api/quiz/route';
+
+ 
+
 
 // I create a Interface and tell him that options ka array aayega aur hr index
 // pe object hoga aur os mein is tarha ki hierarchy hogi......
@@ -29,6 +31,7 @@ export default function Page({ params }: props) {
   const head = params.quiz;
   console.log(head);
 
+  // console.warn(resX);
   const winMsg = [
     " You can do better! Keep trying, and you'll improve. Don't give up, success comes with practice!",
     " Keep going! Practice makes progress. You're capable of doing even better with effort and learning.",
@@ -56,6 +59,10 @@ export default function Page({ params }: props) {
     } else {
       setShowResult(true);
 
+
+// const exsisting_heading_check = resX;
+
+
       // Send Data
       try {
         async function send_quizData() {
@@ -76,21 +83,7 @@ export default function Page({ params }: props) {
       } catch (error: any) {
         console.error(error.message);
       }
-// update data
-      // try {
-      //   async function update_quizData() {
-      //     const res = await axios.patch("/api/quiz", {
-      //       heading: head,
-      //       marks: marks,
-      //       correct: mark,
-      //     });
 
-      //     console.log(res.status);
-      //   }
-      //   update_quizData();
-      // } catch (error: any) {
-      //   console.error(error.message);
-      // }
     }
   }
 
@@ -111,8 +104,9 @@ export default function Page({ params }: props) {
 
   return (
     <>
-      <div className="flex justify-center my-[50px] bg-gradient-to-t from-[#1877F2] to-[#0B5FCC]">
-        {/* <Image src={'/quizBG3.jpg'} className='-z-10 ' alt='' fill={true}  /> */}
+     {/* bg-gradient-to-t from-[#1877F2] to-[#0B5FCC] */}
+      <div className="flex justify-center my-[50px]">
+        <Image src={'/bgGlass.jpg'} className='-z-10 ' alt='' fill={true}  />
 
         {/*  bg-[#fde047]  */}
 
@@ -179,7 +173,7 @@ export default function Page({ params }: props) {
                 <>
                   <p className="mb-8 text-lg font-normal  lg:text-xl sm:px-16 lg:px-48 text-white">
                     You Just Completed
-                    <span className="stat-title text-[#fed32e]">
+                    <span className="stat-title text-[#fed32e] ">
                       {" "}
                       {head} Quiz{" "}
                     </span>
@@ -219,18 +213,28 @@ export default function Page({ params }: props) {
                 </ul>
               </div>
               <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-5">
+                
+                
+                {/* Old Design  */}
+                {/* rounded-lg border-[#fed32e] border-[3px] hover:bg-[#fed32e]  
+        focus:ring-4 focus:ring-gray-100 hover:text-black bg- dark:text-white text-base text-black dark:focus:ring-white */}
                 <a
-                  href="#"
-                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center rounded-lg border-[#fed32e] border-[3px] hover:bg-[#fed32e]  
-        focus:ring-4 focus:ring-gray-100 hover:text-black bg- dark:text-white  text-black dark:focus:ring-white"
+                  href="#"              
+               className=" inline-flex justify-center items-center py-[10px] px-5 text-base bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg focus:ring-4  transition-all duration-300 ease-in-out "
                   onClick={Reset}
                 >
                   Restart
                 </a>
+             
+             {/* inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] */}
                 <a
                   href="#"
-                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] "
+                  className=" inline-flex justify-center items-center py-[2px] px-5 text-base bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg focus:ring-4  transition-all duration-300 ease-in-out "
                 >
+
+{/* 
+"inline-flex justify-center items-center py-3 px-5  text-center btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg text-sm focus:ring-4  transition-all duration-300 ease-in-out mr-2 mb-2 mt-2" */}
+                  
                   <Link href={`/result/${head}`}>Course Result</Link>
                   <svg
                     className="w-3.5 h-3.5 ml-2"
@@ -255,23 +259,32 @@ export default function Page({ params }: props) {
           // {/* Result  */}
           <div className="card w-[80%] h-[90vh]  shadow-2xl backdrop-filter bg-white/10 backdrop-blur-xl ">
             <div className="card-body mt-[50px] h-[70vh]">
+
               <h1 className="card-title  text-2xl text-white ">
                 Question {currentIndex} of {FB_Quiz?.length}{" "}
                 <span className="flex justify-end items-end mx-auto pl-[550px]">
+                  
+                  {/* Old Hassaan Design */}
+                  {/* btn btn-sm bg-[#fed32e] hover:bg-[#fde06a] */}
                   <button
-                    className="btn btn-sm bg-[#fed32e] hover:bg-[#fde06a]"
+                    className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lg font-medium rounded-lg text-sm   transition-all duration-300 ease-in-out mr-2 mb-2 mt-2"
+
                     onClick={Reset}
                   >
-                    Reset
+                    Restart Quiz
                     {/* <div className="badge badge-lg">{time}</div> */}
                   </button>
                 </span>
               </h1>
 
               {FB_Quiz !== undefined ? (
-                <p className="text-center tracking-widest text-[#fed32e] text-xl font-semibold font-font">
+
+<p className="text-center  text-xl tracking-widest text-[#fed32e] drop-shadow-2xl shadow-black  font-font stat-value  font-extrabold dark:text-[#fed32e] ">
                   {FB_Quiz[currentIndex].question}
                 </p>
+
+
+
               ) : (
                 <div>
                   Quiz not found
@@ -284,7 +297,7 @@ export default function Page({ params }: props) {
                         return (
                           <>
                             <button
-                              className="join-item lowercase  text-white hover:text-black btn bg-opacity-25  text-whitefont-medium"
+                              className="join-item lowercase  text-black  ring-1  ring-white  hover:text-black btn bg-opacity-25  text-whitefont-medium"
                               onClick={(isCorrect) => {
                                 myFunc(options.isCorrect);
                               }}

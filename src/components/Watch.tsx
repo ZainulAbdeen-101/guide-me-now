@@ -37,10 +37,16 @@ export default function Watch({ heading, url }: WatchProps) {
 
   return (
     <>
+
       <button
         onClick={courseEnrollData}
-        className=" justify-end px-4 py-2  rounded-lg bg-[#1877f2] text-white"
+        className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lgfont-medium rounded-lg text-sm  "
       >
+
+{/* Old Design */}
+{/* justify-end px-4 py-2  rounded-lg bg-[#1877f2] text-white */}
+
+
         <Link href={`/playlist/${heading}`}>watch playlist</Link>
       </button>
       <Toaster />

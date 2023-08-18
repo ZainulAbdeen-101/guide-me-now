@@ -16,7 +16,7 @@ export default function PlayList({ props }: Play) {
   const [videoCount, setVideoCount] = useState(0);
   const [percent, setPercent] = useState(0);
 
-  async function xt(index: number, heading: string) {
+  async function xt(index: number, heading: string) { 
     if (
       data.length > 0 &&
       videoCount < data.length &&
@@ -146,9 +146,14 @@ export default function PlayList({ props }: Play) {
             </div>
           )}
 
+
+{/* Old Taj Design */}
+
+{/* btn bg-gradient-to-r from-[#1877f2] to-[#1877f9] text-white hover:text-[#fed32e] rounded-lg px-4 py-2  font-bold text-lg
+  transition ease-in duration-300 mt-5 mb-20 */}
+
           <button
-            className="btn bg-gradient-to-r from-[#1877f2] to-[#1877f9] text-white hover:text-[#fed32e] rounded-lg px-4 py-2  font-bold text-lg
-  transition ease-in duration-300 mt-5 mb-20"
+            className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lgfont-medium rounded-lg text-sm   transition-all duration-300 ease-in-out mr-2 mb-2 mt-2"
             disabled={show}
           >
             <Link href={`/quiz/${props}`}>Start Quiz</Link>
