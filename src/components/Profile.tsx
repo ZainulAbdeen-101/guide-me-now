@@ -156,6 +156,9 @@ export default function Profile({ user }: any) {
                           },
                         }
                       );
+                      if(res.status===200){
+                        mutate()
+                      }
                       console.log(res.data);
                     }catch (error: any) {
                       if (error.response) {
@@ -278,7 +281,7 @@ export default function Profile({ user }: any) {
         </div>
 <div>
 
-        <div className="mx-auto shadow-lg  mt-20 h-[250px]  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
+        <div className="mx-auto shadow-lg  mt-20 h-screen  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
           <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
             Courses
           </h1>
