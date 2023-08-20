@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchDocs } from "../../../sanity/lib/client";
-import { Docs } from "@/types";
+import { Docs, SearchParams } from "@/types";
 import { urlForImage } from "../../../sanity/lib/image";
 import Search from "@/components/search";
 
 
-export default  async function Page({ searchParams }: any) {
+
+export default  async function Page({ searchParams }: SearchParams) {
 
   const search = typeof searchParams.search === "string" ? searchParams.search : "";
     const fetchedData=await fetchDocs(search);
@@ -16,13 +17,14 @@ export default  async function Page({ searchParams }: any) {
 
   return (
     <>
+    <div className="">
+
+
       <h1 className="mt-16 text-center font-font font-bold text-[#1877f2] text-5xl">
         Documentations
       </h1>
-
       <Search />
-
-      <div className="mt-5 gap-10 grid grid-cols-3 justify-center place-items-center">
+      <div className="mt-5  gap-10 grid grid-cols-3 justify-center place-items-center">
         {fetchedData!==null && fetchedData.map((docs: Docs, index: number) => (
           <div key={index}>
               {
@@ -46,6 +48,11 @@ export default  async function Page({ searchParams }: any) {
           </div>
         ))}
       </div>
+    </div>
+
+
+
+
     </>
   );
 }

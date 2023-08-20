@@ -45,3 +45,7 @@ cpercent:number
     logo: Image,
     documentation:string
   }
+
+  export interface SearchParams{
+    searchParams: { [key: string]: string | string[] | undefined }
+  }
