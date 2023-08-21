@@ -47,6 +47,21 @@ options:{
      title:"android_development",
      value:"Android-Development"
     },
+    //Designing Fields Direct </> 
+    {
+      title:"graphic_design",
+      value:"Graphic-Design"
+     },
+  
+    {
+      title:"uiux_design",
+      value:"UIUX-Design"
+    },
+
+    {
+      title:"type_design",
+      value:"Type-Design"
+    },
 
 
   ]

@@ -56,10 +56,14 @@ const Page = ({ params }: props): React.JSX.Element => {
     } else {
       setShowResult(true);
 
-      // const exsisting_heading_check = resX;
+      // const exsisting_heading_check = resX;  
+
+// if(resX.length>0){
+  
+// }
 
       // Send Data
-      try {
+        try {
         async function send_quizData() {
           const res = await axios.post(
             "/api/quiz",
@@ -82,6 +86,7 @@ const Page = ({ params }: props): React.JSX.Element => {
       } catch (error: any) {
         console.error(error.message);
       }
+
     }
   }
 

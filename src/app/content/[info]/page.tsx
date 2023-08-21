@@ -13,12 +13,27 @@ interface props {
 const Page=async({ params }: props)=> {
   const categories = params.info;
   const data = await fetchData(categories);
+  let bool = false;
+
+
+  if(categories=="Graphic-Design" || categories=="UIUX-Design" || categories=="Type-Design"){
+    bool = true
+  }
+    else { bool = false}; 
+
+  
+const headS=[
+  {h1:"Tech Languages" ,docs1: "Documentation"},
+  {h2:" Designing Tools" ,docs2: "How to use it ?"},
+  
+]
+
 
   return (
     <>
       <div className="flex mt-20 justify-center items-center gap-2">
         <h1 className="font-font text-[#1877f2] font-semibold text-[50px] underline underline-offset-4 decoration-6">
-          Tech Languages
+         {bool ? (headS[1].h2) : (headS[0].h1)}
         </h1>
         <AiFillCode fill="#fed32e" size={50} />
       </div>
@@ -68,7 +83,7 @@ const Page=async({ params }: props)=> {
       </div>
       <div className="flex justify-center items-center mt-5">
         <h1 className="font-font text-center text-[#1877f2] font-semibold  text-[50px] underline underline-offset-4 decoration-6">
-          Documentation
+        {bool ? (headS[1].docs2) : (headS[0].docs1)}
         </h1>
 
         <RiFileCopy2Fill fill={"#fed32e"} size={50} />

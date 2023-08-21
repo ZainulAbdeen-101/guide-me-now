@@ -5,14 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 let dataX = { heading: "" };
 
-export const resX = await db
-  .select({ heading: Quizdata.heading })
-  .from(Quizdata)
-  .where(eq(Quizdata.heading, dataX.heading));
-console.log(resX);
+export const resX =await db.select({heading: Quizdata.heading}).from(Quizdata).where(eq(Quizdata.heading,dataX.heading));
+console.log(resX)
 
-export async function POST(request: NextRequest) {
-  const req = await request.json();
+    
+ export async function POST(request:NextRequest){
+
+    const req = await request.json();
 
   dataX.heading = req.heading;
   if (resX.length === 0) {
