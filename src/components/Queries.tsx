@@ -66,14 +66,29 @@ const webDomainZPic = [  [webDP_frontend,webDP_backtend] , [appDP_android,iosDP_
 
   const devOptions = ["Web Development","Mobile Development","Software Development",];
 
-  const webDesOptions = ["web design", "UI/UX design", "graphic design"];
+  const webDesOptions = ["Graphic Design", "UI/UX Design", "Typography Design"];
 
   const frontendOptions = ["frontend-basic","frontend-intermediate","frontend-advanced",  ];
 
   const backendOptions = ["backend-basic", "backend-advanced"];
 
+
+
+  // For Design Domain Type Design
+
+  const designFieldsText = [ 
+    "Typography in graphic design refers to the art and technique of arranging text in a visually appealing and effective manner. It involves choosing fonts, adjusting their size, spacing, and alignment to convey a specific message or evoke a particular feeling. Typography plays a crucial role in communication by enhancing readability and establishing the overall tone of a design. Beginners should focus on selecting appropriate fonts that match the project's purpose, ensuring legibility, maintaining consistent spacing, and experimenting with font combinations to create harmony in their designs. Mastering typography allows designers to create more engaging and impactful visual content.",
+    
+    "Graphic design is the art of creating visually appealing and communicative designs using a combination of images, text, colors, and layout techniques. It involves crafting designs for various purposes, such as logos, posters, websites, and packaging. Beginners in graphic design learn to balance elements like imagery and text to convey messages effectively and aesthetically. They explore principles like composition, color theory, and typography to create visually engaging and impactful designs that capture attention and convey information or emotions clearly. Graphic design is a versatile skill used in advertising, branding, and various forms of visual communication.",
+
+    "(User Interface) and UX (User Experience) are important aspects of graphic design that focus on creating user-friendly and engaging digital experiences. UI involves designing the visual elements and interactive components of a website or app, like buttons, menus, and layouts, to ensure they are visually appealing and easy to navigate. UX, on the other hand, concentrates on the overall experience a user has while interacting with the product, aiming to make it intuitive, enjoyable, and efficient. Beginners should understand that UI deals with how things look, while UX deals with how they work. Both UI and UX collaborate to create seamless and satisfying digital interactions that keep users happy and engaged."
+
+
+  ]
+
   const setOptionAndData = (options: string[], data: string[]) => {
 
+   
 
 setInfo("")
     sCater ? setsCater(false) : false
@@ -293,7 +308,7 @@ setsLevel(true)
 </div>
 
           </div>
-        ))}
+        ))} 
 
       </div>
       </div>

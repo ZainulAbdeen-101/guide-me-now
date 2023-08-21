@@ -60,11 +60,15 @@ export default function Page({ params }: props) {
       setShowResult(true);
 
 
-// const exsisting_heading_check = resX;
+// const exsisting_heading_check = resX;  
 
+
+// if(resX.length>0){
+  
+// }
 
       // Send Data
-      try {
+        try {
         async function send_quizData() {
           const res = await axios.post("/api/quiz", {
             heading: head,
@@ -84,7 +88,7 @@ export default function Page({ params }: props) {
         console.error(error.message);
       }
 
-    }
+    } 
   }
 
   function Reset() {

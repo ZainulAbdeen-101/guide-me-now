@@ -6,8 +6,8 @@ import { json } from "stream/consumers";
 
 let dataX = {heading:""};
 
-export const resX =await db.select({heading: Quizdata.heading}).from(Quizdata).where(eq(Quizdata.heading,dataX.heading));
-console.log(resX)
+export const resX = await db.select({heading: Quizdata.heading}).from(Quizdata).where(eq(Quizdata.heading,dataX.heading));
+console.log(resX);
 
     
  export async function POST(request:NextRequest){
