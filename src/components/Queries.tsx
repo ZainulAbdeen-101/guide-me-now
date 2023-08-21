@@ -3,10 +3,13 @@
 import Link from "next/link";
 import React, { useState } from "react";
 // Pictures
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import webPic from "../../public/web_dev_picB.png";
 import appPic from "../../public/app_dev_pic2.png";
 import softPic from "../../public/software_dev_picB.png";
+import graphPic from "../../public/graphic_des_pic.png";
+import uiuxPic from "../../public/uiux_des_pic.png";
+import typePic from "../../public/type_des_pic.png";
 import fPic from "../../public/fP.png";
 import bPic from "../../public/bP.png";
 import androidPic from "../../public/androidP.png";
@@ -21,26 +24,24 @@ import {MdDesignServices} from 'react-icons/md'
 
 
 
+
 export default function Queries(): React.JSX.Element {
   const [info, setInfo] = useState("");
   const [data1, setData1] = useState<string[]>();
   const [fields, setFields] = useState<string[]>();
   const [option, setOption] = useState<string[]>();
-  const [sField, setsFields] = useState(false);
-  const [sCater, setsCater] = useState(false);
-  const [slevel, setsLevel] = useState(false);
-  const picList = [webPic, appPic, softPic];
-  const [pic, setpicList] = useState(picList);
+  const [checkFleids,setCheckFields] = useState(false)
+  const [checkDomains,setCheckDomains] = useState(false)
+  const [checkLevels,setCheckLevels] = useState(false)
+  const picList_dev = [webPic, appPic, softPic];
+  const picList_des = [graphPic, uiuxPic, typePic];
+  const [pic, setpicList] = useState(picList_dev);  
   const [webFieldsDesc,setFieldsDes] = useState (0);
-  const [webDomainsPic,setWebDomainsPic] = useState([])
+  // const [webDomainsPic,setWebDomainsPic] = useState([])
 
-let webDP_frontend = fPic;  
-let webDP_backtend = bPic;  
-let appDP_android = androidPic;  
-let iosDP_android = iosPic;  
-let crossDP_android = crossPic;  
-let softP_Design = softDesignPic;  
-let softP_Develop = softDevelopPic;  
+let webDP_frontend = fPic; let webDP_backtend = bPic;let appDP_android = androidPic;  
+let iosDP_android = iosPic;  let crossDP_android = crossPic;  
+let softP_Design = softDesignPic; let softP_Develop = softDevelopPic;  
 
 const webDomainZPic = [  [webDP_frontend,webDP_backtend] , [appDP_android,iosDP_android,crossDP_android],[softP_Design,softP_Develop]]
 
@@ -53,6 +54,14 @@ const webDomainZPic = [  [webDP_frontend,webDP_backtend] , [appDP_android,iosDP_
     "Desktop app development is about creating computer programs that can be installed and used on desktop or laptop computers. It involves designing how the app looks and works, writing code using languages like Java or C#, and testing for issues. Once tested, the app is made available for users to install on their computers. Continuous learning and understanding user interfaces are important for beginners. Desktop app development offers a variety of options, like productivity tools or industry-specific software.";
 
 
+    const graphtext = "Graphic design is the art of creating visually appealing and communicative designs using a combination of images, text, colors, and layout techniques. It involves crafting designs for various purposes, such as logos, posters, websites, and packaging. Beginners in graphic design learn to balance elements like imagery and text to convey messages effectively and aesthetically. They explore principles like composition, color theory, and typography to create visually engaging and impactful designs that capture attention and convey information or emotions clearly. Graphic design is a versatile skill used in advertising, branding, and various forms of visual communication.";
+
+    const uiuxtext = "(User Interface) and UX (User Experience) are important aspects of graphic design that focus on creating user-friendly and engaging digital experiences. UI involves designing the visual elements and interactive components of a website or app, like buttons, menus, and layouts, to ensure they are visually appealing and easy to navigate. UX, on the other hand, concentrates on the overall experience a user has while interacting with the product, aiming to make it intuitive, enjoyable, and efficient. Beginners should understand that UI deals with how things look, while UX deals with how they work. Both UI and UX collaborate to create seamless and satisfying digital interactions that keep users happy and engaged.";
+
+
+    const typetext = "Typography in graphic design refers to the art and technique of arranging text in a visually appealing and effective manner. It involves choosing fonts, adjusting their size, spacing, and alignment to convey a specific message or evoke a particular feeling. Typography plays a crucial role in communication by enhancing readability and establishing the overall tone of a design. Beginners should focus on selecting appropriate fonts that match the project's purpose, ensuring legibility, maintaining consistent spacing, and experimenting with font combinations to create harmony in their designs. Mastering typography allows designers to create more engaging and impactful visual content."
+
+
 
     const webDataDesc = [
       ["Frontend development is the process of creating and designing the user interface of a website or web application. It involves using programming languages like HTML, CSS, and JavaScript to build the visual elements and interactivity that users interact with directly on their web browsers.", "Backend development involves creating the behind-the-scenes functionality of a website or web application. It focuses on managing databases, handling server-side logic, and ensuring data is delivered to the frontend correctly. It usually involves using languages like Python, Ruby, Java, or Node.js."],
@@ -62,7 +71,9 @@ const webDomainZPic = [  [webDP_frontend,webDP_backtend] , [appDP_android,iosDP_
 
 
   const devFields = [webtext, apptext, softtext];
+  const desFields = [graphtext, uiuxtext, typetext];
   const [DevText, setDevText] = useState(devFields);
+  const [DesText, setDesText] = useState(desFields);
 
   const devOptions = ["Web Development","Mobile Development","Software Development",];
 
@@ -74,34 +85,53 @@ const webDomainZPic = [  [webDP_frontend,webDP_backtend] , [appDP_android,iosDP_
 
 
 
-  // For Design Domain Type Design
+  // For Designing field Definations 
 
   const designFieldsText = [ 
-    "Typography in graphic design refers to the art and technique of arranging text in a visually appealing and effective manner. It involves choosing fonts, adjusting their size, spacing, and alignment to convey a specific message or evoke a particular feeling. Typography plays a crucial role in communication by enhancing readability and establishing the overall tone of a design. Beginners should focus on selecting appropriate fonts that match the project's purpose, ensuring legibility, maintaining consistent spacing, and experimenting with font combinations to create harmony in their designs. Mastering typography allows designers to create more engaging and impactful visual content.",
-    
-    "Graphic design is the art of creating visually appealing and communicative designs using a combination of images, text, colors, and layout techniques. It involves crafting designs for various purposes, such as logos, posters, websites, and packaging. Beginners in graphic design learn to balance elements like imagery and text to convey messages effectively and aesthetically. They explore principles like composition, color theory, and typography to create visually engaging and impactful designs that capture attention and convey information or emotions clearly. Graphic design is a versatile skill used in advertising, branding, and various forms of visual communication.",
 
-    "(User Interface) and UX (User Experience) are important aspects of graphic design that focus on creating user-friendly and engaging digital experiences. UI involves designing the visual elements and interactive components of a website or app, like buttons, menus, and layouts, to ensure they are visually appealing and easy to navigate. UX, on the other hand, concentrates on the overall experience a user has while interacting with the product, aiming to make it intuitive, enjoyable, and efficient. Beginners should understand that UI deals with how things look, while UX deals with how they work. Both UI and UX collaborate to create seamless and satisfying digital interactions that keep users happy and engaged."
+    "Graphic design is the art of creating visually appealing and communicative designs using a combination of images, text, colors, and layout techniques. It involves crafting designs for various purposes, such as logos, posters, websites, and packaging. Beginners in graphic design learn to balance elements like imagery and text to convey messages effectively and aesthetically. They explore principles like composition, color theory, and typography to create visually engaging and impactful designs that capture attention and convey information or emotions clearly. Graphic design is a versatile skill used in advertising, branding, and various forms of visual communication.",
+    
+    "(User Interface) and UX (User Experience) are important aspects of graphic design that focus on creating user-friendly and engaging digital experiences. UI involves designing the visual elements and interactive components of a website or app, like buttons, menus, and layouts, to ensure they are visually appealing and easy to navigate. UX, on the other hand, concentrates on the overall experience a user has while interacting with the product, aiming to make it intuitive, enjoyable, and efficient. Beginners should understand that UI deals with how things look, while UX deals with how they work. Both UI and UX collaborate to create seamless and satisfying digital interactions that keep users happy and engaged.",
+    
+    "Typography in graphic design refers to the art and technique of arranging text in a visually appealing and effective manner. It involves choosing fonts, adjusting their size, spacing, and alignment to convey a specific message or evoke a particular feeling. Typography plays a crucial role in communication by enhancing readability and establishing the overall tone of a design. Beginners should focus on selecting appropriate fonts that match the project's purpose, ensuring legibility, maintaining consistent spacing, and experimenting with font combinations to create harmony in their designs. Mastering typography allows designers to create more engaging and impactful visual content."
 
 
   ]
 
   const setOptionAndData = (options: string[], data: string[]) => {
 
+    setInfo("")
    
 
-setInfo("")
-    sCater ? setsCater(false) : false
-    slevel ? (setsLevel(false),setInfo("")) :false 
+
     setOption(options);
     setData1(data);
     setFields([]);
-    setpicList(picList);
+
+  if(data[0]=="Graphic Design")  {
+    
+    setpicList(picList_des);
+    setDesText(desFields);
+
+  }else if (data[0]=="Web Development"){
+
+setpicList(picList_dev);
     setDevText(devFields);
-    setsFields(true);
+
+  }
+    
+
+    setCheckFields(true);
+    
+    
+    checkDomains  && setCheckDomains(false)  
   };
 
   function handleWebSelection(index: number, option: string) {
+
+    setCheckDomains(true)
+    setCheckLevels(false);
+
 
     const webData = [
       ["Frontend", "Backend"],
@@ -112,29 +142,29 @@ setInfo("")
       ? (setOptionAndData([option], webData[index]),
           setFieldsDes(0),
         setpicList([webPic]),
-        setDevText([webtext]),
-        setsCater(true),
-        setsLevel(false))
+        setDevText([webtext])
+     )
 
       : option === "Mobile Development" && index === 1
-      ? (setOptionAndData([option], webData[index]),
+      ? ( info && setInfo(''), setOptionAndData([option], webData[index]),
       setFieldsDes(1),
         setpicList([appPic]),
-        setDevText([apptext]),
-        setInfo(" "),setsCater(true),setsLevel(false))
+        setDevText([apptext])
+    
+        )
       : option === "Software Development" && index === 2
       ? (setOptionAndData([option], webData[index]),
       setFieldsDes(2),
         setpicList([softPic]),
-        setDevText([softtext]),
-        setInfo(" "),setsCater(true),setsLevel(false))
+        setDevText([softtext])
+       )
       : null;
 
   }
 
   const fieldsData: { [key: string]: string[] } = {
-    frontend: frontendOptions,
-    backend: backendOptions,
+    Frontend: frontendOptions,
+    Backend: backendOptions,
     "web design": ["web design option 1", "web design option 2"],
     "UI/UX design": ["UI/UX design option 1", "UI/UX design option2"],
     "graphic design": ["graphic design option 1", "graphic design option 2"],
@@ -142,17 +172,23 @@ setInfo("")
 
   const handleFieldSelection = (field: string) => {
 
-setsLevel(true)
+    if (field==="Frontend" || field==="Backend" ){
+      setCheckLevels(true)
+      setInfo("");
+  
+    }
+
     setFields(fieldsData[field]);
-   
 
     field === "Android-Development"
-      ? (setInfo(field) , setsLevel(false))
+      ? (setInfo(field))
       : field === "IOS-Development"
-      ? (setInfo(field) , setsLevel(false) )
+      ? (setInfo(field) )
       : field === "Cross-Plateform"
-      ? (setInfo(field) , setsLevel(false))
+      ? (setInfo(field))
       : field;
+
+
   };
 
   const handleDataSelection = (data: string) => {
@@ -221,7 +257,7 @@ setsLevel(true)
             <div className="card-actions justify-end">
               <button
                 className="btn bg-gradient-to-l from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                onClick={() => setOptionAndData([], webDesOptions)}
+                onClick={() => setOptionAndData(webDesOptions,[])}
               >
                 Continue with Designing
               </button>
@@ -230,7 +266,8 @@ setsLevel(true)
         </div>
       </div>
       {/* Second Section render based on condition */}
-      {sField && (
+  
+      {checkFleids && (
         <div>
           <div className="flex justify-center mt-10 ">
             <div className="stats shadow-md">
@@ -273,10 +310,11 @@ setsLevel(true)
           </div>
         </div>
       )}
+      
       {/* Second time  Option  */}
 
 
-
+{checkDomains&& (
 <div>
   {/* Heading */}
   <div className="flex justify-center mt-10 ">
@@ -314,11 +352,13 @@ setsLevel(true)
       </div>
 
 </div>
+)}
 
 
-
-{slevel&&(
+{checkLevels && (
 <div>
+
+
 
 <div className="flex justify-center mt-10 ">
             <div className="stats shadow-md">
@@ -327,12 +367,16 @@ setsLevel(true)
               </div>
             </div> 
             </div>
+{/* 
+
+            <button className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" ></button> */}
 
       {/* last time categories */}
       <div className="flex justify-center items-center gap-10 mt-10">
+      {/* transition-none */}
         {fields?.map((field, index) => (
           <div key={index}>
-            <button className="btn btn-outline text-black btn-warning transition-none focus:bg-[#fed32e] focus:outline-[#fed32e] border-[#fed32e] focus:text-black checked:text-black "
+  <button className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg focus:shadow-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
               onClick={() => handleDataSelection(field)}
             >
               {field}
@@ -342,8 +386,7 @@ setsLevel(true)
         ))}
       </div>
       </div>
-)}
-      
+)}     
 
       {info ? (
         <Link href={`/content/${info}`}>
