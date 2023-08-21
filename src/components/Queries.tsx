@@ -21,7 +21,7 @@ import {MdDesignServices} from 'react-icons/md'
 
 
 
-export default function Queries(): React.JSX.Element {
+const  Queries=(): React.JSX.Element=> {
   const [info, setInfo] = useState("");
   const [data1, setData1] = useState<string[]>();
   const [fields, setFields] = useState<string[]>();
@@ -350,3 +350,4 @@ setsLevel(true)
     </>
   );
 }
+export default Queries

@@ -1,13 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
 import axios from "axios";
 import { getQuizData_current } from "../quizData";
 // import {resX} from '../../api/quiz/route';
-
- 
-
 
 // I create a Interface and tell him that options ka array aayega aur hr index
 // pe object hoga aur os mein is tarha ki hierarchy hogi......
@@ -27,7 +24,7 @@ interface props {
   params: { quiz: string };
 }
 
-export default function Page({ params }: props) {
+const Page = ({ params }: props): React.JSX.Element => {
   const head = params.quiz;
   console.log(head);
 
@@ -59,22 +56,24 @@ export default function Page({ params }: props) {
     } else {
       setShowResult(true);
 
-
-// const exsisting_heading_check = resX;
-
+      // const exsisting_heading_check = resX;
 
       // Send Data
       try {
         async function send_quizData() {
-          const res = await axios.post("/api/quiz", {
-            heading: head,
-            marks: marks,
-            correct: mark,
-          },{
-            headers:{
-              "Content-Type":'application/json'
+          const res = await axios.post(
+            "/api/quiz",
+            {
+              heading: head,
+              marks: marks,
+              correct: mark,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
             }
-          });
+          );
 
           console.log(res.status);
           console.log(res.data);
@@ -83,7 +82,6 @@ export default function Page({ params }: props) {
       } catch (error: any) {
         console.error(error.message);
       }
-
     }
   }
 
@@ -104,9 +102,9 @@ export default function Page({ params }: props) {
 
   return (
     <>
-     {/* bg-gradient-to-t from-[#1877F2] to-[#0B5FCC] */}
+      {/* bg-gradient-to-t from-[#1877F2] to-[#0B5FCC] */}
       <div className="flex justify-center my-[50px]">
-        <Image src={'/bgGlass.jpg'} className='-z-10 ' alt='' fill={true}  />
+        <Image src={"/bgGlass.jpg"} className="-z-10 " alt="" fill={true} />
 
         {/*  bg-[#fde047]  */}
 
@@ -213,28 +211,25 @@ export default function Page({ params }: props) {
                 </ul>
               </div>
               <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-5">
-                
-                
                 {/* Old Design  */}
                 {/* rounded-lg border-[#fed32e] border-[3px] hover:bg-[#fed32e]  
         focus:ring-4 focus:ring-gray-100 hover:text-black bg- dark:text-white text-base text-black dark:focus:ring-white */}
                 <a
-                  href="#"              
-               className=" inline-flex justify-center items-center py-[10px] px-5 text-base bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg focus:ring-4  transition-all duration-300 ease-in-out "
+                  href="#"
+                  className=" inline-flex justify-center items-center py-[10px] px-5 text-base bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg focus:ring-4  transition-all duration-300 ease-in-out "
                   onClick={Reset}
                 >
                   Restart
                 </a>
-             
-             {/* inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] */}
+
+                {/* inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-[#fed32e] hover:bg-white focus:ring-4 focus:ring-[#fed32e]  dark:focus:ring-[#fed32e] */}
                 <a
                   href="#"
                   className=" inline-flex justify-center items-center py-[2px] px-5 text-base bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg focus:ring-4  transition-all duration-300 ease-in-out "
                 >
-
-{/* 
+                  {/* 
 "inline-flex justify-center items-center py-3 px-5  text-center btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white shadow-lg  hover:dark:shadow-lg font-medium rounded-lg text-sm focus:ring-4  transition-all duration-300 ease-in-out mr-2 mb-2 mt-2" */}
-                  
+
                   <Link href={`/result/${head}`}>Course Result</Link>
                   <svg
                     className="w-3.5 h-3.5 ml-2"
@@ -259,16 +254,13 @@ export default function Page({ params }: props) {
           // {/* Result  */}
           <div className="card w-[80%] h-[90vh]  shadow-2xl backdrop-filter bg-white/10 backdrop-blur-xl ">
             <div className="card-body mt-[50px] h-[70vh]">
-
               <h1 className="card-title  text-2xl text-white ">
                 Question {currentIndex} of {FB_Quiz?.length}{" "}
                 <span className="flex justify-end items-end mx-auto pl-[550px]">
-                  
                   {/* Old Hassaan Design */}
                   {/* btn btn-sm bg-[#fed32e] hover:bg-[#fde06a] */}
                   <button
                     className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lg font-medium rounded-lg text-sm   transition-all duration-300 ease-in-out mr-2 mb-2 mt-2"
-
                     onClick={Reset}
                   >
                     Restart Quiz
@@ -278,17 +270,11 @@ export default function Page({ params }: props) {
               </h1>
 
               {FB_Quiz !== undefined ? (
-
-<p className="text-center  text-xl tracking-widest text-[#fed32e] drop-shadow-2xl shadow-black  font-font stat-value  font-extrabold dark:text-[#fed32e] ">
+                <p className="text-center  text-xl tracking-widest text-[#fed32e] drop-shadow-2xl shadow-black  font-font stat-value  font-extrabold dark:text-[#fed32e] ">
                   {FB_Quiz[currentIndex].question}
                 </p>
-
-
-
               ) : (
-                <div>
-                  Quiz not found
-                </div>
+                <div>Quiz not found</div>
               )}
               <div>
                 <div className="join flex flex-col gap-5 -mt-[50px]">
@@ -316,4 +302,6 @@ export default function Page({ params }: props) {
       </div>
     </>
   );
-}
+};
+
+export default Page;

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+const Footer=():React.JSX.Element =>{
   return (
     <>
       <footer className=" bg-gradient-to-t from-[#1877f2] to-[#1877f9] text-white font-semibold">
@@ -202,3 +202,4 @@ export default function Footer() {
     </>
   );
 }
+export default Footer

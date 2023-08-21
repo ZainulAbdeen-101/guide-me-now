@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { WatchProps } from "@/types";
 
 
-export default function Watch({ heading, url }: WatchProps) {
+const Watch=({ heading, url }: WatchProps):React.JSX.Element=> {
   const { userId } = useAuth();
   async function courseEnrollData() {
     try {
@@ -53,3 +53,4 @@ export default function Watch({ heading, url }: WatchProps) {
     </>
   );
 }
+export default Watch

@@ -9,7 +9,7 @@ import Search from "@/components/search";
 
 
 
-export default  async function Page({ searchParams }: SearchParams) {
+   const Page=async({ searchParams }: SearchParams)=>{
 
   const search = typeof searchParams.search === "string" ? searchParams.search : "";
     const fetchedData=await fetchDocs(search);
@@ -56,3 +56,6 @@ export default  async function Page({ searchParams }: SearchParams) {
     </>
   );
 }
+
+
+export default Page

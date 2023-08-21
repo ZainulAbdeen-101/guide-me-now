@@ -5,18 +5,18 @@ import { fetchplaylist } from "../../sanity/lib/client";
 import { Playlist } from "@/types";
 import axios from "axios";
 
-interface Play  {
+interface Play {
   props: string;
-};
+}
 
-export default function PlayList({ props }: Play) {
+const PlayList = ({ props }: Play): React.JSX.Element => {
   const [show, setshow] = useState(true);
   const [data, setData] = useState<Playlist[]>([]);
   const [list, setList] = useState<string>("");
   const [videoCount, setVideoCount] = useState(0);
   const [percent, setPercent] = useState(0);
 
-  async function xt(index: number, heading: string) { 
+  async function xt(index: number, heading: string) {
     if (
       data.length > 0 &&
       videoCount < data.length &&
@@ -24,8 +24,7 @@ export default function PlayList({ props }: Play) {
     ) {
       setVideoCount(videoCount + 1);
       const per = (videoCount / data.length) * 100;
-      if(percent<=100){
-
+      if (percent <= 100) {
         setPercent(per);
       }
     }
@@ -42,7 +41,7 @@ export default function PlayList({ props }: Play) {
     setList(url);
   }
 
-  function compareByProperty(property:keyof Playlist) {
+  function compareByProperty(property: keyof Playlist) {
     return (a: Playlist, b: Playlist) =>
       a[property].toUpperCase().localeCompare(b[property].toUpperCase());
   }
@@ -146,10 +145,9 @@ export default function PlayList({ props }: Play) {
             </div>
           )}
 
+          {/* Old Taj Design */}
 
-{/* Old Taj Design */}
-
-{/* btn bg-gradient-to-r from-[#1877f2] to-[#1877f9] text-white hover:text-[#fed32e] rounded-lg px-4 py-2  font-bold text-lg
+          {/* btn bg-gradient-to-r from-[#1877f2] to-[#1877f9] text-white hover:text-[#fed32e] rounded-lg px-4 py-2  font-bold text-lg
   transition ease-in duration-300 mt-5 mb-20 */}
 
           <button
@@ -162,4 +160,6 @@ export default function PlayList({ props }: Play) {
       </div>
     </>
   );
-}
+};
+
+export default PlayList;

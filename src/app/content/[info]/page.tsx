@@ -10,7 +10,7 @@ interface props {
   params: { info: string };
 }
 
-export default async function page({ params }: props) {
+const Page=async({ params }: props)=> {
   const categories = params.info;
   const data = await fetchData(categories);
 
@@ -98,3 +98,4 @@ export default async function page({ params }: props) {
     </>
   );
 }
+export default Page
