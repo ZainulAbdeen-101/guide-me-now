@@ -14,7 +14,7 @@ export default function Hero() {
                 The Perfect Guide for the future of <span className='font-font text-[#1877f2] font-semibold'>Young Generation</span> 
             </p>
             <p className='mt-5   '>Your Ultimate IT Career Navigator Discover your ideal path in the world of technology with our interactive platform, tailored specifically for young students. Explore various IT careers, receive personalized recommendations, and embark on a journey to a successful future in the rapidly evolving IT industry.</p>
-           <Link href={"/queries"}> <button type="button" className="btn bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lgfont-medium rounded-lg text-sm   transition-all duration-300 ease-in-out mr-2 mb-2 mt-2">get the ultimate guide now</button> </Link>
+           <Link href={"/queries"}> <button type="button" className="btn bg-gradient-to-br from-[#fed32c] via-[#fed32e] to-[#fed32f] text-black  hover:bg-gradient-to-br focus:outline-none focus:ring-white dark:focus:ring-black shadow-lg  hover:dark:shadow-lgfont-medium rounded-lg text-sm   transition-all duration-300 ease-in-out mr-2 mb-2 mt-2">get the ultimate guide now</button> </Link>
 
 
 {/* Old Taj Button */}

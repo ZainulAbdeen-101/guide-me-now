@@ -4,7 +4,7 @@ interface props {
   params: { play: string };
 }
 
-export default function Page({ params }: props) {
+ const Page=({ params }: props): React.JSX.Element =>{
   const play = params.play;
 
   return (
@@ -13,3 +13,5 @@ export default function Page({ params }: props) {
     </>
   );
 }
+
+export default Page

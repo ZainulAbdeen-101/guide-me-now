@@ -1,10 +1,11 @@
-import Queries from '@/components/Queries'
-import React from 'react'
+import Queries from "@/components/Queries";
+import React from "react";
 
-export default function page() {
+const Page = (): React.JSX.Element => {
   return (
-   <>
-   <Queries />
-   </>
-  )
-}
+    <>
+      <Queries />
+    </>
+  );
+};
+export default Page;

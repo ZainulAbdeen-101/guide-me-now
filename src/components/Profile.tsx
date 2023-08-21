@@ -8,9 +8,9 @@ import axios from "axios";
 import useSWR from "swr";
 
 import { Course, MyFormValues, Quiz } from "@/types";
+import { User } from "@clerk/nextjs/dist/types/server";
 
-
-export default function Profile({ user }: any) {
+const Profile:React.FC<{ user: User |null }> = ({user}): React.JSX.Element => {
   const [edit, setedit] = useState(true);
 
   const fetcher = async (url: string) => {
@@ -34,10 +34,9 @@ export default function Profile({ user }: any) {
     isLoading: isLoading3,
     error: error3,
   } = useSWR("/api/quiz", fetcher);
-  function changeedit() {
+  const changeedit = () => {
     setedit(false);
-  }
-  console.log(data3)
+  };
 
   const validationSchema = Yup.object().shape({
     about: Yup.string().required("About is required"),
@@ -119,11 +118,11 @@ export default function Profile({ user }: any) {
               validationSchema={validationSchema}
               onSubmit={async (values, { resetForm }) => {
                 try {
-                  if (user.id !== data[0].userid && data.length == 0) {
+                  if (user?.id !== data[0].userid && data.length == 0) {
                     const res = await axios.post(
                       "/api/profile",
                       {
-                        userid: user.id,
+                        userid: user?.id,
                         about: values.about,
                         education: values.edu,
                         communication: values.com,
@@ -140,12 +139,11 @@ export default function Profile({ user }: any) {
                       mutate();
                     }
                   } else {
-                    try{
-
+                    try {
                       const res = await axios.patch(
                         "/api/profile",
                         {
-                          userid: user.id,
+                          userid: user?.id,
                           about: values.about,
                           education: values.edu,
                           communication: values.com,
@@ -156,11 +154,11 @@ export default function Profile({ user }: any) {
                           },
                         }
                       );
-                      if(res.status===200){
-                        mutate()
+                      if (res.status === 200) {
+                        mutate();
                       }
                       console.log(res.data);
-                    }catch (error: any) {
+                    } catch (error: any) {
                       if (error.response) {
                         console.log(error.response);
                         console.log("server responded");
@@ -170,7 +168,6 @@ export default function Profile({ user }: any) {
                         console.error(error.message);
                       }
                     }
-
                   }
 
                   setedit(true);
@@ -185,7 +182,7 @@ export default function Profile({ user }: any) {
                   }
                 }
 
-                console.log(values);
+                
               }}
             >
               {({
@@ -218,7 +215,7 @@ export default function Profile({ user }: any) {
                     className="mt-3 textarea textarea-bordered textarea-md w-[85%] max-w-xs"
                   ></textarea>
                   {errors.about && touched.about ? (
-                    <div>{errors.about}</div>
+                    <div className="text-red-600">{errors.about}</div>
                   ) : null}
 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
@@ -237,7 +234,7 @@ export default function Profile({ user }: any) {
                     <option>Intermediate</option>
                     <option>Bachelors</option>
                   </select>
-                  {errors.edu && touched.edu ? <div>{errors.edu}</div> : null}
+                  {errors.edu && touched.edu ? <div className="text-red-600">{errors.edu}</div> : null}
 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
                     Communication Skills
@@ -255,7 +252,7 @@ export default function Profile({ user }: any) {
                     <option>Fluent</option>
                     <option>Expert</option>
                   </select>
-                  {errors.com && touched.com ? <div>{errors.com}</div> : null}
+                  {errors.com && touched.com ? <div className="text-red-600">{errors.com}</div> : null}
 
                   <div className="flex gap-10 mb-5">
                     <button
@@ -279,61 +276,58 @@ export default function Profile({ user }: any) {
             </Formik>
           )}
         </div>
-<div>
-
-        <div className="mx-auto shadow-lg  mt-20 h-screen  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
-          <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
-            Courses
-          </h1>
-          {isLoading2 ? (
-            <div className="grid grid-cols-3 gap-20 place-items-center">
-              {[...Array(6).keys()].map((course: any, index: number) => (
-                <div key={index} className="max-w-sm">
-                  <div className="animate-pulse">
-                    <div className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-300 w-[80px] mb-4"></div>
-                    <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-300 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]">
-                    
+        <div>
+          <div className="mx-auto shadow-lg  mt-20 h-screen  overflow-auto scrollbar-thin scrollbar-thumb-[#1877f2] scrollbar-track-[#fed32e]">
+            <h1 className="text-center font-font font-bold text-[40px] text-[#1877f2]">
+              Courses
+            </h1>
+            {isLoading2 ? (
+              <div className="grid grid-cols-3 gap-20 place-items-center">
+                {[...Array(6).keys()].map((course: any, index: number) => (
+                  <div key={index} className="max-w-sm">
+                    <div className="animate-pulse">
+                      <div className="mx-auto h-[100px] bg-gray-200 rounded-md dark:bg-gray-300 w-[80px] mb-4"></div>
+                      <p className="mx-auto h-2 mt-2 bg-gray-200 rounded-full dark:bg-gray-300 max-w-[360px] mb-2.5 text-center font-font text-xl font-bold text-[#1877f2]"></p>
+                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-16"></div>
+                      <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-56"></div>
+                    </div>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ))}
+              </div>
+            ) : data2 ? (
+              <div className="mt-5 place-items-center gap-20 grid md:grid-cols-3">
+                {data2?.map((course: Course, index: number) => (
+                  <div key={index}>
+                    <Image
+                      className="mx-auto"
+                      src={course.url}
+                      alt=""
+                      width={50}
+                      height={50}
+                    />
+                    <p className="text-center mt-2 font-font text-xl  font-bold text-[#1877f2] ">
+                      {course.heading}
                     </p>
-                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-16"></div>
-                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5 w-56"></div>
+                    <div>
+                      <p className="text-lg font-bold">{course.cpercent}%</p>
+                      <progress
+                        className="progress progress-info w-56"
+                        value={course.cpercent}
+                        max="100"
+                      ></progress>
+                    </div>
                   </div>
-                  <span className="sr-only">Loading...</span>
-                </div>
-              ))}
-            </div>
-          ) : data2 ? (
-            <div className="mt-5 place-items-center gap-20 grid md:grid-cols-3">
-              {data2?.map((course: Course, index: number) => (
-                <div key={index}>
-                  <Image
-                    className="mx-auto"
-                    src={course.url}
-                    alt=""
-                    width={50}
-                    height={50}
-                  />
-                  <p className="text-center mt-2 font-font text-xl  font-bold text-[#1877f2] ">
-                    {course.heading}
-                  </p>
-                  <div>
-                    <p className="text-lg font-bold">{course.cpercent}%</p>
-                    <progress
-                      className="progress progress-info w-56"
-                      value={course.cpercent}
-                      max="100"
-                    ></progress>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : error2 ? (
-            <div className="text-center mt-5">
-              <p>No data available.</p>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
+                ))}
+              </div>
+            ) : error2 ? (
+              <div className="text-center mt-5">
+                <p>No data available.</p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
           <div>
             <h6 className="text-[#1877f2] mt-5 text-center  text-[40px] font-font font-bold">
               Quiz Attempted
@@ -375,8 +369,10 @@ export default function Profile({ user }: any) {
               ""
             )}
           </div>
-</div>
+        </div>
       </div>
     </>
   );
-}
+};
+
+export default Profile;
