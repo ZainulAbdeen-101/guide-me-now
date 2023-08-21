@@ -1,8 +1,10 @@
 import { db, playlistData } from "../../../lib/drizzle";
 import { NextResponse, NextRequest } from "next/server";
 import { eq } from "drizzle-orm";
+import   {currentUser}  from "@clerk/nextjs";
 
 export async function POST(request: NextRequest) {
+ 
   try {
     const req = await request.json();
 
@@ -50,11 +52,19 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  try {
-    const res = await db.select().from(playlistData);
+  const user=await currentUser()
+  if(user){
 
-    return NextResponse.json(res);
-  } catch (error: any) {
-    console.error(error.message);
+    try {
+      const res = await db.select().from(playlistData);
+  
+      return NextResponse.json(res);
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  }else{
+    return NextResponse.json({
+      message:"UnAuthorized"
+    })
   }
 }

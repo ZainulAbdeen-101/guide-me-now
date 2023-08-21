@@ -38,11 +38,20 @@ export async function fetchplaylist(play:string):Promise<Playlist[]> {
    }`)
   }
 
-  export async function fetchDocs():Promise<Docs[]>{
-    return  await client.fetch(groq`*[_type=='frontend_basic']{
-      documentation,
-      heading,
-      logo
-      }`)
+  export async function fetchDocs(search?:string):Promise<Docs[]>{
+    if(search){
+
+      return  await client.fetch(groq`*[_type=='frontend_basic' && heading match '*${search}*']{
+        documentation,
+        heading,
+        logo
+        }`)
+    }else{
+      return await client.fetch(groq`*[_type=='frontend_basic']{
+        documentation,
+        heading,
+        logo
+        }`)
+    }
      }
   

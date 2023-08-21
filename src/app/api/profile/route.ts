@@ -1,4 +1,5 @@
 import { db, profiledata } from "@/lib/drizzle"
+import { currentUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm"
 import { NextRequest, NextResponse } from "next/server"
 
@@ -17,9 +18,16 @@ return NextResponse.json(res)
 }
 
 export async function GET(request:NextRequest,){
-
-    const res=await db.select().from(profiledata)
-    return NextResponse.json(res)
+    const user=await currentUser()
+    if(user){
+        
+        const res=await db.select().from(profiledata)
+        return NextResponse.json(res)
+    }else{
+      return NextResponse.json({
+        message:"UnAuthorized"
+      })
+    }
 
 }
 
