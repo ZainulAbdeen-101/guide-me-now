@@ -16,7 +16,7 @@ const PlayList = ({ props }: Play): React.JSX.Element => {
   const [videoCount, setVideoCount] = useState(0);
   const [percent, setPercent] = useState(0);
 
-  async function xt(index: number, heading: string) {
+  const xt = async (index: number, heading: string) => {
     if (
       data.length > 0 &&
       videoCount < data.length &&
@@ -37,17 +37,17 @@ const PlayList = ({ props }: Play): React.JSX.Element => {
     console.log(res.data);
   }
 
-  function setdata(url: string) {
+  const setdata = (url: string) => {
     setList(url);
   }
 
-  function compareByProperty(property: keyof Playlist) {
+  const compareByProperty = (property: keyof Playlist) => {
     return (a: Playlist, b: Playlist) =>
       a[property].toUpperCase().localeCompare(b[property].toUpperCase());
   }
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       const play = props;
       const fetchedPlaylist = await fetchplaylist(play);
       const data = fetchedPlaylist.sort(compareByProperty("id"));
@@ -58,7 +58,7 @@ const PlayList = ({ props }: Play): React.JSX.Element => {
     fetchData();
   }, [props]);
 
-  async function showbtn(title: string) {
+  const showbtn = async (title: string) => {
     if (data && title === data[data.length - 1].title) {
       setshow(false);
     }

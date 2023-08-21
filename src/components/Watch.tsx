@@ -10,7 +10,7 @@ import { WatchProps } from "@/types";
 
 const Watch=({ heading, url }: WatchProps):React.JSX.Element=> {
   const { userId } = useAuth();
-  async function courseEnrollData() {
+  const courseEnrollData = async () => {
     try {
       const res = await axios.post(
         "/api/playlist",

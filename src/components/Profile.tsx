@@ -8,8 +8,9 @@ import axios from "axios";
 import useSWR from "swr";
 
 import { Course, MyFormValues, Quiz } from "@/types";
+import { User } from "@clerk/nextjs/dist/types/server";
 
-const Profile = ({ user }: any): React.JSX.Element => {
+const Profile:React.FC<{ user: User |null }> = ({user}): React.JSX.Element => {
   const [edit, setedit] = useState(true);
 
   const fetcher = async (url: string) => {
@@ -33,9 +34,9 @@ const Profile = ({ user }: any): React.JSX.Element => {
     isLoading: isLoading3,
     error: error3,
   } = useSWR("/api/quiz", fetcher);
-  function changeedit() {
+  const changeedit = () => {
     setedit(false);
-  }
+  };
 
   const validationSchema = Yup.object().shape({
     about: Yup.string().required("About is required"),
@@ -117,11 +118,11 @@ const Profile = ({ user }: any): React.JSX.Element => {
               validationSchema={validationSchema}
               onSubmit={async (values, { resetForm }) => {
                 try {
-                  if (user.id !== data[0].userid && data.length == 0) {
+                  if (user?.id !== data[0].userid && data.length == 0) {
                     const res = await axios.post(
                       "/api/profile",
                       {
-                        userid: user.id,
+                        userid: user?.id,
                         about: values.about,
                         education: values.edu,
                         communication: values.com,
@@ -142,7 +143,7 @@ const Profile = ({ user }: any): React.JSX.Element => {
                       const res = await axios.patch(
                         "/api/profile",
                         {
-                          userid: user.id,
+                          userid: user?.id,
                           about: values.about,
                           education: values.edu,
                           communication: values.com,
@@ -181,7 +182,7 @@ const Profile = ({ user }: any): React.JSX.Element => {
                   }
                 }
 
-                console.log(values);
+                
               }}
             >
               {({
@@ -214,7 +215,7 @@ const Profile = ({ user }: any): React.JSX.Element => {
                     className="mt-3 textarea textarea-bordered textarea-md w-[85%] max-w-xs"
                   ></textarea>
                   {errors.about && touched.about ? (
-                    <div>{errors.about}</div>
+                    <div className="text-red-600">{errors.about}</div>
                   ) : null}
 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
@@ -233,7 +234,7 @@ const Profile = ({ user }: any): React.JSX.Element => {
                     <option>Intermediate</option>
                     <option>Bachelors</option>
                   </select>
-                  {errors.edu && touched.edu ? <div>{errors.edu}</div> : null}
+                  {errors.edu && touched.edu ? <div className="text-red-600">{errors.edu}</div> : null}
 
                   <h6 className="mt-5  text-2xl font-semibold font-font ">
                     Communication Skills
@@ -251,7 +252,7 @@ const Profile = ({ user }: any): React.JSX.Element => {
                     <option>Fluent</option>
                     <option>Expert</option>
                   </select>
-                  {errors.com && touched.com ? <div>{errors.com}</div> : null}
+                  {errors.com && touched.com ? <div className="text-red-600">{errors.com}</div> : null}
 
                   <div className="flex gap-10 mb-5">
                     <button

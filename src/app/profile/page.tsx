@@ -6,7 +6,7 @@ import Profile from '@/components/Profile'
 
 const   Page=async():Promise<React.JSX.Element>=> {
   const user=await currentUser()
-  console.log(user)
+
    return (
     <>
   <Profile user={user} />
